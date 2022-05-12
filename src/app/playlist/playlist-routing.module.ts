@@ -6,29 +6,42 @@ import {PlaylistDetailComponent} from './playlist-detail/playlist-detail.compone
 import {PlaylistCreateComponent} from './playlist-create/playlist-create.component';
 import {PlaylistUpdateComponent} from './playlist-update/playlist-update.component';
 import {PlaylistDeleteComponent} from './playlist-delete/playlist-delete.component';
+import {CreatedSongListComponent} from '../song/created-song-list/created-song-list.component';
+import {CreateSongComponent} from '../song/create-song/create-song.component';
+import {UpdateSongComponent} from '../song/update-song/update-song.component';
 
 
 const routes: Routes = [
-      {
-        path: 'list',
-        component: PlaylistListComponent
-      },
-      {
-        path: 'detail',
-        component: PlaylistDetailComponent
-      },
-      {
-        path: 'create',
-        component: PlaylistCreateComponent
-      },
-      {
-        path: 'update',
-        component: PlaylistUpdateComponent
-      },
-      {
-        path: 'delete',
-        component: PlaylistDeleteComponent
-      }
+      // {
+      //   path: 'list',
+      //   component: PlaylistListComponent
+      // },
+      // {
+      //   path: 'detail',
+      //   component: PlaylistDetailComponent
+      // },
+      // {
+      //   path: 'create',
+      //   component: PlaylistCreateComponent
+      // },
+      // {
+      //   path: 'update',
+      //   component: PlaylistUpdateComponent
+      // },
+      // {
+      //   path: 'delete',
+      //   component: PlaylistDeleteComponent
+      // }
+
+  {
+    path: 'playlist',
+    component: AppLayoutComponent,
+    children: [
+      { path: 'list', component: PlaylistListComponent},
+      { path: 'create', component: PlaylistCreateComponent},
+      { path: 'edit/:id', component: PlaylistUpdateComponent}
+    ]
+  }
 ];
 
 @NgModule({

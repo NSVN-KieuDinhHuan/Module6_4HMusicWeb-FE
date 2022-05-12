@@ -4,11 +4,11 @@ import {AppLayoutComponent} from './layout/app-layout/app-layout.component';
 
 
 const routes: Routes = [
-  {
-    path: 'playlist',
-    component: AppLayoutComponent,
-    loadChildren: () => import('./playlist/playlist.module').then(module => module.PlaylistModule)
-  }
+  // {
+  //   path: 'playlist',
+  //   component: AppLayoutComponent,
+  //   loadChildren: () => import('./playlist/playlist.module').then(module => module.PlaylistModule)
+  // }
 ];
 
 @NgModule({

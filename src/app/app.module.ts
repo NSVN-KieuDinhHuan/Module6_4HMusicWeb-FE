@@ -9,6 +9,7 @@ import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
+import {PlaylistModule} from './playlist/playlist.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {SongModule} from './song/song.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SongModule
+    SongModule,
+    PlaylistModule
   ],
   providers: [],
   bootstrap: [AppComponent]
