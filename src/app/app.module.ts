@@ -10,6 +10,7 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoginComponent } from './auth/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SongModule
+    SongModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
