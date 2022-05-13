@@ -9,12 +9,11 @@ import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
+import { LoginComponent } from './auth/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import { LogoutComponent } from './auth/logout/logout.component';
-import {AuthModule} from './auth/auth.module';
 
 
 @NgModule({
@@ -25,7 +24,7 @@ import {AuthModule} from './auth/auth.module';
     AppNavbarComponent,
     AppLayoutComponent,
     AppPlaySongComponent,
-    LogoutComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,10 +32,7 @@ import {AuthModule} from './auth/auth.module';
     SongModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    SongModule,
-    ReactiveFormsModule,
-    AuthModule
+    HttpClientModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
