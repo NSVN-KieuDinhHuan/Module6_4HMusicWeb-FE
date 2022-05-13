@@ -9,6 +9,8 @@ import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
+import { AlbumListComponent } from './album/album-list/album-list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -19,11 +21,13 @@ import {SongModule} from './song/song.module';
     AppNavbarComponent,
     AppLayoutComponent,
     AppPlaySongComponent,
+    AlbumListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SongModule
+    SongModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
