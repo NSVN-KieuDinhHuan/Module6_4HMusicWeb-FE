@@ -39,7 +39,9 @@ const routes: Routes = [
     children: [
       { path: 'list', component: PlaylistListComponent},
       { path: 'create', component: PlaylistCreateComponent},
-      { path: 'edit/:id', component: PlaylistUpdateComponent}
+      { path: 'edit/:id', component: PlaylistUpdateComponent},
+      { path: 'delete/:id', component: PlaylistDeleteComponent},
+      { path: 'detail/:id', component: PlaylistDetailComponent}
     ]
   }
 ];
