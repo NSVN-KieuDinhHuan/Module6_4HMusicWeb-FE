@@ -10,6 +10,10 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LogoutComponent } from './auth/logout/logout.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 
 
 @NgModule({
@@ -21,11 +25,15 @@ import { LoginComponent } from './auth/login/login.component';
     AppLayoutComponent,
     AppPlaySongComponent,
     LoginComponent,
+    RegisterComponent,
+    LogoutComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SongModule
+    SongModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
