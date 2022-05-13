@@ -34,8 +34,7 @@
             </div>
             <div class="save_input_group">
               <h4>Do you have a phone call?</h4>
-              <input type="number" placeholder="Enter Your PhoneNumber" class="form-control"
-                     formControlName="phoneNumber">
+              <input type="number" placeholder="Enter Your PhoneNumber" class="form-control" formControlName="phoneNumber">
               <div *ngIf="registerForm.get('phoneNumber').invalid&&registerForm.get('phoneNumber').touched"><p
                 style="color: red">Không được để trống</p>
               </div>
