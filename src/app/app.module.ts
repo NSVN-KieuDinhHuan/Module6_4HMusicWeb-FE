@@ -10,10 +10,15 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {JwtInterceptor} from './helper/jwt-interceptor';
+import {ErrorInterceptor} from './helper/error-interceptor';
 import { RegisterComponent } from './auth/register/register.component';
 import { LogoutComponent } from './auth/logout/logout.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import {AuthRoutingModule} from './auth/auth-routing.module';
+import {AuthModule} from './auth/auth.module';
 
 
 @NgModule({
@@ -24,18 +29,23 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
     AppNavbarComponent,
     AppLayoutComponent,
     AppPlaySongComponent,
-    LoginComponent,
-    RegisterComponent,
-    LogoutComponent,
-    ChangePasswordComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SongModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SongModule,
+    ReactiveFormsModule,
+    AuthModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

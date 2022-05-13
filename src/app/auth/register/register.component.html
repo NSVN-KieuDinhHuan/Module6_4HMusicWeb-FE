@@ -1,62 +1,58 @@
-<div class="ms_save_modal">
-  <div id="save_modal" class="modal  centered-modal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
+<div id="myModal1" class="  centered-modal" role="dialog">
+  <div class="modal-dialog login_dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <a type="button" class="close" routerLink="/song">
+          <i class="fa_icon form_close"></i>
+        </a>
         <div class="modal-body">
-          <h1>Let's enjoy your passionate!</h1>
-          <form [formGroup]="registerForm" (ngSubmit)="register()">
-            <div class="save_modal_btn">
-              <a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i> continue with google </a> <br>
-              <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i> continue with facebook</a>
+          <div class="ms_register_img">
+            <img src="assets/images/register_img.png" alt="" class="img-fluid"/>
+          </div>
+          <div class="ms_register_form">
+            <h2>Register to enjoy your compassion!!!</h2>
+            <h4>Enter your username</h4>
+            <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="username">
+            <p *ngIf="message!=null" style="color:red">Không được để trống</p>
+            <div *ngIf="registerForm.get('username').invalid&&registerForm.get('username').touched"><p
+              style="color: red">Không được để trống</p>
             </div>
-            <div class="ms_save_email">
-              <div class="save_input_group">
-                <h4>Enter your username</h4>
-                <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="username">
-                <p *ngIf="message!=null" style="color:red">Không được để trống</p>
-                <div *ngIf="registerForm.get('username').invalid&&registerForm.get('username').touched"><p
-                  style="color: red">Không được để trống</p>
-                </div>
-                <div class="save_input_group">
-                  <h4>Enter your password</h4>
-                  <input type="password" placeholder="Enter Password" class="form-control" formControlName="password">
-                  <div *ngIf="registerForm.get('numberPhone').invalid&&registerForm.get('numberPhone').touched"><p
-                    style="color: red">Không được để trống</p>
-                  </div>
-                </div>
-                <div class="save_input_group">
-                  <h4>Confirm password</h4>
-                  <input type="password" placeholder="Confirm Password" class="form-control" formControlName="password">
-                  <div *ngIf="registerForm.get('numberPhone').invalid&&registerForm.get('numberPhone').touched"><p
-                    style="color: red">Không được để trống</p>
-                  </div>
-                </div>
-                <div class="save_input_group">
-                  <h4>Do you have a phone call?</h4>
-                  <input type="number" placeholder="Enter Your PhoneNumber" class="form-control"
-                         formControlName="phoneNumber">
-                  <div *ngIf="registerForm.get('numberPhone').invalid&&registerForm.get('numberPhone').touched"><p
-                    style="color: red">Không được để trống</p>
-                  </div>
-                </div>
-                <div class="save_input_group">
-                  <h4>Where do you live?</h4>
-                  <input type="text" placeholder="Enter Your address" class="form-control" formControlName="address">
-                  <div *ngIf="registerForm.get('numberPhone').invalid&&registerForm.get('numberPhone').touched"><p
-                    style="color: red">Không được để trống</p>
-                  </div>
-                </div>
-                <button type="submit" class="save_btn">Register</button>
+            <div class="save_input_group">
+              <h4>Enter your password</h4>
+              <input type="text" placeholder="Enter Password" class="form-control" formControlName="password">
+              <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched"><p
+                style="color: red">Không được để trống</p>
               </div>
             </div>
-          </form>
-          <div class="ms_dnt_have">
-            <span>Already Have An Account?</span>
-            <a href="javascript:;" class="hideCurrentModel" data-toggle="modal" data-target="#myModal">Login here</a>
+            <div class="save_input_group">
+              <h4>Confirm password</h4>
+              <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
+              <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched"><p
+                style="color: red">Không được để trống</p>
+              </div>
+            </div>
+            <div class="save_input_group">
+              <h4>Do you have a phone call?</h4>
+              <input type="number" placeholder="Enter Your PhoneNumber" class="form-control"
+                     formControlName="phoneNumber">
+              <div *ngIf="registerForm.get('phoneNumber').invalid&&registerForm.get('phoneNumber').touched"><p
+                style="color: red">Không được để trống</p>
+              </div>
+            </div>
+            <div class="save_input_group">
+              <h4>Where do you live?</h4>
+              <input type="text" placeholder="Enter Your address" class="form-control" formControlName="address">
+              <div *ngIf="registerForm.get('address').invalid&&registerForm.get('address').touched"><p
+                style="color: red">Không được để trống</p>
+              </div>
+              <input type="submit" class="ms_btn" value="register">
+              <p>Do You Have An Account? <a routerLink="/login" data-toggle="modal"
+                                            class="ms_modal1 hideCurrentModel">Login here</a></p>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
