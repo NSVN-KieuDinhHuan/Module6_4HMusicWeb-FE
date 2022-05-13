@@ -4,16 +4,17 @@ import {AppLayoutComponent} from '../layout/app-layout/app-layout.component';
 import {CreatedSongListComponent} from './created-song-list/created-song-list.component';
 import {CreateSongComponent} from './create-song/create-song.component';
 import {UpdateSongComponent} from './update-song/update-song.component';
+import {AuthGuard} from '../helper/auth-guard';
 
 
 const routes: Routes = [
   {
     path: 'song',
-    component: AppLayoutComponent,
+    component: AppLayoutComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'list', component: CreatedSongListComponent},
-      { path: 'create', component: CreateSongComponent},
-      { path: 'edit/:id', component: UpdateSongComponent}
+      { path: 'list', component: CreatedSongListComponent, canActivate: [AuthGuard]},
+      { path: 'create', component: CreateSongComponent, canActivate: [AuthGuard]},
+      { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]}
     ]
   }
 ];

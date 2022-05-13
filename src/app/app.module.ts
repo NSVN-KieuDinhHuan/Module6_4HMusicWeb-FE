@@ -10,7 +10,10 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {JwtInterceptor} from './helper/jwt-interceptor';
+import {ErrorInterceptor} from './helper/error-interceptor';
 
 
 @NgModule({
@@ -27,9 +30,14 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     SongModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
