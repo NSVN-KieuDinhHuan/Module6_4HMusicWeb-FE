@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
 import {AppPlaySongComponent} from './layout/app-play-song/app-play-song.component';
 
 
 const routes: Routes = [
-  {path: 'login' , component: LoginComponent},
-  {path: 'play' , component: AppPlaySongComponent}
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+
 ];
 
 @NgModule({

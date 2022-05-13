@@ -10,9 +10,9 @@ import {AuthGuard} from '../helper/auth-guard';
 const routes: Routes = [
   {
     path: 'song',
-    component: AppLayoutComponent, canActivate: [AuthGuard],
+    component: AppLayoutComponent,
     children: [
-      { path: 'list', component: CreatedSongListComponent, canActivate: [AuthGuard]},
+      { path: 'list', component: CreatedSongListComponent},
       { path: 'create', component: CreateSongComponent, canActivate: [AuthGuard]},
       { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]}
     ]

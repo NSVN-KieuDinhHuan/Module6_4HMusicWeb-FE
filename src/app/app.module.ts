@@ -14,6 +14,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
+import {RegisterComponent} from './auth/register/register.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {ErrorInterceptor} from './helper/error-interceptor';
     AppNavbarComponent,
     AppLayoutComponent,
     AppPlaySongComponent,
+    RegisterComponent,
     LoginComponent,
   ],
   imports: [
