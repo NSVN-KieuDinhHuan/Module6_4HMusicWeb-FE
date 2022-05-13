@@ -2,14 +2,15 @@
 <div class="ms_album_single_wrapper">
   <div class="album_single_data">
     <div class="album_single_img">
-      <img src="/assets/images/album/single_album.jpg" alt="" class="img-fluid">
+      <img *ngIf="playlist.songs.length == 0" src="/assets/images/album/single_album.jpg" alt="" class="img-fluid">
+      <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="" class="img-fluid">
     </div>
     <div class="album_single_text">
-      <h2>Dream Your Moments</h2>
-      <p class="singer_name">By - Ava Cornish, Brian Hill</p>
+      <h2>{{playlist.name}}</h2>
+      <p class="singer_name">Created By - {{currentUser.username}}</p>
       <div class="album_feature">
-        <a href="#" class="album_date">5 song | 25:10</a>
-        <a href="#" class="album_date">Released March 23, 2018  | Abc Music Company</a>
+        <a href="#" class="album_date">{{playlist.songs.length}} song | 25:10</a>
+        <a href="#" class="album_date">Released {{playlist.createDate}}</a>
       </div>
       <div class="album_btn">
         <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
@@ -17,13 +18,13 @@
       </div>
     </div>
     <div class="album_more_optn ms_more_icon">
-      <span><img src="images/svg/more.svg" alt=""></span>
+      <span><img src="/assets/images/svg/more.svg" alt=""></span>
     </div>
     <ul class="more_option">
-      <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-      <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+      <li><a href="/playlist/edit/{{playlist.id}}"><span class="opt_icon"><span class="icon icon_fav"></span></span>Edit Playlist</a></li>
+      <li><a href="/playlist/delete/{{playlist.id}}"><span class="opt_icon"><span class="icon icon_queue"></span></span>Remove Playlist</a></li>
       <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-      <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+      <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Favourites</a></li>
       <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
     </ul>
   </div>
@@ -38,10 +39,11 @@
         <li class="text-center">Add To Favourites</li>
         <li class="text-center">More</li>
       </ul>
-      <ul>
-        <li><a href="#"><span class="play_no">01</span><span class="play_hover"></span></a></li>
-        <li><a href="#">Bloodlust</a></li>
-        <li><a href="#">Ava Cornish & Brian Hill</a></li>
+<!--      loop songs-->
+      <ul *ngFor="let song of playlist.songs; index as i">
+        <li><a href="#"><span class="play_no">0{{i+1}}</span><span class="play_hover"></span></a></li>
+        <li><a href="#">{{song.name}}</a></li>
+        <li><a href="#">{{song.artist.name}}</a></li>
         <li class="text-center"><a href="#">5:26</a></li>
         <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
         <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>
@@ -54,70 +56,7 @@
           </ul>
         </li>
       </ul>
-      <ul>
-        <li><a href="#"><span class="play_no">02</span><span class="play_hover"></span></a></li>
-        <li><a href="#">Desired Games</a></li>
-        <li><a href="#">Ava Cornish & Brian Hill</a></li>
-        <li class="text-center"><a href="#">5:26</a></li>
-        <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
-        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>
-          <ul class="more_option">
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul>
-        <li><a href="#"><span class="play_no">03</span><span class="play_hover"></span></a></li>
-        <li><a href="#">Until I Met You</a></li>
-        <li><a href="#">Ava Cornish & Brian Hill</a></li>
-        <li class="text-center"><a href="#">5:26</a></li>
-        <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
-        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>
-          <ul class="more_option">
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="play_active_song">
-        <li><a href="#"><span class="play_no">04</span><span class="play_hover"></span></a></li>
-        <li><a href="#">Dark Alley Acoustic</a></li>
-        <li><a href="#">Ava Cornish & Brian Hill</a></li>
-        <li class="text-center"><a href="#">5:26</a></li>
-        <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
-        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>
-          <ul class="more_option">
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul>
-        <li><a href="#"><span class="play_no">05</span><span class="play_hover"></span></a></li>
-        <li><a href="#">Cloud nine</a></li>
-        <li><a href="#">Ava Cornish & Brian Hill</a></li>
-        <li class="text-center"><a href="#">5:26</a></li>
-        <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
-        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>
-          <ul class="more_option">
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-          </ul>
-        </li>
-      </ul>
+      <!--      end loop songs-->
     </div>
   </div>
 </div>
@@ -284,14 +223,14 @@
     </div>
     <div class="ms_album_slider swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
+        <div class="swiper-slide" >
           <div class="ms_rcnt_box">
             <div class="ms_rcnt_box_img">
-              <img src="images/album/album1.jpg" alt="">
+              <img src="/assets/images/album/album1.jpg" alt="">
               <div class="ms_main_overlay">
                 <div class="ms_box_overlay"></div>
                 <div class="ms_more_icon">
-                  <img src="images/svg/more.svg" alt="">
+                  <img src="/assets/images/svg/more.svg" alt="">
                 </div>
                 <ul class="more_option">
                   <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
@@ -301,7 +240,7 @@
                   <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
                 </ul>
                 <div class="ms_play_icon">
-                  <img src="images/svg/play.svg" alt="">
+                  <img src="/assets/images/svg/play.svg" alt="">
                 </div>
               </div>
             </div>
