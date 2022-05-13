@@ -10,11 +10,12 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
+import {PlaylistModule} from './playlist/playlist.module';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import {PlaylistModule} from './playlist/playlist.module';
+
 
 
 @NgModule({
@@ -31,6 +32,8 @@ import {PlaylistModule} from './playlist/playlist.module';
     BrowserModule,
     AppRoutingModule,
     SongModule,
+    PlaylistModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
