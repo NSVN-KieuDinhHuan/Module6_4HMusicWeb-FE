@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       address: ['', [Validators.required]],
     });
@@ -40,17 +41,18 @@ export class RegisterComponent implements OnInit {
     this.user = {
       username: this.registerForm.value.username,
       password: this.registerForm.value.password,
+      confirmPassword: this.registerForm.value.confirmPassword,
       phoneNumber: this.registerForm.value.phoneNumber,
       address: this.registerForm.value.address
     };
     for (const user of this.users) {
       if (user.username === this.user.username) {
-        this.message = 'tai khoan da ton tai';
+        this.message = 'Account is already exists';
         break;
       }
     }
     this.authService.register(this.user).subscribe(() => {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('/song/list');
     });
   }
 
