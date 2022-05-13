@@ -9,6 +9,8 @@ import {NotificationService} from '../../service/notification/notification.servi
 import {CategoryService} from '../../service/category/category.service';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {UserToken} from '../../model/user-token';
+import {ArtistService} from '../../service/artist/artist.service';
+import {Artist} from '../../model/artist';
 
 @Component({
   selector: 'app-create-song',
@@ -17,11 +19,13 @@ import {UserToken} from '../../model/user-token';
 })
 export class CreateSongComponent implements OnInit {
   categories: Category[] = [];
+  artists: Artist[] = [];
   currentUser: UserToken = {};
   song: Song = {};
 
   constructor(private songService: SongService,
               private categorySevice: CategoryService,
+              private artistService: ArtistService,
               private fb: FormBuilder,
               private notificationSevice: NotificationService,
               private authenticationService: AuthenticationService) {
@@ -48,9 +52,14 @@ export class CreateSongComponent implements OnInit {
       this.categories = categoriesFromBE;
     });
   }
-
+  getAllArtist() {
+    this.artistService.getAllArtist().subscribe((ArtistFromBE) => {
+      this.artists = ArtistFromBE;
+    });
+  }
   ngOnInit() {
     this.getAllCategory();
+    this.getAllArtist();
   }
 
   get SongFormControl() {
