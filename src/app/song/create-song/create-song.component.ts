@@ -11,6 +11,10 @@ import {AuthenticationService} from '../../service/Authentication/authentication
 import {UserToken} from '../../model/user-token';
 import {ArtistService} from '../../service/artist/artist.service';
 import {Artist} from '../../model/artist';
+import {AlbumService} from '../../service/album/album.service';
+import {Album} from '../../model/album';
+import {TagService} from '../../service/tag/tag.service';
+import {Tag} from '../../model/tag';
 
 @Component({
   selector: 'app-create-song',
@@ -20,12 +24,16 @@ import {Artist} from '../../model/artist';
 export class CreateSongComponent implements OnInit {
   categories: Category[] = [];
   artists: Artist[] = [];
+  albums: Album[] = [];
+  tags: Tag[] = [];
   currentUser: UserToken = {};
   song: Song = {};
 
   constructor(private songService: SongService,
               private categorySevice: CategoryService,
               private artistService: ArtistService,
+              private albumService: AlbumService,
+              private tagService: TagService,
               private fb: FormBuilder,
               private notificationSevice: NotificationService,
               private authenticationService: AuthenticationService) {
@@ -57,9 +65,23 @@ export class CreateSongComponent implements OnInit {
       this.artists = ArtistFromBE;
     });
   }
+
+  getAllAlbum() {
+    this.albumService.getAllAlbum().subscribe((albumFromBE) => {
+      this.albums = albumFromBE;
+    });
+  }
+
+  getAllTag() {
+    this.tagService.getAllTag().subscribe((tagFromBE) => {
+      this.tags = tagFromBE;
+    });
+  }
   ngOnInit() {
     this.getAllCategory();
     this.getAllArtist();
+    this.getAllAlbum();
+    this.getAllTag();
   }
 
   get SongFormControl() {

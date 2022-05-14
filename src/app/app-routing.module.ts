@@ -6,6 +6,7 @@ import {AppPlaySongComponent} from './layout/app-play-song/app-play-song.compone
 
 
 const routes: Routes = [
+
   {
     path: 'login',
     component: LoginComponent
