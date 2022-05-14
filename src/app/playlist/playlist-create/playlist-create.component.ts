@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserToken} from '../../model/user-token';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-playlist-create',
@@ -9,10 +11,17 @@ import {AuthenticationService} from '../../service/Authentication/authentication
   styleUrls: ['./playlist-create.component.css']
 })
 export class PlaylistCreateComponent implements OnInit {
+  playlistForm: FormGroup = new FormGroup(
+    {
+      name: new FormControl('', [Validators.required]),
+      category: new FormControl()
+    }
+  );
   currentUser: UserToken = {};
 
   constructor(private playlistService: PlaylistService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private router: Router) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -21,4 +30,16 @@ export class PlaylistCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  create(playlistForm: FormGroup) {
+    this.playlistService.createPlaylist(playlistForm.value, this.currentUser.id).subscribe(() => {
+      this.router.navigateByUrl('/playlist/list');
+      alert('Created successfully!');
+    }, error => {
+      alert('Created failed!');
+    });
+  }
+
+  get nameControl() {
+    return this.playlistForm.get('name');
+  }
 }

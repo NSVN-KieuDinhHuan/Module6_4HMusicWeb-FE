@@ -1,5 +1,6 @@
 import {User} from './user';
 import {Song} from './song';
+import {Category} from './category';
 
 export interface PlayList {
   id?: number;
@@ -12,4 +13,5 @@ export interface PlayList {
   lastUpdate?: string;
   views?: number;
   description?: string;
+  category?: Category;
 }

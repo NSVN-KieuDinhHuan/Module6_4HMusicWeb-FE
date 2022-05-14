@@ -1,5 +1,5 @@
 <div class="ms_upload_wrapper marger_top60">
-  <form>
+  <form (ngSubmit)="create(playlistForm)" [formGroup]="playlistForm">
     <div class=" marger_top60">
       <div class="ms_upload_box">
         <div class="ms_heading">
@@ -8,16 +8,16 @@
         <div class="ms_pro_form">
           <div class="form-group">
             <label class="text-center">Playlist Name *</label>
-            <input type="text" placeholder="Dream Your Moments" class="form-control">
+            <input type="text" placeholder="Dream Your Moments" class="form-control" formControlName="name">
+            <p [hidden]="nameControl.valid || nameControl.pristine" *ngIf="nameControl.errors?.required" style="color: red">Name is required</p>
           </div>
           <div class="form-group">
             <label>Category</label>
-            <select class="form-control">
-              <option>Cloud Nine</option>
-              <option value="1">1 </option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+            <select class="form-control" formControlName="category">
+<!--              <option value="" disabled>Choose Category</option>-->
+              <option value="1">Category 1</option>
+              <option value="2">Category 2 </option>
+              <option value="3">Category 3</option>
             </select>
           </div>
 <!--          <div class="form-group">-->
@@ -27,7 +27,7 @@
 
           <div class="pro-form-btn text-center marger_top15">
             <div class="ms_upload_btn">
-              <a href="#" class="ms_btn">Create</a>
+              <button href="#" class="ms_btn">Create</button>
 <!--              <a href="#" class="ms_btn">Cancel</a>-->
             </div>
           </div>
