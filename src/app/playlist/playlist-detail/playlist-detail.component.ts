@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {PlayList} from '../../model/play-list';
 import {PlaylistService} from '../../service/playlist/playlist.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserToken} from '../../model/user-token';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
+import {SongService} from '../../service/song/song.service';
+import {Song} from '../../model/song';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -13,10 +15,13 @@ import {AuthenticationService} from '../../service/Authentication/authentication
 export class PlaylistDetailComponent implements OnInit {
   currentUser: UserToken = {};
   playlist: PlayList = {};
+  allSong: Song[] = [];
 
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private songService: SongService,
+              private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
       this.getPlaylistById(id);
@@ -27,11 +32,27 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllSong();
   }
 
   getPlaylistById(id) {
     this.playlistService.getPlaylistById(id).subscribe((playlist) => {
       this.playlist = playlist;
+    });
+  }
+
+  getAllSong() {
+    this.songService.getAllSongForAllUser().subscribe((songs) => {
+      this.allSong = songs;
+    });
+  }
+
+  addSong(songId: number, playlistId: number) {
+    this.playlistService.addSongToPlaylist(songId, playlistId).subscribe(() => {
+      this.router.navigateByUrl(`/playlist/detail/${playlistId}`);
+      alert('Add song successfully!');
+    }, error => {
+      alert('Failed');
     });
   }
 }
