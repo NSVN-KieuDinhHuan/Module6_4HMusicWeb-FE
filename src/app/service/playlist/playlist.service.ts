@@ -35,10 +35,10 @@ export class PlaylistService {
   }
 
   deletePlaylist(id): Observable<PlayList> {
-    return this.http.delete<PlayList>(`${API_URL}/${id}`);
+    return this.http.delete<PlayList>(`${API_URL}/playlists/${id}`);
   }
 
   addSongToPlaylist(songId, playlistId): Observable<PlayList> {
-    return this.http.put<PlayList>(`${API_URL}/addSong?songId=${songId}&playlistId=${playlistId}`, true);
+    return this.http.put<PlayList>(`${API_URL}/playlists/addSong?songId=${songId}&playlistId=${playlistId}`, true);
   }
 }
