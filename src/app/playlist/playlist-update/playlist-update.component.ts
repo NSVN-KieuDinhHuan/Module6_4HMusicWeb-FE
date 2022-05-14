@@ -45,14 +45,23 @@ export class PlaylistUpdateComponent implements OnInit {
   getPlaylistById(id) {
     this.playlistService.getPlaylistById(id).subscribe((playlist) => {
       this.playlist = playlist;
-      this.playlistForm.get(`name`).setValue(playlist.name);
-      this.playlistForm.get(`description`).setValue(playlist.description);
-      this.playlistForm.get(`category`).setValue(playlist.category);
+      this.playlistForm.get('name').setValue(playlist.name);
+      this.playlistForm.get('description').setValue(playlist.description);
+      // this.playlistForm.get('category').setValue(playlist.category);
     });
   }
 
   edit(id, playlistForm: FormGroup) {
-    this.playlistService.editPlaylist(playlistForm.value, id).subscribe(() => {
+    let playlist;
+    if (playlistForm.valid) {
+      playlist = playlistForm.value;
+      if (playlist.category != null) {
+        playlist.category = {
+          id: playlist.category
+        };
+      }
+    }
+    this.playlistService.editPlaylist(playlist, id).subscribe(() => {
       this.router.navigateByUrl(`/playlist/detail/${id}`);
       alert('Edit successfully!');
     }, error => {
