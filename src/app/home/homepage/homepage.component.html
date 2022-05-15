@@ -32,7 +32,7 @@
       <div class="swiper-slide swiper-slide-prev">
         <div class="ms_rcnt_box">
           <div class="ms_rcnt_box_img">
-            <img src="/assets/images/radio/img1.jpg" alt="">
+            <img src="/assets/images/radio/playlist_default.jpg" alt="">
             <div class="ms_main_overlay">
               <div class="ms_box_overlay"></div>
               <div class="ms_more_icon">
@@ -52,7 +52,7 @@
           </div>
           <div class="ms_rcnt_box_text">
             <h3><a href="#">Top Trendings Acoustic</a></h3>
-            <p>20 songs</p>
+            <p>0 songs</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
       <div class="swiper-slide" *ngFor="let playlist of allPlaylists">
         <div class="ms_rcnt_box">
           <div class="ms_rcnt_box_img">
-            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/img1.jpg" alt="" class="img-fluid">
+            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
             <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="">
             <div class="ms_main_overlay">
               <div class="ms_box_overlay"></div>
@@ -80,8 +80,8 @@
             </div>
           </div>
           <div class="ms_rcnt_box_text">
-            <h3><a href="#">{{playlist.name}}</a></h3>
-            <p>{{playlist.songs.length}}</p>
+            <h3><a routerLink="/playlist/detail/{{playlist.id}}">{{playlist.name}}</a></h3>
+            <p>{{playlist.songs.length}} song</p>
           </div>
         </div>
       </div>

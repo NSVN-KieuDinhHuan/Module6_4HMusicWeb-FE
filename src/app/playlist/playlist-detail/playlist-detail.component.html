@@ -2,7 +2,7 @@
 <div class="ms_album_single_wrapper">
   <div class="album_single_data">
     <div class="album_single_img">
-      <img *ngIf="playlist.songs.length == 0" src="/assets/images/album/single_album.jpg" alt="" class="img-fluid">
+      <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
       <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="" class="img-fluid">
     </div>
     <div class="album_single_text">
