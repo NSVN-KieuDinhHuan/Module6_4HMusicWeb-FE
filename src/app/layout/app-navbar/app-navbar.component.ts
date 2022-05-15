@@ -20,9 +20,17 @@ export class AppNavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  upload() {
+    this.router.navigateByUrl('/song/create');
+  }
   logout() {
     this.authenticationService.logout();
     this.router.navigateByUrl('/song/list');
+  }
+  register() {
+    this.router.navigateByUrl('/auth/register');
+  }
+  login() {
+    this.router.navigateByUrl('/auth/login');
   }
 }

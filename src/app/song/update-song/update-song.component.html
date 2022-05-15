@@ -1,13 +1,29 @@
 <div class="ms_upload_wrapper marger_top60">
-  <form>
+  <form  [formGroup]="songForm" (ngSubmit)="submit(songForm)">
     <div class="ms_upload_box">
       <h2>Upload & Share Your Music With The World</h2>
-      <img src="assets/images/svg/upload.svg" alt="">
-      <div class="ms_upload_btn">
-        <a href="#" class="ms_btn">save files</a>
+      <div class="file-upload">
+        <div class="image-upload-wrap-audio">
+          <input class="file-upload-input-audio" id="mp3File" type='file' onchange="readURLAudio(this);" accept="mp3/*" formControlName="mp3File">
+          <div class="drag-text">
+            <img src="assets/images/svg/upload.svg" alt="">
+            <h2>Drag And Drop Files</h2>
+          </div>
+
+        </div>
+        <div class="file-upload-content-audio">
+          <audio controls class="file-upload-audio">
+            <source  src="#" type="audio/ogg">
+            <source  src="#" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="image-title-wrap">
+            <span class="image-title-audio">Uploaded Image</span>
+            <button  type="button" onclick="removeUploadAudio()" class="remove-image">Remove </button>
+          </div>
+        </div>
+
       </div>
-      <span> or </span>
-      <p>Drag And Drop Music Files</p>
     </div>
     <div class=" marger_top60">
       <div class="ms_upload_box">
@@ -16,7 +32,7 @@
 
           <div class="image-upload-wrap">
 
-            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <input class="file-upload-input" id="image" type='file' onchange="readURL(this);" accept="image/*" formControlName="image">
             <div class="drag-text">
               <img src="assets/images/svg/upload.svg" alt="">
               <h2>Drag And Drop image Files</h2>
@@ -25,13 +41,14 @@
           </div>
           <div class="file-upload-content">
             <img class="file-upload-image" src="#" alt="your image" />
+
+            <div><span class="image-title">Uploaded Image</span></div>
             <div class="image-title-wrap">
               <button  type="button" onclick="removeUpload()" class="remove-image">Remove </button>
             </div>
           </div>
 
         </div>
-
       </div>
     </div>
     <div class=" marger_top60">
@@ -42,65 +59,50 @@
         <div class="ms_pro_form">
           <div class="form-group">
             <label>Song Name *</label>
-            <input type="text" placeholder="Dream Your Moments" class="form-control">
+            <input id="name" type="text" placeholder="Name" class="form-control" formControlName="name">
           </div>
           <div class="form-group">
             <label>Author</label>
-            <input type="text" placeholder="author" class="form-control">
+            <input id="author" type="text" placeholder="Author" class="form-control" formControlName="author">
           </div>
           <div class="form-group">
-            <label>Artist’s Name *</label>
-            <select class="form-control">
-              <option>Cloud Nine</option>
-              <option value="1">Cyber Sonnet </option>
-              <option value="2">Cloud Nine</option>
-              <option value="3">Cyber Sonnet</option>
-              <option value="4">Cloud Nine</option>
+            <label>Artist’s Name * </label>
+            <select class="form-control" id="artist" formControlName="artist">
+              <option disabled [ngValue]="null">select</option>
+              <option *ngFor="let artist of artists" value="{{artist.id}}">{{artist.name}}</option>
             </select>
           </div>
           <div class="form-group">
             <label>Song’s category *</label>
-            <select class="form-control">
-              <option>Cloud Nine</option>
-              <option value="1">1 </option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+            <select class="form-control"  id="category" formControlName="category">
+              <option disabled [ngValue]="null">select</option>
+              <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
             </select>
           </div>
           <div class="form-group">
             <label>Tag</label>
-            <input type="text" placeholder="Ava Cornish, Brian Hill" class="form-control">
+            <select class="form-control" id="tag" formControlName="tag">
+              <option disabled [ngValue]="null">select</option>
+              <option *ngFor="let tag of tags" value="{{tag.id}}">{{tag.name}}</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Select Album</label>
-            <select class="form-control">
-              <option>Cloud Nine</option>
-              <option value="1">Cyber Sonnet </option>
-              <option value="2">Cloud Nine</option>
-              <option value="3">Cyber Sonnet</option>
-              <option value="4">Cloud Nine</option>
+            <select class="form-control" formControlName="album">
+              <option disabled [ngValue]="null">select</option>
+              <option *ngFor="let album of albums" value="{{album.id}}">{{album.name}}</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Select playlist</label>
-            <select class="form-control">
-              <option>Cloud Nine</option>
-              <option value="1">Cyber Sonnet </option>
-              <option value="2">Cloud Nine</option>
-              <option value="3">Cyber Sonnet</option>
-              <option value="4">Cloud Nine</option>
-            </select>
-          </div>
+
           <div class="form-group">
             <label>Description</label>
-            <textarea  class="form-control"></textarea>
+            <textarea  class="form-control" formControlName="description"></textarea>
           </div>
 
           <div class="pro-form-btn text-center marger_top15">
             <div class="ms_upload_btn">
-              <a href="#" class="ms_btn">Upload Now</a>
-              <a href="#" class="ms_btn">cancle</a>
+              <input type="submit" class="ms_btn" value="UpDate Now ">
+              <a routerLink="/song/list" class="ms_btn">cancle</a>
             </div>
           </div>
 

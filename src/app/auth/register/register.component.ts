@@ -52,12 +52,15 @@ export class RegisterComponent implements OnInit {
       }
     }
     this.authService.register(this.user).subscribe(() => {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/song/list');
     });
   }
 
   getAllUser() {
     this.authService.getAllUser().subscribe((listUserBackEnd) =>
       this.users = listUserBackEnd);
+  }
+  login() {
+    this.router.navigateByUrl('/auth/login');
   }
 }
