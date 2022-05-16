@@ -8,5 +8,5 @@ export interface UserToken {
   address?: string;
   email?: string;
   role?: Role;
-  accessToken?: string;
+  token?: string;
 }

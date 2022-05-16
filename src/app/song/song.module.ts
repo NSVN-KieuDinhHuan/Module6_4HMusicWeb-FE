@@ -6,11 +6,12 @@ import { CreatedSongListComponent } from './created-song-list/created-song-list.
 import { CreateSongComponent } from './create-song/create-song.component';
 import { UpdateSongComponent } from './update-song/update-song.component';
 import { DeleteSongComponent } from './delete-song/delete-song.component';
+import {AlbumListComponent} from './album-list/album-list.component';
 
 
 
 @NgModule({
-  declarations: [CreatedSongListComponent, CreateSongComponent, UpdateSongComponent, DeleteSongComponent],
+  declarations: [CreatedSongListComponent, CreateSongComponent, UpdateSongComponent, DeleteSongComponent, AlbumListComponent],
   imports: [
     CommonModule,
     SongRoutingModule

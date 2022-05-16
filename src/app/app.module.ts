@@ -9,8 +9,11 @@ import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
-import { AlbumListComponent } from './album/album-list/album-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './auth/login/login.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {JwtInterceptor} from './helper/jwt-interceptor';
+import {ErrorInterceptor} from './helper/error-interceptor';
 
 
 @NgModule({
@@ -21,15 +24,20 @@ import {HttpClientModule} from '@angular/common/http';
     AppNavbarComponent,
     AppLayoutComponent,
     AppPlaySongComponent,
-    AlbumListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SongModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
