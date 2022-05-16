@@ -7,6 +7,7 @@ import { CreateSongComponent } from './create-song/create-song.component';
 import { UpdateSongComponent } from './update-song/update-song.component';
 import { DeleteSongComponent } from './delete-song/delete-song.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -16,7 +17,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         CommonModule,
         SongRoutingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ]
 })
 export class SongModule { }

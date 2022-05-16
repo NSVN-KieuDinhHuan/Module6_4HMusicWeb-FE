@@ -16,11 +16,11 @@
       <span data-toggle="modal" data-target="#lang_modal">languages <img src="assets/images/svg/lang.svg" alt=""></span>
     </div>
     <div class="ms_top_btn" *ngIf="!currentUser">
-      <a href="javascript:;" class="ms_btn reg_btn" data-toggle="modal" routerLink="/register"><span>register</span></a>
-      <a href="javascript:;" class="ms_btn login_btn" data-toggle="modal" routerLink="/login"><span>login</span></a>
+      <a href="javascript:;" class="ms_btn reg_btn"  (click)="register()"><span>register</span></a>
+      <a href="javascript:;" class="ms_btn login_btn"  (click)="login()"><span>login</span></a>
     </div>
     <div class="ms_top_btn" *ngIf="currentUser">
-      <a href="upload.html" class="ms_btn">upload</a>
+      <a routerLink="/song/create" class="ms_btn">upload</a>
       <a href="javascript:;" class="ms_admin_name">{{currentUser.username}} <span class="ms_pro_name">ns</span>
       </a>
       <ul class="pro_dropdown_menu">

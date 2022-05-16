@@ -11,7 +11,7 @@ import {PlaylistDetailComponent} from '../playlist/playlist-detail/playlist-deta
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: AppLayoutComponent,
     children: [
       { path: '', component: HomepageComponent}

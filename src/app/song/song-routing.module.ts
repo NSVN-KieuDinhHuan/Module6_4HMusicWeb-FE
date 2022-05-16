@@ -5,6 +5,7 @@ import {CreatedSongListComponent} from './created-song-list/created-song-list.co
 import {CreateSongComponent} from './create-song/create-song.component';
 import {UpdateSongComponent} from './update-song/update-song.component';
 import {AuthGuard} from '../helper/auth-guard';
+import {DeleteSongComponent} from './delete-song/delete-song.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       { path: 'list', component: CreatedSongListComponent},
       { path: 'create', component: CreateSongComponent, canActivate: [AuthGuard]},
-      { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]}
+      { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]},
+      { path: 'delete/:id', component: DeleteSongComponent, canActivate: [AuthGuard]}
     ]
   }
 ];
