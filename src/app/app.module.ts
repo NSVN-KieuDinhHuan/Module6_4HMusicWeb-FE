@@ -16,7 +16,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {RegisterComponent} from './auth/register/register.component';
-import {SongRoutingModule} from './song/song-routing.module';
+import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
+import {HomeModule} from './home/home.module';
 
 
 
@@ -30,6 +31,7 @@ import {SongRoutingModule} from './song/song-routing.module';
     AppPlaySongComponent,
     RegisterComponent,
     LoginComponent,
+    ErrorPermissionComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,9 @@ import {SongRoutingModule} from './song/song-routing.module';
     PlaylistModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

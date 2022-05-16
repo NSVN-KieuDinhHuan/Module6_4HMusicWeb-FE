@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Song} from '../../model/song';
 import {environment} from '../../../environments/environment';
+
 const API_URL = `${environment.apiUrl}`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,5 +32,9 @@ export class SongService {
 
   deleteSong(id): Observable<Song> {
     return this.http.delete<Song>(`${API_URL}/songs/${id}`);
+  }
+
+  getAllSongForAllUser(): Observable<Song[]> {
+    return this.http.get<Song[]>(`${API_URL}/songs`);
   }
 }
