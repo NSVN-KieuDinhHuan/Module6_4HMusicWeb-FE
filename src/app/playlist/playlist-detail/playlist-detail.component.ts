@@ -55,4 +55,12 @@ export class PlaylistDetailComponent implements OnInit {
       alert('Failed');
     });
   }
+  removeSong(songId: number, playlistId: number) {
+    this.playlistService.removeSongFromPlaylist(songId, playlistId).subscribe(() => {
+      this.router.navigateByUrl(`/playlist/detail/${playlistId}`);
+      alert('Remove song successfully!');
+    }, error => {
+      alert('Failed');
+    });
+  }
 }
