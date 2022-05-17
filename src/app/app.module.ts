@@ -18,7 +18,7 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {RegisterComponent} from './auth/register/register.component';
 import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
 import {HomeModule} from './home/home.module';
-import { AppLayout2Component } from './layout/app-layout2/app-layout2.component';
+
 
 
 
@@ -32,8 +32,7 @@ import { AppLayout2Component } from './layout/app-layout2/app-layout2.component'
     AppPlaySongComponent,
     RegisterComponent,
     LoginComponent,
-    ErrorPermissionComponent,
-    AppLayout2Component,
+    ErrorPermissionComponent
   ],
   imports: [
     BrowserModule,
