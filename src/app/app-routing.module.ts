@@ -16,11 +16,6 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent}
     ]
   },
-  {
-    path: '',
-    component: AppLayoutComponent,
-    loadChildren: () => import('./home/home.module').then(module => module.HomeModule)
-  }
 ];
 
 @NgModule({

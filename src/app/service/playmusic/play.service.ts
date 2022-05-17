@@ -45,7 +45,6 @@ export class PlayService {
       option : myPlayListOtion
     };
   }
-  p
 
   addToQueue(song){
     this.configVolume()
@@ -61,7 +60,6 @@ export class PlayService {
         $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");
       }
     });
-
 
     $('.knob-wrapper').mousedown(function() {
       $(window).mousemove(function(e) {
@@ -148,9 +146,7 @@ export class PlayService {
 
 
 
-
-
-  configVolume(){
+ configVolume(){
     $(function(){
       $.event.special.drag = {
         setup: function() {
