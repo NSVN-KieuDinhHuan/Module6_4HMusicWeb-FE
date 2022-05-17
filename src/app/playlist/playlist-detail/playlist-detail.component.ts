@@ -59,8 +59,8 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   addSong(songId: number, playlistId: number) {
-    this.playlistService.addSongToPlaylist(songId, playlistId).subscribe(() => {
-      this.router.navigateByUrl(`/playlist/detail/${playlistId}`);
+    this.playlistService.addSongToPlaylist(songId, playlistId).subscribe((playlist) => {
+      this.getPlaylistById(playlistId);
       alert('Add song successfully!');
     }, error => {
       alert('Failed');
@@ -69,7 +69,7 @@ export class PlaylistDetailComponent implements OnInit {
 
   removeSong(songId: number, playlistId: number) {
     this.playlistService.removeSongFromPlaylist(songId, playlistId).subscribe(() => {
-      this.router.navigateByUrl(`/playlist/detail/${playlistId}`);
+      this.getPlaylistById(playlistId);
       alert('Remove song successfully!');
     }, error => {
       alert('Failed');
@@ -85,6 +85,7 @@ export class PlaylistDetailComponent implements OnInit {
   createNewComment(commentForm) {
     this.commentPlaylistService.createNewComment(this.playlist.id, this.currentUser.id, commentForm.value).subscribe(() => {
       this.commentForm.get('content').setValue('');
+      this.getAllCommentPlaylist(this.playlist.id);
       alert('comment successfully!');
     });
   }
