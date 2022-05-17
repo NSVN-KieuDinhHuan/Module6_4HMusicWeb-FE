@@ -27,8 +27,8 @@
             </div>
             <div class="save_input_group">
               <h4>Confirm password</h4>
-              <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
-              <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched"><p
+              <input type="text" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
+              <div *ngIf="registerForm.get('confirmPassword').invalid&&registerForm.get('confirmPassword').touched"><p
                 style="color: red">Required</p>
               </div>
             </div>
