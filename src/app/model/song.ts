@@ -17,4 +17,7 @@ export interface Song {
   category?: Category;
   album?: Album;
   tag?: Tag;
+  views?: number;
+  likes?: number;
+  comment?: number;
 }

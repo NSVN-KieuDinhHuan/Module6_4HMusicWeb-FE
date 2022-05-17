@@ -9,4 +9,5 @@ export interface UserToken {
   email?: string;
   role?: Role;
   token?: string;
+  image?: string;
 }
