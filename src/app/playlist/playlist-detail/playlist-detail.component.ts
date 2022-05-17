@@ -6,6 +6,7 @@ import {UserToken} from '../../model/user-token';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {SongService} from '../../service/song/song.service';
 import {Song} from '../../model/song';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -20,6 +21,7 @@ export class PlaylistDetailComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
               private authenticationService: AuthenticationService,
+              private jsService: JsService,
               private songService: SongService,
               private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
@@ -33,6 +35,7 @@ export class PlaylistDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getAllSong();
+    this.jsService.jsfile()
   }
 
   getPlaylistById(id) {
