@@ -14,4 +14,6 @@ export interface PlayList {
   views?: number;
   description?: string;
   category?: Category;
+  likes?: number;
+  comments?: number;
 }

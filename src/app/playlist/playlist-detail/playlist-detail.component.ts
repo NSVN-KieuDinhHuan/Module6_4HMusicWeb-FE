@@ -6,6 +6,8 @@ import {UserToken} from '../../model/user-token';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {SongService} from '../../service/song/song.service';
 import {Song} from '../../model/song';
+import {CommentPlaylist} from '../../model/comment-playlist';
+import {CommentPlaylistService} from '../../service/commentPlaylist/comment-playlist.service';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -16,15 +18,18 @@ export class PlaylistDetailComponent implements OnInit {
   currentUser: UserToken = {};
   playlist: PlayList = {};
   allSong: Song[] = [];
+  commentPlaylists: CommentPlaylist[] = [];
 
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
               private authenticationService: AuthenticationService,
               private songService: SongService,
-              private router: Router) {
+              private router: Router,
+              private commentPlaylistService: CommentPlaylistService) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
       this.getPlaylistById(id);
+      this.getAllCommentPlaylist(id);
     });
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
@@ -55,6 +60,7 @@ export class PlaylistDetailComponent implements OnInit {
       alert('Failed');
     });
   }
+
   removeSong(songId: number, playlistId: number) {
     this.playlistService.removeSongFromPlaylist(songId, playlistId).subscribe(() => {
       this.router.navigateByUrl(`/playlist/detail/${playlistId}`);
@@ -63,4 +69,11 @@ export class PlaylistDetailComponent implements OnInit {
       alert('Failed');
     });
   }
+
+  getAllCommentPlaylist(playlistId) {
+    this.commentPlaylistService.getAllCommentPlaylist(playlistId).subscribe((comments) => {
+      this.commentPlaylists = comments;
+    });
+  }
+
 }

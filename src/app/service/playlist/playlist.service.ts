@@ -21,11 +21,9 @@ export class PlaylistService {
   getAllPlaylistByUser(userId): Observable<PlayList[]> {
     return this.http.get<PlayList[]>(`${API_URL}/playlists/user/${userId}`);
   }
-
   getPlaylistById(playlistId): Observable<PlayList> {
     return this.http.get<PlayList>(`${API_URL}/playlists/${playlistId}`);
   }
-
   createPlaylist(playlist, userId): Observable<PlayList> {
     return this.http.post<PlayList>(`${API_URL}/playlists/user/${userId}`, playlist);
   }

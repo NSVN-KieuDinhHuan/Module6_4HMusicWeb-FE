@@ -12,10 +12,12 @@
         <a href="#" class="album_date">{{playlist.songs.length}} song | 25:10</a>
         <a href="#" class="album_date">Released: {{playlist.createDate}}</a>
         <a href="#" class="album_date">Description: {{playlist.description}}</a>
+        <a href="#" class="album_date">{{playlist.likes}} Likes | {{playlist.views}} Views</a>
+<!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
       </div>
       <div class="album_btn">
-        <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
-        <a href="#" class="ms_btn"><span class="play_all"><img src="images/svg/add_q.svg" alt="">Add To Queue</span></a>
+        <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="/assets/images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
+        <a href="#" class="ms_btn"><span class="play_all"><img src="/assets/images/svg/add_q.svg" alt="">Add To Queue</span></a>
       </div>
     </div>
     <div class="album_more_optn ms_more_icon">
@@ -73,34 +75,19 @@
   <!----Testimonial section Start---->
   <div class="ms_test_wrapper">
     <div class="ms_heading">
-      <h1>comments (5)</h1>
+      <h1>comments ({{commentPlaylists.length}})</h1>
     </div>
     <div class="ms_test_slider swiper-container">
+      <p *ngIf="playlist.comments ==0" style="color: whitesmoke">There is no comment!</p>
       <div class="swiper-wrapper">
-<!--        <div class="swiper-slide">-->
-<!--          <div class="ms_test_box">-->
-<!--            <div class="ms_test_top">-->
-<!--              <div class="ms_test_img">-->
-<!--                <img src="/assets/images/user1.jpg" alt="">-->
-<!--              </div>-->
-<!--              <div class="ms_test_name">-->
-<!--                <h3>Frank Adler</h3>-->
-<!--                <span class="cmnt_time">10 Minutes Ago</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="ms_test_para">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
         <div class="swiper-slide">
           <div class="ms_test_box">
             <div class="ms_test_top">
               <div class="ms_test_img">
-                <img src="images/user2.jpg" alt="">
+                <img src="/assets/images/user2.jpg" alt="">
               </div>
               <div class="ms_test_name">
-                <h3>Frank Adler</h3>
+                <h3>Frank Adler 1</h3>
                 <span class="cmnt_time">10 Days Ago</span>
               </div>
             </div>
@@ -109,86 +96,38 @@
             </div>
           </div>
         </div>
-<!--        <div class="swiper-slide">-->
-<!--          <div class="ms_test_box">-->
-<!--            <div class="ms_test_top">-->
-<!--              <div class="ms_test_img">-->
-<!--                <img src="images/user3.jpg" alt="">-->
-<!--              </div>-->
-<!--              <div class="ms_test_name">-->
-<!--                <h3>Frank Adler</h3>-->
-<!--                <span class="cmnt_time">10 Hours Ago</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="ms_test_para">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="swiper-slide">-->
-<!--          <div class="ms_test_box">-->
-<!--            <div class="ms_test_top">-->
-<!--              <div class="ms_test_img">-->
-<!--                <img src="images/user4.jpg" alt="">-->
-<!--              </div>-->
-<!--              <div class="ms_test_name">-->
-<!--                <h3>Frank Adler</h3>-->
-<!--                <span class="cmnt_time">10 Minutes Ago</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="ms_test_para">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="swiper-slide">-->
-<!--          <div class="ms_test_box">-->
-<!--            <div class="ms_test_top">-->
-<!--              <div class="ms_test_img">-->
-<!--                <img src="images/user1.jpg" alt="">-->
-<!--              </div>-->
-<!--              <div class="ms_test_name">-->
-<!--                <h3>Frank Adler</h3>-->
-<!--                <span class="cmnt_time">10 Minutes Ago</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="ms_test_para">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="swiper-slide">-->
-<!--          <div class="ms_test_box">-->
-<!--            <div class="ms_test_top">-->
-<!--              <div class="ms_test_img">-->
-<!--                <img src="images/user2.jpg" alt="">-->
-<!--              </div>-->
-<!--              <div class="ms_test_name">-->
-<!--                <h3>Frank Adler</h3>-->
-<!--                <span class="cmnt_time">10 Minutes Ago</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="ms_test_para">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="swiper-slide">-->
-<!--          <div class="ms_test_box">-->
-<!--            <div class="ms_test_top">-->
-<!--              <div class="ms_test_img">-->
-<!--                <img src="images/user3.jpg" alt="">-->
-<!--              </div>-->
-<!--              <div class="ms_test_name">-->
-<!--                <h3>Frank Adler</h3>-->
-<!--                <span class="cmnt_time">10 Minutes Ago</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="ms_test_para">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+        <div class="swiper-slide">
+          <div class="ms_test_box">
+            <div class="ms_test_top">
+              <div class="ms_test_img">
+                <img src="/assets/images/user2.jpg" alt="">
+              </div>
+              <div class="ms_test_name">
+                <h3>Frank Adler 2</h3>
+                <span class="cmnt_time">10 Days Ago</span>
+              </div>
+            </div>
+            <div class="ms_test_para">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="ms_test_box">
+            <div class="ms_test_top">
+              <div class="ms_test_img">
+                <img src="/assets/images/user2.jpg" alt="">
+              </div>
+              <div class="ms_test_name">
+                <h3>Frank Adler 3</h3>
+                <span class="cmnt_time">10 Days Ago</span>
+              </div>
+            </div>
+            <div class="ms_test_para">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Add Arrows -->
