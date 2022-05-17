@@ -16,8 +16,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {RegisterComponent} from './auth/register/register.component';
-import {SongRoutingModule} from './song/song-routing.module';
+import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
 import {HomeModule} from './home/home.module';
+
 
 
 
@@ -31,6 +32,7 @@ import {HomeModule} from './home/home.module';
     AppPlaySongComponent,
     RegisterComponent,
     LoginComponent,
+    ErrorPermissionComponent
   ],
   imports: [
     BrowserModule,

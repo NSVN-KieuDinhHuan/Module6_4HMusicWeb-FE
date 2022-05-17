@@ -15,6 +15,7 @@ export class CreatedSongListComponent implements OnInit {
 
   currentUser: UserToken = {};
   songs: Song[] = [];
+  songPlayList: Song[] = [];
   constructor(private songService: SongService,
               private authenticationService: AuthenticationService,
               private playService: PlayService,
@@ -26,10 +27,13 @@ export class CreatedSongListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCreatedSongbyUser();
+    this.playService.configVolume();
+
   }
   playSongById(id) {
     this.songService.getSongById(id).subscribe((songsFromBE) => {
-      this.playService.playSong ([songsFromBE]) ;
+      this.songPlayList.push(songsFromBE);
+
     });
   }
  getAllCreatedSongbyUser() {
@@ -40,7 +44,9 @@ export class CreatedSongListComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
- editSong(id) {
-   this.router.navigateByUrl('/song/edit/' + id);
- }
+
+
+  addToQueue(song: Song) {
+    this.playService.addToQueue(song);
+  }
 }

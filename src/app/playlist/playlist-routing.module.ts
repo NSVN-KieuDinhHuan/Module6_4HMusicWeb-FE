@@ -9,6 +9,7 @@ import {PlaylistDeleteComponent} from './playlist-delete/playlist-delete.compone
 import {CreatedSongListComponent} from '../song/created-song-list/created-song-list.component';
 import {CreateSongComponent} from '../song/create-song/create-song.component';
 import {UpdateSongComponent} from '../song/update-song/update-song.component';
+import {HomepageComponent} from '../home/homepage/homepage.component';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
       { path: 'delete/:id', component: PlaylistDeleteComponent},
       { path: 'detail/:id', component: PlaylistDetailComponent}
     ]
-  }
+  },
+
 ];
 
 @NgModule({

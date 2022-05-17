@@ -13,21 +13,21 @@
     </div>
     <div class="ms_nav_wrapper">
       <ul>
-        <li><a routerLink="/song/list" class="active" title="Discover">
+        <li> <a routerLink="/home" (click)="clickHome()" title="Discover">
 						<span class="nav_icon">
 							<span class="icon icon_discover"></span>
 						</span>
           <span class="nav_text">
-							discover
+							Home
 						</span>
         </a>
         </li>
-        <li><a href="/song/list" title="Songs">
+        <li><a routerLink="/song/list" title="Songs">
 						<span class="nav_icon">
 							<span class="icon icon_albums"></span>
 						</span>
           <span class="nav_text">
-							albums
+							Song
 						</span>
         </a>
         </li>

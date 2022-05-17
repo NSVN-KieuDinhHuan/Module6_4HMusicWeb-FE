@@ -2,6 +2,9 @@
   <div class="modal-dialog login_dialog">
     <!-- Modal content-->
     <div class="modal-content">
+      <button type="button" class="close" routerLink="/home">
+        <i class="fa_icon form_close"></i>
+      </button>
       <form [formGroup]="registerForm" (ngSubmit)="register()">
         <a type="button" class="close" routerLink="/song">
           <i class="fa_icon form_close"></i>

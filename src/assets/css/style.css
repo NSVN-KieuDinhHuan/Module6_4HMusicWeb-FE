@@ -4754,7 +4754,7 @@ h2.widget-title:after {
 		max-width: 25%;
 	}
 	.ms_banner_img {
-		max-width: 50%;
+		max-width: 10%;
 	}
 	.ms_banner_text h1 {
 		font-size: 27px;
@@ -4764,7 +4764,7 @@ h2.widget-title:after {
 		padding-top: 85px;
 	}
 	.ms-banner {
-		padding: 0px;
+		padding: 20px;
 		padding-bottom: 30px;
 	}
 	.ms_banner_text .ms_banner_btn .ms_btn {

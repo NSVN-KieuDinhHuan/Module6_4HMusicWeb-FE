@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-
+declare var $: any;
 @Component({
   selector: 'app-app-siderbar',
   templateUrl: './app-siderbar.component.html',
@@ -12,8 +12,17 @@ export class AppSiderbarComponent implements OnInit {
 
   ngOnInit() {
   }
-  listSong() {
-    this.router.navigateByUrl('/song/list');
+
+
+  clickHome(){
+    $('#home').addClass("active");
+    $('#song').removeClass('active');
+
+
   }
 
+  clickSong(){
+    $('#home').removeClass('active');
+    $('#song').addClass("active");
+  }
 }

@@ -15,6 +15,7 @@ import {AlbumService} from '../../service/album/album.service';
 import {Album} from '../../model/album';
 import {TagService} from '../../service/tag/tag.service';
 import {Tag} from '../../model/tag';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-song',
@@ -36,6 +37,7 @@ export class CreateSongComponent implements OnInit {
               private tagService: TagService,
               private fb: FormBuilder,
               private notificationSevice: NotificationService,
+              private router: Router,
               private authenticationService: AuthenticationService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
@@ -101,8 +103,8 @@ export class CreateSongComponent implements OnInit {
     formData.append('tag', songForm.value.tag);
     if (songForm.valid) {
       this.songService.createSong(formData, this.currentUser.id).subscribe(() => {
-        this.notificationSevice.showMessage('success', 'Tạo mới thành công!');
-      }, error => this.notificationSevice.showMessage('lỗi', 'Tạo mới thất bại!'));
+        this.notificationSevice.showMessage('Success', 'Tạo mới thành công!');
+      }, error => this.notificationSevice.showMessage('Lỗi', 'Tạo mới thất bại!'));
       songForm.resetForm();
     }
   }
