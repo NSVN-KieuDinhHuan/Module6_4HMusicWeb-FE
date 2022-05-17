@@ -20,6 +20,10 @@ export class AuthService {
     return this.http.post<User>(`${API_URL}/register`, signUpForm);
   }
 
+  // register2(signUpForm): Observable<User> {
+  //   return this.http.post<User>(`${API_URL}/register2`, signUpForm);
+  // }
+
   getAllUser(): Observable<User[]> {
     return this.http.get<User[]>(`${API_URL}/users`);
   }

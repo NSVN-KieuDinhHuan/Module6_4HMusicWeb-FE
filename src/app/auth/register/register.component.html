@@ -45,10 +45,11 @@
               <div *ngIf="registerForm.get('address').invalid&&registerForm.get('address').touched"><p
                 style="color: red">Required</p>
               </div>
+            </div>
               <input type="submit" class="ms_btn" value="register">
               <p>Do You Have An Account? <a routerLink="/login" data-toggle="modal"
                                             class="ms_modal1 hideCurrentModel">Login here</a></p>
-            </div>
+
           </div>
         </div>
       </form>
