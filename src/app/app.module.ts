@@ -8,16 +8,14 @@ import { AppSiderbarComponent } from './layout/app-siderbar/app-siderbar.compone
 import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
-import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
-import {PlaylistModule} from './playlist/playlist.module';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {RegisterComponent} from './auth/register/register.component';
 import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
-import {HomeModule} from './home/home.module';
+import {HomeModule} from './home/home/home.module';
 
 
 
@@ -37,12 +35,9 @@ import {HomeModule} from './home/home.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SongModule,
-    PlaylistModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     HomeModule
   ],
   providers: [
