@@ -18,6 +18,7 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {RegisterComponent} from './auth/register/register.component';
 import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
 import {HomeModule} from './home/home.module';
+import { AppLayout2Component } from './layout/app-layout2/app-layout2.component';
 
 
 
@@ -32,6 +33,7 @@ import {HomeModule} from './home/home.module';
     RegisterComponent,
     LoginComponent,
     ErrorPermissionComponent,
+    AppLayout2Component,
   ],
   imports: [
     BrowserModule,

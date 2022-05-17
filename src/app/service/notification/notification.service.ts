@@ -11,11 +11,11 @@ export class NotificationService {
     $(function() {
       swal(
         {
-          position: 'top-end',
+          position: 'top',
           type: icon,
           title,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         }
       );
     });

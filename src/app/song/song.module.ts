@@ -7,18 +7,19 @@ import { CreateSongComponent } from './create-song/create-song.component';
 import { UpdateSongComponent } from './update-song/update-song.component';
 import { DeleteSongComponent } from './delete-song/delete-song.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { DetailSongComponent } from './detail-song/detail-song.component';
+
 
 
 
 @NgModule({
-  declarations: [CreatedSongListComponent, CreateSongComponent, UpdateSongComponent, DeleteSongComponent],
+  declarations: [CreatedSongListComponent, CreateSongComponent, UpdateSongComponent, DeleteSongComponent, DetailSongComponent],
     imports: [
         CommonModule,
         SongRoutingModule,
         ReactiveFormsModule,
         FormsModule,
-        HttpClientModule
+
     ]
 })
 export class SongModule { }

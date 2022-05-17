@@ -103,8 +103,8 @@ export class CreateSongComponent implements OnInit {
     formData.append('tag', songForm.value.tag);
     if (songForm.valid) {
       this.songService.createSong(formData, this.currentUser.id).subscribe(() => {
-        this.notificationSevice.showMessage('success', 'Tạo mới thành công!');
-      }, error => this.notificationSevice.showMessage('lỗi', 'Tạo mới thất bại!'));
+        this.notificationSevice.showMessage('Success', 'Tạo mới thành công!');
+      }, error => this.notificationSevice.showMessage('Lỗi', 'Tạo mới thất bại!'));
       songForm.resetForm();
     }
   }
