@@ -4,7 +4,7 @@ import {PlayList} from './play-list';
 
 export interface CommentPlaylist {
   id?: number;
-  comment?: string;
+  content?: string;
   song?: PlayList;
   user?: User;
 }

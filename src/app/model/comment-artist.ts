@@ -4,7 +4,7 @@ import {Artist} from './artist';
 
 export interface CommentArtist {
   id?: number;
-  comment?: string;
+  content?: string;
   song?: Artist;
   user?: User;
 }

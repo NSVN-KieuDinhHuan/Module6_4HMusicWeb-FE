@@ -78,85 +78,48 @@
       <h1>comments ({{commentPlaylists.length}})</h1>
     </div>
     <div class="ms_test_slider swiper-container">
-      <p *ngIf="playlist.comments ==0" style="color: whitesmoke">There is no comment!</p>
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="ms_test_box">
-            <div class="ms_test_top">
-              <div class="ms_test_img">
-                <img src="/assets/images/user2.jpg" alt="">
-              </div>
-              <div class="ms_test_name">
-                <h3>Frank Adler 1</h3>
-                <span class="cmnt_time">10 Days Ago</span>
-              </div>
-            </div>
-            <div class="ms_test_para">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
-            </div>
+      <p *ngIf="playlist.comments == 0" style="color: whitesmoke">There is no comment!</p>
+      <div *ngIf="playlist.comments != 0">
+        <div *ngFor="let comment of commentPlaylists">
+      <div class="ms_test_box">
+        <div class="ms_test_top">
+          <div class="ms_test_img">
+            <img src="/assets/images/user2.jpg" alt="">
+          </div>
+          <div class="ms_test_name">
+            <h3>{{comment.user.username}}</h3>
+            <span class="cmnt_time">{{comment.content}}</span>
           </div>
         </div>
-        <div class="swiper-slide">
-          <div class="ms_test_box">
-            <div class="ms_test_top">
-              <div class="ms_test_img">
-                <img src="/assets/images/user2.jpg" alt="">
-              </div>
-              <div class="ms_test_name">
-                <h3>Frank Adler 2</h3>
-                <span class="cmnt_time">10 Days Ago</span>
-              </div>
-            </div>
-            <div class="ms_test_para">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="ms_test_box">
-            <div class="ms_test_top">
-              <div class="ms_test_img">
-                <img src="/assets/images/user2.jpg" alt="">
-              </div>
-              <div class="ms_test_name">
-                <h3>Frank Adler 3</h3>
-                <span class="cmnt_time">10 Days Ago</span>
-              </div>
-            </div>
-            <div class="ms_test_para">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
-            </div>
-          </div>
+<!--        <div class="ms_test_para">-->
+<!--          <p class="cmnt_time">{{comment.content}}</p>-->
+<!--        </div>-->
+      </div>
+      <br>
         </div>
       </div>
+
     </div>
-    <!-- Add Arrows -->
-    <div class="swiper-button-next1 slider_nav_next"></div>
-    <div class="swiper-button-prev1 slider_nav_prev"></div>
+<!--     Add Arrows-->
+<!--    <div class="swiper-button-next1 slider_nav_next"></div>-->
+<!--    <div class="swiper-button-prev1 slider_nav_prev"></div>-->
   </div>
   <!----Comment Form section Start---->
-  <div class="ms_cmnt_wrapper">
+  <h3 *ngIf="!currentUser">Please login <span><a routerLink="/auth/login">here</a></span> to leave a comment</h3>
+  <div class="ms_cmnt_wrapper" *ngIf="currentUser">
     <div class="ms_heading">
       <h1>Leave A Comment</h1>
     </div>
     <div class="ms_cmnt_form">
-      <form>
-        <div class="ms_input_group">
-          <div class="ms_input">
-            <input type="text" class="form-control" placeholder="Enter Your Name Here..">
-          </div>
-          <div class="ms_input marger_top20">
-            <input type="text" class="form-control" placeholder="Enter Your Email Here..">
-          </div>
-        </div>
+      <form (ngSubmit)="createNewComment(commentForm)" [formGroup]="commentForm">
         <div class="ms_input_group1">
           <div class="ms_input">
-            <textarea name="message" class="form-control" placeholder="Enter Your Comment Here.."></textarea>
+            <textarea name="message" class="form-control" placeholder="Enter Your Comment Here.." style="resize: none; width: 900px;" formControlName="content"></textarea>
           </div>
         </div>
         <div class="ms_input_group2">
           <div class="ms_input">
-            <button class="ms_btn">post your comment</button>
+            <button class="ms_btn">post comment</button>
           </div>
         </div>
       </form>

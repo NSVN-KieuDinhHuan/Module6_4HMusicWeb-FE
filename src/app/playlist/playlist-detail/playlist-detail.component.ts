@@ -8,6 +8,7 @@ import {SongService} from '../../service/song/song.service';
 import {Song} from '../../model/song';
 import {CommentPlaylist} from '../../model/comment-playlist';
 import {CommentPlaylistService} from '../../service/commentPlaylist/comment-playlist.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -19,6 +20,11 @@ export class PlaylistDetailComponent implements OnInit {
   playlist: PlayList = {};
   allSong: Song[] = [];
   commentPlaylists: CommentPlaylist[] = [];
+  commentForm: FormGroup = new FormGroup(
+    {
+      content: new FormControl('', [Validators.required])
+    }
+  );
 
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
@@ -76,4 +82,10 @@ export class PlaylistDetailComponent implements OnInit {
     });
   }
 
+  createNewComment(commentForm) {
+    this.commentPlaylistService.createNewComment(this.playlist.id, this.currentUser.id, commentForm.value).subscribe(() => {
+      this.commentForm.get('content').setValue('');
+      alert('comment successfully!');
+    });
+  }
 }
