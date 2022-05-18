@@ -5,6 +5,6 @@ import {PlayList} from './play-list';
 export interface LikePlaylist {
   id?: number;
   value?: boolean;
-  song?: PlayList;
+  playlist?: PlayList;
   user?: User;
 }
