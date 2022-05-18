@@ -26,7 +26,7 @@ export class PlaylistListComponent implements OnInit {
   ngOnInit() {
     this.getAllPlaylists();
     this.getAllPlaylistsByUser();
-    this.jsService.jsfile()
+    this.jsService.jsfile();
   }
 
   getAllPlaylists() {

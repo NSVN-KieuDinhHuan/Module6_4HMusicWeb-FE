@@ -1,97 +1,102 @@
 
 
-
-  <div class="album_single_img">
+<div class="ms_album_single_wrapper align-items-center">
+  <div class="album_single_img"  text-center>
     <img *ngIf="songDetail.image == ''" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
-    <img *ngIf="songDetail.image != ''" src="http://localhost:8080/image/{{songDetail.image}}" alt="" class="img-fluid">
+    <img width="150px" height="150px" *ngIf="songDetail.image != ''" src="http://localhost:8080/image/{{songDetail.image}}" alt="" class="img-fluid">
+  </div>
+  <div class="album_more_optn ms_more_icon">
+    <span><img src="/assets/images/svg/more.svg" alt=""></span>
   </div>
   <div class="album_single_text">
+
     <h2>{{songDetail.name}}</h2>
     <p class="singer_name">Ca sỹ: {{songDetail.artist.name}}</p>
     <p>{{songDetail.description}}</p>
 
     <div class="album_btn">
-      <a  class="ms_btn play_btn"><span (click)="playsong(songDetail)" id="play" class="play_all"><img src="assets/images/svg/play_all.svg" alt="">Play</span><span id="pause"(click)="pauseSong()" class="pause_all"><img src="assets/images/svg/pause_all.svg" alt="">Pause</span></a>
-      <a class="ms_btn"><span class="play_all"><img src="assets/images/svg/add_q.svg" alt="">Add To Queue</span></a>
+      <a  class="ms_btn play_btn">
+          <span id="play"  (click)="playsong(songDetail)" class="play_all">
+            <img src="/assets/images/svg/play_all.svg" alt="">
+            Play </span>
+        <span id="pause" (click)="pauseSong()" class="pause_all">
+            <img src="/assets/images/svg/pause_all.svg" alt="">
+            Pause</span>
+      </a>
+      <a href="#" class="ms_btn"><span class="play_all"><img src="/assets/images/svg/add_q.svg" alt="">Add To Queue</span></a>
     </div>
-  </div>
-  <div class="album_more_optn ms_more_icon">
-    <span><img src="/assets/images/svg/more.svg" alt=""></span>
+
   </div>
 
 
 
-<div class="ms_blog_single_wrapper">
-  <div class="row">
-    <div class="col-lg-9 col-md-9">
-      <div class="ms_blog_single">
 
-        <div class="blog_single_content">
-          <h3 class="ms_blog_title">Review</h3>
-          <div class="ms_post_meta">
-            <ul>
-              <li>May 05,2018 / </li>
-              <li>12 likes /    </li>
-              <li>8 comments    </li>
-            </ul>
-          </div>
-          <div class="ms_blog_tag foo_sharing">
-            <ul>
-              <li><a href="#"><i class="fb-like"></i></a></li>
+  <ul class="more_option">
+    <li ><a ><span class="opt_icon"><span class="icon icon_fav"></span></span>Edit</a></li>
+    <li ><a><span class="opt_icon"><span class="icon icon_genres"></span></span>Remove</a></li>
+    <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Favourites</a></li>
+    <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+  </ul>
 
-            </ul>
-          </div>
-        </div>
-        <div class="blog_comments">
-          <h1> comments</h1>
-          <ol>
-            <li>
-              <div class="ms_comment_section">
-                <div class="comment_img">
-                  <img src="images/blog/author.jpg" alt="">
-                </div>
-                <div class="comment_info">
-                  <div class="comment_head">
-                    <h3>Krystal C. Rahn</h3>
-                    <p>april 28,2018 at 20:45</p>
-                  </div>
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                  <a href="#" class="comment_reply">reply</a>
-                </div>
-              </div>
-            </li>
-          </ol>
-        </div>
-        <!----Blog Comment Form---->
-        <div class="blog_comments_forms">
-          <h1>Leave A Comment</h1>
-          <form>
-            <div class="row">
-              <div class="col-lg-6 col-md-6">
-                <div class="comment_input_wrapper">
-                  <input name="name" value="" type="text" class="cmnt_field" placeholder="Your Name">
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6">
-                <div class="comment_input_wrapper">
-                  <input name="email" value="" type="email" class="cmnt_field" placeholder="Your Email">
-                </div>
-              </div>
-              <div class="col-lg-12 col-md-12">
-                <div class="comment_input_wrapper">
-                  <textarea id="comment" name="comment" class="cmnt_field" placeholder="Your Comments"></textarea>
-                </div>
-              </div>
-              <div class="col-lg-12 col-md-12">
-                <div class="comment-form-submit">
-                  <input name="submit" type="submit" id="comment-submit" class="submit ms_btn" value="Post Comment">
-                </div>
-              </div>
+  <div class="ms_blog_single_wrapper">
+    <div class="row">
+      <div class="col-lg-9 col-md-9">
+        <div class="ms_blog_single">
+          <div class="blog_single_content">
+            <h3 class="ms_blog_title">Review</h3>
+            <div class=" ">
+              <ul>
+                <a href="#"><i class="ms_icon1 ms_fav_icon"></i> Like</a>
+              </ul>
             </div>
-          </form>
+          </div>
+          <div class="blog_comments">
+            <h1>comments ({{commentSong.length}})</h1>
+            <ol>
+              <li>
+                <div class="ms_comment_section" *ngFor="let comment of commentSong">
+                  <div *ngIf="!currentUser.image" class="comment_img">
+                    <img src="assets/images/blog/author.jpg" alt="">
+                  </div>
+                  <div *ngIf="currentUser.image" class="comment_img">
+                    <img src='http://localhost:8080/image/{{comment.user.image}}'  alt="">
+                  </div>
+                  <div class="comment_info">
+                    <div class="comment_head">
+                      <h3>{{comment.user.username}}</h3>
+                    </div>
+                    <p>{{comment.content}}</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <!----Blog Comment Form---->
+          <div class="blog_comments_forms">
+            <h1>Leave A Comment</h1>
+            <form  [formGroup]="commentForm" (ngSubmit)="createNewCommentSong(commentForm)">
+              <div class="row">
+
+                <div class="col-lg-12 col-md-12">
+                  <div class="comment_input_wrapper">
+                    <textarea id="comment" name="comment"  formControlName="content" class="cmnt_field" placeholder="Your Comments"></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                  <div class="comment-form-submit">
+                    <input name="submit" type="submit" id="comment-submit" class="submit ms_btn" value="Post">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
+
+
+

@@ -17,6 +17,7 @@ export class CreatedSongListComponent implements OnInit {
   currentUser: UserToken = {};
   songs: Song[] = [];
   songPlayList: Song[] = [];
+  allSong:Song[] = [];
   constructor(private songService: SongService,
               private authenticationService: AuthenticationService,
               private playService: PlayService,
@@ -47,7 +48,11 @@ export class CreatedSongListComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
-
+  getAllSong() {
+    this.songService.getAllSongForAllUser().subscribe((songs) => {
+      this.allSong = songs;
+    });
+  }
 
   addToQueue(song: Song) {
     this.playService.addToQueue(song);
