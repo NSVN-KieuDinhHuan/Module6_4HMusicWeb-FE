@@ -29,11 +29,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.getAllUser();
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      address: ['', [Validators.required]],
+      address: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
@@ -59,6 +59,10 @@ export class RegisterComponent implements OnInit {
   getAllUser() {
     this.authService.getAllUser().subscribe((listUserBackEnd) =>
       this.users = listUserBackEnd);
+  }
+
+  login() {
+    this.router.navigateByUrl('/auth/login');
   }
 
 }
