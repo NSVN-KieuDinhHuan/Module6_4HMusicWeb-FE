@@ -9,6 +9,10 @@ import {Song} from '../../model/song';
 import {CommentPlaylist} from '../../model/comment-playlist';
 import {CommentPlaylistService} from '../../service/commentPlaylist/comment-playlist.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {LikePlaylistService} from '../../service/likePlaylist/like-playlist.service';
+import {LikePlaylist} from '../../model/like-playlist';
+
+declare var $: any;
 
 @Component({
   selector: 'app-playlist-detail',
@@ -20,6 +24,8 @@ export class PlaylistDetailComponent implements OnInit {
   playlist: PlayList = {};
   allSong: Song[] = [];
   commentPlaylists: CommentPlaylist[] = [];
+  likePlaylist: LikePlaylist = {};
+  likePlaylistList: LikePlaylist[] = [];
   commentForm: FormGroup = new FormGroup(
     {
       content: new FormControl('', [Validators.required])
@@ -31,11 +37,14 @@ export class PlaylistDetailComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private songService: SongService,
               private router: Router,
-              private commentPlaylistService: CommentPlaylistService) {
+              private commentPlaylistService: CommentPlaylistService,
+              private likePlaylistService: LikePlaylistService) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
       this.getPlaylistById(id);
       this.getAllCommentPlaylist(id);
+      this.getLikePlaylist(id);
+      this.getAllLikePlaylist(id);
     });
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
@@ -89,4 +98,43 @@ export class PlaylistDetailComponent implements OnInit {
       alert('comment successfully!');
     });
   }
+
+  getLikePlaylist(playlistId) {
+    this.likePlaylistService.getLikePlaylist(playlistId, this.currentUser.id).subscribe((likePlaylist) => {
+      this.likePlaylist = likePlaylist;
+    });
+  }
+
+  getAllLikePlaylist(playlistId) {
+    this.likePlaylistService.getAllLikePlaylist(playlistId).subscribe((likePlaylistList) => {
+      this.likePlaylistList = likePlaylistList;
+    });
+  }
+
+  changeLikeIcon() {
+    $('#likeIcon').style({'background-position': '-592px 6px'});
+  }
+
+  addLike() {
+    this.likePlaylistService.addLike(this.playlist.id, this.currentUser.id).subscribe(() => {
+      this.getAllLikePlaylist(this.playlist.id);
+      this.getLikePlaylist(this.playlist.id);
+      $('#likeIcon').hide();
+      $('#unlikeIcon').show();
+    });
+  }
+  removeLike() {
+    this.likePlaylistService.deleteLike(this.playlist.id, this.currentUser.id).subscribe(() => {
+      this.getAllLikePlaylist(this.playlist.id);
+      this.getLikePlaylist(this.playlist.id);
+      $('#likeIcon').show();
+      $('#unlikeIcon').hide();
+    });
+  }
+  changeLikeStatus() {
+    this.likePlaylistService.changeLikeStatus(this.playlist.id, this.currentUser.id).subscribe(() => {
+      console.log('successfully!');
+    });
+  }
+
 }
