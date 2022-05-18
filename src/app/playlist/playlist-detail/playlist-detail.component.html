@@ -12,7 +12,10 @@
         <a href="#" class="album_date">{{playlist.songs.length}} song | 25:10</a>
         <a href="#" class="album_date">Released: {{playlist.createDate}}</a>
         <a href="#" class="album_date">Description: {{playlist.description}}</a>
-        <a href="#" class="album_date">{{playlist.likes}} Likes | {{playlist.views}} Views</a>
+        <a href="#" class="album_date">{{likePlaylistList.length}} Likes | {{playlist.views}} Views | </a>
+
+        <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist"><span class="ms_icon1 ms_fav_icon"></span></a>
+        <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist"><i class="bi bi-heart-fill"></i></a>
 <!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
       </div>
       <div class="album_btn">

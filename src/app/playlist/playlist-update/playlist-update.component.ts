@@ -47,7 +47,7 @@ export class PlaylistUpdateComponent implements OnInit {
       this.playlist = playlist;
       this.playlistForm.get('name').setValue(playlist.name);
       this.playlistForm.get('description').setValue(playlist.description);
-      // this.playlistForm.get('category').setValue(playlist.category);
+      this.playlistForm.get('category').setValue(playlist.category.id);
     });
   }
 

@@ -2818,6 +2818,7 @@ ul.album_list_name:after {
 }
 .ms_icon1.ms_fav_icon {
 	background-position: -552px 6px;
+  /*background-position: -592px 6px;*/
 }
 .album_list_wrapper>ul:hover .ms_icon1.ms_fav_icon,
 ul.play_active_song .ms_icon1.ms_fav_icon {
