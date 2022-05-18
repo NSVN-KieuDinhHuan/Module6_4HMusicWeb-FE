@@ -37,4 +37,7 @@ export class SongService {
   getAllSongForAllUser(): Observable<Song[]> {
     return this.http.get<Song[]>(`${API_URL}/songs`);
   }
+  addview(id): Observable<Song> {
+    return this.http.post(`${API_URL}/songs/views/${id}`,null);
+  }
 }

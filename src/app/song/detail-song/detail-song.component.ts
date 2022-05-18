@@ -45,7 +45,6 @@ export class DetailSongComponent implements OnInit {
   ngOnInit() {
     this.jsService.jsfile()
     this.pauseSong();
-
   }
 
 
@@ -54,6 +53,7 @@ export class DetailSongComponent implements OnInit {
     this.playService.addToQueue(song)
     $('#pause').show();
     $('#play').hide();
+    this.detailSongByid(song.id);
   }
 
   pauseSong(){
