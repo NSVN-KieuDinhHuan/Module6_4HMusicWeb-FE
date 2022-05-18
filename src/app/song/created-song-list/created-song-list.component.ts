@@ -29,11 +29,7 @@ export class CreatedSongListComponent implements OnInit {
     });
   }
 
-  addviews(songID){
-    this.songService.addview(songID).subscribe(() => {
-      this.getAllCreatedSongbyUser();
-    });
-  }
+
   ngOnInit() {
     this.getAllCreatedSongbyUser();
     this.playService.configVolume();
@@ -66,7 +62,7 @@ export class CreatedSongListComponent implements OnInit {
 
   addToQueue(song: Song) {
     this.playService.addToQueue(song);
-    this.addviews(song.id);
+    this.playService.addviews(song.id);
     this.getAllCreatedSongbyUser();
   }
 }

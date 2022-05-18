@@ -17,21 +17,18 @@
             <h2>Register to enjoy your compassion!!!</h2>
             <h4>Enter your username</h4>
             <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="username">
-            <p *ngIf="message!=null" style="color:red">Required</p>
-            <div *ngIf="registerForm.get('username').invalid&&registerForm.get('username').touched"><p
-              style="color: red">Required</p>
-            </div>
+            <div *ngIf="registerForm.get('username').invalid&&registerForm.get('username').touched">
+              <p style="color: red">Tối thiểu 5 ký tự</p></div>
             <div class="save_input_group">
               <h4>Enter your password</h4>
               <input type="text" placeholder="Enter Password" class="form-control" formControlName="password">
-              <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched"><p
-                style="color: red">Required</p>
-              </div>
+              <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched">
+                <p style="color: red">Tối thiểu 5 ký tự</p></div>
             </div>
             <div class="save_input_group">
               <h4>Confirm password</h4>
-              <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
-              <div *ngIf="registerForm.get('password').invalid&&registerForm.get('password').touched"><p
+              <input type="text" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
+              <div *ngIf="registerForm.get('confirmPassword').invalid&&registerForm.get('confirmPassword').touched"><p
                 style="color: red">Required</p>
               </div>
             </div>
@@ -45,13 +42,13 @@
             <div class="save_input_group">
               <h4>Where do you live?</h4>
               <input type="text" placeholder="Enter Your address" class="form-control" formControlName="address">
-              <div *ngIf="registerForm.get('address').invalid&&registerForm.get('address').touched"><p
-                style="color: red">Required</p>
-              </div>
+              <h4>Enter your password</h4>
+              <div *ngIf="registerForm.get('address').invalid&&registerForm.get('address').touched">
+                <p style="color: red">Tối thiểu 10 ký tự</p></div>
+            </div>
               <input type="submit" class="ms_btn" value="register">
               <p>Do You Have An Account? <a (click)="login()" data-toggle="modal"
                                             class="ms_modal1 hideCurrentModel">Login here</a></p>
-            </div>
           </div>
         </div>
       </form>

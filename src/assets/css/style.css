@@ -3597,6 +3597,8 @@ button.save_btn:hover {
 }
 .pro_img_overlay {
 	position: absolute;
+  padding: 60px 0;
+  text-transform: uppercase;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -3609,6 +3611,7 @@ button.save_btn:hover {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-ms-transition: all .3s ease-in-out;
+
 }
 .ms_pro_img:hover .pro_img_overlay {
 	opacity: 1;

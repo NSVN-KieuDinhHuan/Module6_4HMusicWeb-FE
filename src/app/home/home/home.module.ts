@@ -15,6 +15,8 @@ import {PlaylistDeleteComponent} from '../../playlist/playlist-delete/playlist-d
 import {PlaylistListComponent} from '../../playlist/playlist-list/playlist-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UpdateProfileComponent} from '../../auth/update-profile/update-profile.component';
+
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   PlaylistUpdateComponent,
   PlaylistDetailComponent,
   PlaylistDeleteComponent,
-  PlaylistListComponent],
+  PlaylistListComponent,
+    UpdateProfileComponent
+],
   imports: [
     CommonModule,
     HomeRoutingModule,

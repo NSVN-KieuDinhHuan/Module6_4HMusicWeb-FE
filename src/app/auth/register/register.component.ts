@@ -13,11 +13,11 @@ import {JsService} from '../../service/js.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm: FormGroup;
   user: any;
   users: User[] = [];
   message: string = null;
+
 
   constructor(private authenticationService: AuthenticationService,
               private notificationService: NotificationService,
@@ -32,11 +32,11 @@ export class RegisterComponent implements OnInit {
     this.jsService.jsfile()
     this.getAllUser();
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      address: ['', [Validators.required]],
+      address: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
       }
     }
     this.authService.register(this.user).subscribe(() => {
-      this.router.navigateByUrl('/song/list');
+      this.router.navigateByUrl('/auth/login');
     });
   }
 
@@ -63,7 +63,9 @@ export class RegisterComponent implements OnInit {
     this.authService.getAllUser().subscribe((listUserBackEnd) =>
       this.users = listUserBackEnd);
   }
+
   login() {
     this.router.navigateByUrl('/auth/login');
   }
+
 }

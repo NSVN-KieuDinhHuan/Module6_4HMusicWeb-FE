@@ -1,0 +1,41 @@
+
+<div class="ms_profile_wrapper">
+
+  <h1>Edit Profile</h1>
+  <div class="ms_profile_box">
+    <form [formGroup]="updateForm" (ngSubmit)="submit()">
+      <div class="ms_pro_img">
+        <img src="assets/images/pro_img.jpg" alt="" id="userImage" class="img-fluid">
+        <div class="pro_img_overlay">
+          <i class="fa_icon edit_icon"></i>
+          <input formControlName="image" class="file-upload-input" id="image" type='file' onchange="readURLUserImage(this);" accept="image/*" >
+        </div>
+
+      </div>
+      <div class="ms_pro_form">
+        <div class="form-group">
+          <label for="username">Change your username</label>
+          <input formControlName="username" type="text" id="username"  placeholder="username" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Re-type your phone number</label>
+          <input formControlName="phoneNumber" type="number" id="phoneNumber"  placeholder="phone number" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="address">Changed your locate, sign here!!!</label>
+          <input formControlName="address" type="text" placeholder="address" id="address"  class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Level</label>
+          <input type="text" placeholder="Member" class="form-control">
+        </div>
+        <div class="pro-form-btn text-center marger_top15">
+          <button class="ms_btn" type="submit">save</button>
+          <button class="ms_btn" type="cancel">cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
