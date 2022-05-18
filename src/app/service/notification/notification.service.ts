@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {JsService} from '../js.service';
 declare var $: any;
 declare var swal: any;
 @Injectable({
@@ -23,5 +24,7 @@ export class NotificationService {
 
 
 
-  constructor() { }
+  constructor(private jsService: JsService) {
+    this.jsService.jsfile()
+  }
 }

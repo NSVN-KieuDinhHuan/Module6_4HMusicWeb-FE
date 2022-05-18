@@ -3,6 +3,7 @@ import {Song} from '../../model/song';
 import {PlayList} from '../../model/play-list';
 import {SongService} from '../../service/song/song.service';
 import {PlaylistService} from '../../service/playlist/playlist.service';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-homepage',
@@ -16,13 +17,15 @@ export class HomepageComponent implements OnInit {
   mostViewsPlaylist: PlayList = {};
 
   constructor(private songService: SongService,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private jsservice: JsService) {
     this.getMostViewPlaylist();
   }
 
   ngOnInit() {
     this.getAllPlaylists();
     this.getAllSongs();
+    this.jsservice.jsfile()
     // this.getMostViewPlaylist();
   }
 

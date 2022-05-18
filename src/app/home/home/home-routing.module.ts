@@ -13,6 +13,7 @@ import {PlaylistCreateComponent} from '../../playlist/playlist-create/playlist-c
 import {PlaylistUpdateComponent} from '../../playlist/playlist-update/playlist-update.component';
 import {PlaylistDeleteComponent} from '../../playlist/playlist-delete/playlist-delete.component';
 import {PlaylistDetailComponent} from '../../playlist/playlist-detail/playlist-detail.component';
+import {ArtistsListComponent} from '../../artists/artists-list/artists-list.component';
 
 
 const routes: Routes = [
@@ -25,9 +26,9 @@ const routes: Routes = [
         path: 'playlist',
         children: [
           { path: 'list', component: PlaylistListComponent},
-          { path: 'create', component: PlaylistCreateComponent},
-          { path: 'edit/:id', component: PlaylistUpdateComponent},
-          { path: 'delete/:id', component: PlaylistDeleteComponent},
+          { path: 'create', component: PlaylistCreateComponent, canActivate: [AuthGuard]},
+          { path: 'edit/:id', component: PlaylistUpdateComponent, canActivate: [AuthGuard]},
+          { path: 'delete/:id', component: PlaylistDeleteComponent, canActivate: [AuthGuard]},
           { path: 'detail/:id', component: PlaylistDetailComponent},
 
         ]
@@ -39,7 +40,14 @@ const routes: Routes = [
           { path: 'create', component: CreateSongComponent, canActivate: [AuthGuard]},
           { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]},
           { path: 'delete/:id', component: DeleteSongComponent, canActivate: [AuthGuard]},
-          { path: 'detail/:id', component: DetailSongComponent, canActivate: [AuthGuard]}
+          { path: 'detail/:id', component: DetailSongComponent}
+        ]
+      },
+      {
+        path: 'artist',
+        children: [
+          { path: 'list', component: ArtistsListComponent},
+          { path: 'detail/:id', component: ArtistsListComponent}
         ]
       }
 

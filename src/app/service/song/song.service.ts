@@ -27,7 +27,7 @@ export class SongService {
   }
 
   editSong(userId, id, song: FormData): Observable<Song> {
-    return this.http.put(`${API_URL}/songs/user/${userId}/${id}`, song);
+    return this.http.post(`${API_URL}/songs/user/${userId}/${id}`, song);
   }
 
   deleteSong(id): Observable<Song> {
