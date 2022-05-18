@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   editUser(id: number, user): Observable<User> {
-    return this.http.put(`${API_URL}/users/${id}`, user);
+    return this.http.post(`${API_URL}/upload/${id}`, user);
   }
 
   changePassword(changePasswordForm): Observable<User> {
@@ -33,6 +33,6 @@ export class AuthService {
   }
 
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${API_URL}/users/${id}`);
+    return this.http.get<User>(`${API_URL}/user/${id}`);
   }
 }

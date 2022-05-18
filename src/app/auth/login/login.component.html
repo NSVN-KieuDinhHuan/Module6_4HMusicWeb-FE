@@ -2,6 +2,9 @@
   <div class="modal-dialog login_dialog">
     <!-- Modal content-->
     <div class="modal-content">
+      <button type="button" class="close" routerLink="/home">
+        <i class="fa_icon form_close"></i>
+      </button>
       <form [formGroup]="loginForm" (ngSubmit)="login()">
       <a type="button" class="close" routerLink="/song">
         <i class="fa_icon form_close"></i>
@@ -35,7 +38,7 @@
           <div class="popup_forgot">
             <a href="#">Forgot Password ?</a>
           </div>
-          <p>Don't Have An Account? <a href="#myModal" data-toggle="modal" class="ms_modal1 hideCurrentModel">register here</a></p>
+          <p>Don't Have An Account? <a routerLink="/auth/register" data-toggle="modal" class="ms_modal1 hideCurrentModel">register here</a></p>
         </div>
       </div>
         </form>

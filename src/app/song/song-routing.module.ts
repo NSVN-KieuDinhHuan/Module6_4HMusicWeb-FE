@@ -5,16 +5,20 @@ import {CreatedSongListComponent} from './created-song-list/created-song-list.co
 import {CreateSongComponent} from './create-song/create-song.component';
 import {UpdateSongComponent} from './update-song/update-song.component';
 import {AuthGuard} from '../helper/auth-guard';
+import {DeleteSongComponent} from './delete-song/delete-song.component';
+import {DetailSongComponent} from './detail-song/detail-song.component';
 
 
 const routes: Routes = [
   {
     path: 'song',
-    component: AppLayoutComponent, canActivate: [AuthGuard],
+    component: AppLayoutComponent,
     children: [
-      { path: 'list', component: CreatedSongListComponent, canActivate: [AuthGuard]},
+      { path: 'list', component: CreatedSongListComponent},
       { path: 'create', component: CreateSongComponent, canActivate: [AuthGuard]},
-      { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]}
+      { path: 'edit/:id', component: UpdateSongComponent, canActivate: [AuthGuard]},
+      { path: 'delete/:id', component: DeleteSongComponent, canActivate: [AuthGuard]},
+      { path: 'detail/:id', component: DetailSongComponent, canActivate: [AuthGuard]}
     ]
   }
 ];
@@ -23,4 +27,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class SongRoutingModule { }

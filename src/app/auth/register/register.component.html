@@ -2,6 +2,9 @@
   <div class="modal-dialog login_dialog">
     <!-- Modal content-->
     <div class="modal-content">
+      <button type="button" class="close" routerLink="/home">
+        <i class="fa_icon form_close"></i>
+      </button>
       <form [formGroup]="registerForm" (ngSubmit)="register()">
         <a type="button" class="close" routerLink="/song">
           <i class="fa_icon form_close"></i>
@@ -47,7 +50,7 @@
               </div>
             </div>
               <input type="submit" class="ms_btn" value="register">
-              <p>Do You Have An Account? <a routerLink="/login" data-toggle="modal"
+              <p>Do You Have An Account? <a (click)="login()" data-toggle="modal"
                                             class="ms_modal1 hideCurrentModel">Login here</a></p>
 
           </div>

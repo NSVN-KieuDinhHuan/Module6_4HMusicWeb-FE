@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogoutComponent } from './logout.component';
+import { PlaylistUpdateComponent } from './playlist-update.component';
 
-describe('LogoutComponent', () => {
-  let component: LogoutComponent;
-  let fixture: ComponentFixture<LogoutComponent>;
+describe('PlaylistUpdateComponent', () => {
+  let component: PlaylistUpdateComponent;
+  let fixture: ComponentFixture<PlaylistUpdateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoutComponent ]
+      declarations: [ PlaylistUpdateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LogoutComponent);
+    fixture = TestBed.createComponent(PlaylistUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

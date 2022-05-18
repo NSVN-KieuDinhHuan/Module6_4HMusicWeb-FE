@@ -16,6 +16,5 @@ export interface Song {
   user?: User;
   category?: Category;
   album?: Album;
-  playList?: PlayList;
   tag?: Tag;
 }

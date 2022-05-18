@@ -9,11 +9,19 @@ import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
 import {SongModule} from './song/song.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './auth/login/login.component';
+import {PlaylistModule} from './playlist/playlist.module';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import {AuthModule} from './auth/auth.module';
+
+import {RegisterComponent} from './auth/register/register.component';
+import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
+import {HomeModule} from './home/home.module';
+import {AuthModule} from './auth/auth/auth.module';
+
+
 
 
 @NgModule({
@@ -23,16 +31,20 @@ import {AuthModule} from './auth/auth.module';
     AppSiderbarComponent,
     AppNavbarComponent,
     AppLayoutComponent,
-    AppPlaySongComponent
+    AppPlaySongComponent,
+    ErrorPermissionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SongModule,
+    PlaylistModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    HomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

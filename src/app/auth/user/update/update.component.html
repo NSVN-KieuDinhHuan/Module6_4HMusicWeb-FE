@@ -1,49 +1,41 @@
-<div id="myModal1" class="  centered-modal" role="dialog">
-  <div class="modal-dialog login_dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <form [formGroup]="updateForm" (ngSubmit)="editUser()">
-        <a type="button" class="close" routerLink="/song">
-          <i class="fa_icon form_close"></i>
-        </a>
-        <div class="modal-body">
-          <div class="ms_register_img">
-            <img src="assets/images/register_img.png" alt="" class="img-fluid"/>
-          </div>
-          <div class="ms_register_form">
-            <h2>Register to enjoy your compassion!!!</h2>
-            <h4>Enter your username</h4>
-            <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="username">
-            <p *ngIf="message!=null" style="color:red">Required</p>
-            <div *ngIf="updateForm.get('username').invalid&&updateForm.get('username').touched"><p
-              style="color: red">Required</p>
-            </div>
-            <div class="save_input_group">
-              <h4>Enter your password</h4>
-              <input type="text" placeholder="phoneNumber" class="form-control" formControlName="phoneNumber">
-              <div *ngIf="updateForm.get('phoneNumber').invalid&&updateForm.get('phoneNumber').touched"><p
-                style="color: red">Required</p>
-              </div>
-            </div>
-          </div>
-          <div class="save_input_group">
-            <h4>Where do you live?</h4>
-            <input type="text" placeholder="Enter Your address" class="form-control" formControlName="address">
-            <div *ngIf="updateForm.get('address').invalid&&updateForm.get('address').touched"><p
-              style="color: red">Required</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="image">Avatar</label>
-            <img src="http://localhost:8080/image/{{imageUrl}}" style="width: 150px; height: auto">
+<div class="padder_top80">
+  <!----Edit Profile Wrapper Start---->
+  <div class="ms_profile_wrapper">
+    <h1>Edit Your Profile</h1>
+    <div class="ms_profile_box">
+      <div>
+        <form [formGroup]="updateForm" (ngSubmit)="editUser()">
+          <div class="ms_pro_img">
+            <div class="form-group">
+            <img src="http://localhost:8080/image/{{currentUser.image}}" alt="" weight="150px" height="auto">
             <input type="file" class="form-control" id="image" formControlName="image" (change)="file($event)">
           </div>
-          <input type="submit" class="ms_btn" value="Submit">
-          <p>Do You Have An Account? <a routerLink="/login" data-toggle="modal"
-                                        class="ms_modal1 hideCurrentModel">Login here</a></p>
-
-        </div>
-      </form>
+          </div>
+          <br>
+          <div class="ms_pro_form">
+            <div class="form-group">
+              <label for="username">Change your username</label>
+              <input type="text" id="username" formControlName="username" placeholder="username" class="form-control">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="phoneNumber">Re-type your phone number</label>
+              <input type="number" id="phoneNumber" formControlName="phoneNumber" placeholder="phone number" class="form-control">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="address">Changed your locate, sign here!!!</label>
+              <input type="text" placeholder="address" id="address" formControlName="address" class="form-control">
+            </div>
+            <br>
+            <div class="pro-form-btn text-center marger_top15">
+              <button class="ms_btn" type="submit">save</button>
+              <button class="ms_btn" type="cancel">cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+  <!----Main div close---->
 </div>
