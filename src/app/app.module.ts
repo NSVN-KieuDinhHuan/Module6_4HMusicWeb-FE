@@ -16,6 +16,8 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {RegisterComponent} from './auth/register/register.component';
 import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
 import {HomeModule} from './home/home/home.module';
+import { ArtistsListComponent } from './artists/artists-list/artists-list.component';
+import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
 
 
 
@@ -30,7 +32,9 @@ import {HomeModule} from './home/home/home.module';
     AppPlaySongComponent,
     RegisterComponent,
     LoginComponent,
-    ErrorPermissionComponent
+    ErrorPermissionComponent,
+    ArtistsListComponent,
+    ArtistDetailComponent
   ],
   imports: [
     BrowserModule,

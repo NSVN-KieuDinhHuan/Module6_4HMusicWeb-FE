@@ -45,19 +45,44 @@ export class PlayService {
       option : myPlayListOtion
     };
   }
+  pausePlaylist(){
+    this.myPlaylist.pause()
+  }
+  checkSongExsit(songplayer){
+    var playlist = this.myPlaylist.playlist;
+    var indexValue;
+    $.each(playlist, function(index, obj) {
+      if (songplayer.title == obj.title) {
+        indexValue=index
+        return false;
+      }else {
+        indexValue=-1;
+      }
+    });
+   alert(indexValue)
+return indexValue;
+  }
 
   addToQueue(song){
     this.configVolume()
     var myPlayListOtion = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
     let songPlayer= this.convertSong(song, myPlayListOtion);
-    this.songlist.push(songPlayer);
-    this.myPlaylist.setPlaylist(this.songlist);
-    this.myPlaylist.play(-1);
+    alert(this.checkSongExsit(songPlayer))
+    if (this.checkSongExsit(songPlayer)==-1){
+      this.songlist.push(songPlayer)
+      this.myPlaylist.setPlaylist(this.songlist);
+      this.myPlaylist.play(-1);
+
+    }else {
+      this.myPlaylist.play(this.checkSongExsit(songPlayer));
+
+    }
+
     var current = this.myPlaylist.current;
     var playlist = this.myPlaylist.playlist;
     $.each(playlist, function(index, obj) {
       if (index == current) {
-        $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");
+        $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img style='width: 50px' src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");
       }
     });
 

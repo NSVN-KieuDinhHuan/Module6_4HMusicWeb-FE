@@ -4,7 +4,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserToken} from '../../model/user-token';
 import {Song} from '../../model/song';
 import {PlayService} from '../../service/playmusic/play.service';
-
+declare var $: any;
 @Component({
   selector: 'app-detail-song',
   templateUrl: './detail-song.component.html',
@@ -27,6 +27,14 @@ export class DetailSongComponent implements OnInit {
   }
   playsong(song){
     this.playService.addToQueue(song)
+    $('#pause').show();
+    $('#play').hide();
+  }
+
+  pauseSong(){
+    this.playService.pausePlaylist()
+    $('#pause').hide();
+    $('#play').show();
   }
   detailSongByid(id) {
     this.songService.getSongById(id).subscribe(songBE => {

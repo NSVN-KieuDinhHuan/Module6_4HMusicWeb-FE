@@ -16,6 +16,7 @@ import {Album} from '../../model/album';
 import {TagService} from '../../service/tag/tag.service';
 import {Tag} from '../../model/tag';
 import {Router} from '@angular/router';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-create-song',
@@ -38,6 +39,7 @@ export class CreateSongComponent implements OnInit {
               private fb: FormBuilder,
               private notificationSevice: NotificationService,
               private router: Router,
+              private jsService:JsService,
               private authenticationService: AuthenticationService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
@@ -84,6 +86,7 @@ export class CreateSongComponent implements OnInit {
     this.getAllArtist();
     this.getAllAlbum();
     this.getAllTag();
+    this.jsService.jsfile()
   }
 
   get SongFormControl() {
@@ -104,6 +107,7 @@ export class CreateSongComponent implements OnInit {
     if (songForm.valid) {
       this.songService.createSong(formData, this.currentUser.id).subscribe(() => {
         this.notificationSevice.showMessage('Success', 'Tạo mới thành công!');
+        this.router.navigateByUrl("/song/list")
       }, error => this.notificationSevice.showMessage('Lỗi', 'Tạo mới thất bại!'));
       songForm.resetForm();
     }

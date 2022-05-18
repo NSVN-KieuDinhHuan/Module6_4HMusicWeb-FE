@@ -6,6 +6,7 @@ import {UserToken} from '../../model/user-token';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {SongService} from '../../service/song/song.service';
 import {Song} from '../../model/song';
+import {JsService} from '../../service/js.service';
 import {CommentPlaylist} from '../../model/comment-playlist';
 import {CommentPlaylistService} from '../../service/commentPlaylist/comment-playlist.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -29,6 +30,7 @@ export class PlaylistDetailComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
               private authenticationService: AuthenticationService,
+              private jsService: JsService,
               private songService: SongService,
               private router: Router,
               private commentPlaylistService: CommentPlaylistService) {
@@ -44,6 +46,7 @@ export class PlaylistDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getAllSong();
+    this.jsService.jsfile()
   }
 
   getPlaylistById(id) {

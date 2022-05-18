@@ -19,7 +19,7 @@ function readURLAudio(input) {
 }
 
 function removeUploadAudio() {
-  $(".file-upload-input-audio").replaceWith($(".file-upload-input-audio").val(""));
+  $(".file-upload-input-audio").replaceWith($(".file-upload-input-audio").val(null));
   $(".file-upload-content-audio").hide();
   $(".image-upload-wrap-audio").show();
 }
