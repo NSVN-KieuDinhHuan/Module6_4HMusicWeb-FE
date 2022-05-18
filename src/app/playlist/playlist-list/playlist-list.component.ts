@@ -17,7 +17,7 @@ export class PlaylistListComponent implements OnInit {
 
   constructor(private playlistService: PlaylistService,
               private authenticationService: AuthenticationService,
-              private jsService:JsService) {
+              private jsService: JsService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -26,7 +26,7 @@ export class PlaylistListComponent implements OnInit {
   ngOnInit() {
     this.getAllPlaylists();
     this.getAllPlaylistsByUser();
-    this.jsService.jsfile()
+    this.jsService.jsfile();
   }
 
   getAllPlaylists() {

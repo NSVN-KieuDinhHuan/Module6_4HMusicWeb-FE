@@ -18,6 +18,8 @@ import { ErrorPermissionComponent } from './error/error-permission/error-permiss
 import {HomeModule} from './home/home/home.module';
 import { ArtistsListComponent } from './artists/artists-list/artists-list.component';
 import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
+import { PlaylistSearchComponent } from './playlist/playlist-search/playlist-search.component';
+import { SearchComponent } from './home/search/search.component';
 
 
 
@@ -34,7 +36,9 @@ import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.com
     LoginComponent,
     ErrorPermissionComponent,
     ArtistsListComponent,
-    ArtistDetailComponent
+    ArtistDetailComponent,
+    PlaylistSearchComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

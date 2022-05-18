@@ -55,7 +55,7 @@ export class PlaylistDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getAllSong();
-    this.jsService.jsfile()
+    this.jsService.jsfile();
   }
 
   getPlaylistById(id) {
@@ -103,8 +103,10 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   getLikePlaylist(playlistId) {
-    this.likePlaylistService.getLikePlaylist(playlistId, this.currentUser.id).subscribe((likePlaylist) => {
-      this.likePlaylist = likePlaylist;
+    this.authenticationService.currentUser.subscribe(user => {
+      this.likePlaylistService.getLikePlaylist(playlistId, user.id).subscribe((likePlaylist) => {
+        this.likePlaylist = likePlaylist;
+      });
     });
   }
 
@@ -126,6 +128,7 @@ export class PlaylistDetailComponent implements OnInit {
       $('#unlikeIcon').show();
     });
   }
+
   removeLike() {
     this.likePlaylistService.deleteLike(this.playlist.id, this.currentUser.id).subscribe(() => {
       this.getAllLikePlaylist(this.playlist.id);
@@ -134,6 +137,7 @@ export class PlaylistDetailComponent implements OnInit {
       $('#unlikeIcon').hide();
     });
   }
+
   changeLikeStatus() {
     this.likePlaylistService.changeLikeStatus(this.playlist.id, this.currentUser.id).subscribe(() => {
       console.log('successfully!');
