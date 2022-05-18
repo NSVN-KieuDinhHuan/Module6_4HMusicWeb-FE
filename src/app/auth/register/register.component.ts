@@ -5,6 +5,7 @@ import {NotificationService} from '../../service/notification/notification.servi
 import {Router} from '@angular/router';
 import {AuthService} from '../../service/auth.service';
 import {User} from '../../model/user';
+import {CustomvalidationService} from '../../service/validation/customvalidation.service';
 
 @Component({
   selector: 'app-register',
@@ -16,25 +17,31 @@ export class RegisterComponent implements OnInit {
   user: any;
   users: User[] = [];
   message: string = null;
-
+  submitted = false;
 
   constructor(private authenticationService: AuthenticationService,
               private notificationService: NotificationService,
               private router: Router,
               private fb: FormBuilder,
+              private customValidator: CustomvalidationService,
               private authService: AuthService
   ) {
   }
-
+  get registerFormControl() {
+    return this.registerForm.controls;
+  }
   ngOnInit() {
     this.getAllUser();
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
       confirmPassword: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
+      phoneNumber: ['', Validators.compose([Validators.required, this.customValidator.phoneValidator()])],
       address: ['', [Validators.required, Validators.minLength(10)]]
-    });
+    },
+      {
+        validator: this.customValidator.MatchPassword('password', 'confirmPassword')
+      });
   }
 
   register() {
