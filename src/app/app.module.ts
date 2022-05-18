@@ -8,12 +8,17 @@ import { AppSiderbarComponent } from './layout/app-siderbar/app-siderbar.compone
 import { AppNavbarComponent } from './layout/app-navbar/app-navbar.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { AppPlaySongComponent } from './layout/app-play-song/app-play-song.component';
-import {SongModule} from './song/song.module';
 import { LoginComponent } from './auth/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
+import {RegisterComponent} from './auth/register/register.component';
+import { ErrorPermissionComponent } from './error/error-permission/error-permission.component';
+import {HomeModule} from './home/home/home.module';
+import { ArtistComponent } from './artist/artist.component';
+
+
 
 
 @NgModule({
@@ -24,15 +29,18 @@ import {ErrorInterceptor} from './helper/error-interceptor';
     AppNavbarComponent,
     AppLayoutComponent,
     AppPlaySongComponent,
+    RegisterComponent,
     LoginComponent,
+    ErrorPermissionComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SongModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
