@@ -18,7 +18,7 @@ export class SongService {
     return this.http.get<Song[]>(`${API_URL}/songs/user/${userId}`);
   }
 
-  getSongById(id): Observable<Song> {
+  getSongById( id): Observable<Song> {
     return this.http.get<Song>(`${API_URL}/songs/${id}`);
   }
 
@@ -51,5 +51,8 @@ export class SongService {
   }
   getTopLikeSongNumer(): Observable<number[]> {
     return this.http.get<number[]>(`${API_URL}/songs/getTopLikeNumber`);
+  }
+  addview(id): Observable<Song> {
+    return this.http.post(`${API_URL}/songs/views/${id}`,null);
   }
 }

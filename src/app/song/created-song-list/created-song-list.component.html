@@ -25,7 +25,7 @@
           <li class="text-center"><a href="#">{{song.artist.name}}</a></li>
           <li class="text-center"><a href="#">{{song.category.name}}</a></li>
           <li class="text-center"><a href="#">{{song.album.name}}</a></li>
-          <li class="text-center"><a href="#">5:26</a></li>
+          <li class="text-center"><a href="#">{{song.views}}</a></li>
           <li class="text-center ms_more_icon"><a ><span class="ms_icon1 ms_active_icon"></span></a>
             <ul class="more_option">
               <li><a (click)="addToQueue(song)"><span class="opt_icon"><span class="icon icon_fav"></span></span>Listen</a></li>
@@ -67,7 +67,7 @@
           <li class="text-center">More</li>
         </ul>
 
-        <ul *ngFor="let song of allSongsForAllUsers; index as i">
+        <ul *ngFor="let song of allSongAllUser; index as i">
 
           <li class="text-center"><a (click)="addToQueue(song)"><span class="play_no">{{i+1}}</span><span class="play_hover" ></span></a></li>
           <li class="text-center"><a routerLink="/song/detail/{{song.id}}">{{song.name}}</a></li>

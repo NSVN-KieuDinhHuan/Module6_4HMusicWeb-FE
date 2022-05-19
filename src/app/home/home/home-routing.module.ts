@@ -14,6 +14,7 @@ import {PlaylistUpdateComponent} from '../../playlist/playlist-update/playlist-u
 import {PlaylistDeleteComponent} from '../../playlist/playlist-delete/playlist-delete.component';
 import {PlaylistDetailComponent} from '../../playlist/playlist-detail/playlist-detail.component';
 import {ArtistsListComponent} from '../../artists/artists-list/artists-list.component';
+import {UpdateProfileComponent} from '../../auth/update-profile/update-profile.component';
 import {SearchComponent} from '../search/search.component';
 
 
@@ -51,7 +52,15 @@ const routes: Routes = [
           { path: 'detail/:id', component: ArtistsListComponent}
         ]
       },
+      {
+        path: 'user',
+        children: [
+          {path: 'update/:id', component: UpdateProfileComponent}
+        ]
+      },
       {path: 'search', component: SearchComponent}
+
+
     ]
   }
 ];

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../model/user';
+
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
+import {User} from './model/user';
+import {environment} from '../environments/environment';
+
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
@@ -24,15 +26,7 @@ export class AuthService {
     return this.http.get<User[]>(`${API_URL}/users`);
   }
 
-  editUser(id: number, user: FormData): Observable<User> {
-    return this.http.post(`${API_URL}/upload/${id}`, user);
-  }
-
   changePassword(changePasswordForm): Observable<User> {
     return this.http.put<User>(`${API_URL}/changePassword`, changePasswordForm);
-  }
-
-  getUserById(id): Observable<User> {
-    return this.http.get<User>(`${API_URL}/user/${id}`);
   }
 }

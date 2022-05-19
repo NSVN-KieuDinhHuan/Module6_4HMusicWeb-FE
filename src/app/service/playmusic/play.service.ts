@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Song} from '../../model/song';
+import {SongService} from '../song/song.service';
 
 declare var $: any;
 declare var jPlayerPlaylist: any;
@@ -28,11 +29,11 @@ export class PlayService {
   });
 
 
-  constructor() {
+  constructor(private songService: SongService) {
+
   }
 
   convertSongBEToSongPlayer(songs: Song[], myPlayListOtion) {
-    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < songs.length; i++) {
       let song = this.convertSong(songs[i], myPlayListOtion);
       this.songlist.push(song);
@@ -56,39 +57,66 @@ export class PlayService {
 
   checkSongExsit(songplayer) {
     var playlist = this.myPlaylist.playlist;
-    var indexValue;
+    var indexValue = -1;
     $.each(playlist, function(index, obj) {
       if (songplayer.title == obj.title) {
         indexValue = index;
-        return false;
-      } else {
-        indexValue = -1;
+      }
+    });
+    return indexValue;
+  }
+
+  addviews(songID) {
+    this.songService.addview(songID).subscribe(() => {
+    });
+  }
+
+  playPlaylist(songs) {
+    for (let i = 0; i < songs.length; i++) {
+      this.addToQueue(songs[i]);
+
+    }
+
+  }
+
+  RemoveSongQueue(Song) {
+    this.myPlaylist.remove;
+  }
+
+  playindex(index) {
+    this.myPlaylist.play(index);
+  }
+
+  previous() {
+    var current = this.myPlaylist.current;
+    var playlist = this.myPlaylist.playlist;
+    $.each(playlist, function(index, obj) {
+      if (index == current - 1) {
+        $('.jp-now-playing').html('<div class=\'jp-track-name\'><span class=\'que_img\'><img style=\'width: 50px\' src=\'' + obj.image + '\'></span><div class=\'que_data\'>' + obj.title + ' <div class=\'jp-artist-name\'>' + obj.artist + '</div></div></div>');
+
       }
     });
 
-    return indexValue;
   }
 
   addToQueue(song) {
     this.configVolume();
     var myPlayListOtion = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
     let songPlayer = this.convertSong(song, myPlayListOtion);
-    alert(this.checkSongExsit(songPlayer));
     if (this.checkSongExsit(songPlayer) == -1) {
       this.songlist.push(songPlayer);
       this.myPlaylist.setPlaylist(this.songlist);
-      this.myPlaylist.play(-1);
-
+      this.myPlaylist.play(0);
     } else {
       this.myPlaylist.play(this.checkSongExsit(songPlayer));
-
     }
-
     var current = this.myPlaylist.current;
     var playlist = this.myPlaylist.playlist;
+
     $.each(playlist, function(index, obj) {
       if (index == current) {
         $('.jp-now-playing').html('<div class=\'jp-track-name\'><span class=\'que_img\'><img style=\'width: 50px\' src=\'' + obj.image + '\'></span><div class=\'que_data\'>' + obj.title + ' <div class=\'jp-artist-name\'>' + obj.artist + '</div></div></div>');
+
       }
     });
 

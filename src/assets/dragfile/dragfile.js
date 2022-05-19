@@ -43,6 +43,20 @@ function readURL(input) {
     }
 }
 
+
+function readURLUserImage(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#userImage').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
 function removeUpload() {
     $(".file-upload-input").replaceWith($(".file-upload-input").val(null));
     $(".file-upload-content").hide();

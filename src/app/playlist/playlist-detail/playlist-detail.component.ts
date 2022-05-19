@@ -12,6 +12,7 @@ import {CommentPlaylistService} from '../../service/commentPlaylist/comment-play
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LikePlaylistService} from '../../service/likePlaylist/like-playlist.service';
 import {LikePlaylist} from '../../model/like-playlist';
+import {PlayService} from '../../service/playmusic/play.service';
 
 declare var $: any;
 
@@ -40,7 +41,8 @@ export class PlaylistDetailComponent implements OnInit {
               private songService: SongService,
               private router: Router,
               private commentPlaylistService: CommentPlaylistService,
-              private likePlaylistService: LikePlaylistService) {
+              private likePlaylistService: LikePlaylistService,
+              private playService: PlayService) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
       this.getPlaylistById(id);
@@ -53,6 +55,12 @@ export class PlaylistDetailComponent implements OnInit {
     });
   }
 
+  playPlaylistDetail(){
+    this.playService.playPlaylist(this.playlist.songs)
+  }
+  pausePlaylistDetail(){
+    this.playService.pausePlaylist()
+  }
   ngOnInit() {
     this.getAllSong();
     this.jsService.jsfile();

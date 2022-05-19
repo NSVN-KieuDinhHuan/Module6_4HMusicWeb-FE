@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Song} from '../../model/song';
 import {JsService} from '../../service/js.service';
+import {PlayService} from '../../service/playmusic/play.service';
 
 @Component({
   selector: 'app-app-play-song',
@@ -9,10 +10,11 @@ import {JsService} from '../../service/js.service';
 })
 export class AppPlaySongComponent implements OnInit {
 
-  constructor(private  jsService:JsService) { }
+  constructor(private jsService: JsService) { }
 
   ngOnInit() {
-    this.jsService.jsfile()
+    this.jsService.jsfile();
   }
+
 
 }
