@@ -8,7 +8,6 @@ declare var Swal: any;
 export class NotificationService {
 
   showSuccessMessage(message){
-    $('.html').css({"font-size": "200%"})
     $(function() {
       var Toast = Swal.mixin({
         toast: true,
@@ -24,7 +23,6 @@ export class NotificationService {
     })
   }
 
-  fun
   showErrorMessage(message){
     $(function() {
       var Toast = Swal.mixin({
