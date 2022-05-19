@@ -6,6 +6,7 @@ import {CreatedSongListComponent} from './song/created-song-list/created-song-li
 import {LoginComponent} from './auth/login/login.component';
 import {HomepageComponent} from './home/homepage/homepage.component';
 import {UpdateComponent} from './auth/user/update/update.component';
+import {ChangePasswordComponent} from './auth/change-password/change-password.component';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'update', component: UpdateComponent}
+      {path: 'update', component: UpdateComponent},
+      {path: 'changePassword/:id', component: ChangePasswordComponent}
     ]
   },
   {
