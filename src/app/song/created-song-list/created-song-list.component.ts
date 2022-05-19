@@ -33,10 +33,10 @@ export class CreatedSongListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getAllCreatedSongbyUser();
     this.playService.configVolume();
     this.getAllSong();
     this.jsService.jsfile();
+    this.getAllCreatedSongbyUser();
 
   }
 
@@ -50,7 +50,7 @@ export class CreatedSongListComponent implements OnInit {
   getAllCreatedSongbyUser() {
     this.songService.getAll(this.currentUser.id).subscribe((songsFromBE) => {
       this.songs = songsFromBE;
-      this.jsService.jsfile();
+      // this.jsService.jsfile();
     });
   }
 

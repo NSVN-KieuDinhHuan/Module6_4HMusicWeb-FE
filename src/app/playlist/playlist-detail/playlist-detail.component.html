@@ -15,8 +15,8 @@
         <a href="#" class="album_date">Description: {{playlist.description}}</a>
         <a href="#" class="album_date">{{likePlaylistList.length}} Likes | {{playlist.views}} Views | </a>
         <div *ngIf="currentUser">
-          <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist"><span class="ms_icon1 ms_fav_icon"></span></a>
-          <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist"><i class="bi bi-heart-fill"></i></a>
+          <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist" style="color: whitesmoke;"><span class="bi bi-heart"></span></a>
+          <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist" style="color: whitesmoke;"><span><i class="bi bi-heart-fill"></i></span></a>
         </div>
         <!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
       </div>
