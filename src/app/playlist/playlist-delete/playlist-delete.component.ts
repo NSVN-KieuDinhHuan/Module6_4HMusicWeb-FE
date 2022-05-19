@@ -4,6 +4,7 @@ import {PlayList} from '../../model/play-list';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-playlist-delete',
@@ -18,7 +19,8 @@ export class PlaylistDeleteComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
               private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private jsService: JsService) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
       this.getPlaylistById(id);
@@ -29,6 +31,7 @@ export class PlaylistDeleteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.jsService.jsfile()
   }
 
   getPlaylistById(id) {

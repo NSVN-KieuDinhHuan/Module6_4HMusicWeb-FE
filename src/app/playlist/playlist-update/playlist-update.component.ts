@@ -5,6 +5,7 @@ import {PlaylistService} from '../../service/playlist/playlist.service';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlayList} from '../../model/play-list';
+import {JsService} from '../../service/js.service';
 
 class Playlist {
 }
@@ -29,7 +30,8 @@ export class PlaylistUpdateComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private authenticationService: AuthenticationService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private jsService:JsService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -40,6 +42,7 @@ export class PlaylistUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.jsService.jsfile();
   }
 
   getPlaylistById(id) {

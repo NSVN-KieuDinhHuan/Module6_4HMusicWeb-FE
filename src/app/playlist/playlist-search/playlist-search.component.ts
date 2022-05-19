@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-playlist-search',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistSearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jsService:JsService) {  }
 
   ngOnInit() {
+    this.jsService.jsfile()
   }
 
 }

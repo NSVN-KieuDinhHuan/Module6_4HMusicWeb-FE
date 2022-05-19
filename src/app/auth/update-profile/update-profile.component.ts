@@ -6,6 +6,7 @@ import {NotificationService} from '../../service/notification/notification.servi
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
+import {JsService} from '../../service/js.service';
 declare var $: any;
 @Component({
   selector: 'app-update-profile',
@@ -27,7 +28,8 @@ export class UpdateProfileComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
-              private authService: AuthService
+              private authService: AuthService,
+              private jsService:JsService
   ) {
     // Router là đối tượng giúp chuyển trang bên phía ts
     // ActivatedRoute để lấy ra giá trị của biến id
@@ -43,6 +45,7 @@ export class UpdateProfileComponent implements OnInit {
 
 
   ngOnInit() {
+    this.jsService.jsfile()
   }
 
   get updateFormControl() {

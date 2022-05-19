@@ -17,11 +17,11 @@ export class AppNavbarComponent implements OnInit {
               private  jsService: JsService) {
     this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
+      this.jsService.jsfile()
     });
   }
 
   ngOnInit() {
-    this.jsService.jsfile()
   }
 
   logout() {

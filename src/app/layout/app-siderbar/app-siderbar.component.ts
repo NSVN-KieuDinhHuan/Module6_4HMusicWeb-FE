@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {JsService} from '../../service/js.service';
 declare var $: any;
 @Component({
   selector: 'app-app-siderbar',
@@ -8,9 +9,10 @@ declare var $: any;
 })
 export class AppSiderbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private jsService:JsService) { }
 
   ngOnInit() {
+    this.jsService.jsfile()
   }
 
 

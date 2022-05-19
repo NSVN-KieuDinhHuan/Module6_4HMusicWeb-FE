@@ -25,9 +25,9 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.jsservice.jsfile();
     this.getAllPlaylists();
     this.getAllSongs();
-    this.jsservice.jsfile();
     this.getTopViewSong();
     this.getTopViewSongList();
     this.getTopLikeSongList();

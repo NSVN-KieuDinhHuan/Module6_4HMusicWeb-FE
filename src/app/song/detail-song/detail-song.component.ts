@@ -14,6 +14,7 @@ import {LikePlaylistService} from '../../service/likePlaylist/like-playlist.serv
 import {LikeSongService} from '../../service/likeSong/like-song.service';
 import {LikePlaylist} from '../../model/like-playlist';
 import {LikeSong} from '../../model/like-song';
+import {NotificationService} from '../../service/notification/notification.service';
 declare var $: any;
 @Component({
   selector: 'app-detail-song',
@@ -53,6 +54,7 @@ export class DetailSongComponent implements OnInit {
   ngOnInit() {
     this.jsService.jsfile()
     this.pauseSong();
+    this.getAllCommentSong(this.songDetail)
   }
 
 
@@ -85,7 +87,7 @@ export class DetailSongComponent implements OnInit {
   createNewCommentSong(commentForm) {
     this.commentSongService.createNewComment(this.songDetail.id, this.currentUser.id, commentForm.value).subscribe(() => {
       this.commentForm.get('content').setValue('');
-      alert('comment successfully!');
+      this.getAllCommentSong(this.songDetail.id)
     });
   }
 

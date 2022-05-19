@@ -4,6 +4,7 @@ import {PlaylistService} from '../../service/playlist/playlist.service';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-playlist-create',
@@ -21,13 +22,15 @@ export class PlaylistCreateComponent implements OnInit {
 
   constructor(private playlistService: PlaylistService,
               private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private jsService:JsService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
   }
 
   ngOnInit() {
+    this.jsService.jsfile()
   }
 
   create(playlistForm: FormGroup) {

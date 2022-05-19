@@ -14,8 +14,8 @@
       <div class="col-lg-2 col-md-6" *ngFor="let playlist of allPlaylistsByUser">
         <div class="ms_rcnt_box marger_bottom25">
           <div class="ms_rcnt_box_img">
-            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" width="240px" class="img-fluid">
-            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" width="240px" alt="">
+            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" width="100%" alt=""  class="img-fluid">
+            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" width="100%" alt="">
             <div class="ms_main_overlay">
               <div class="ms_box_overlay"></div>
               <div class="ms_more_icon">
