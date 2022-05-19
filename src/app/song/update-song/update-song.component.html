@@ -58,7 +58,7 @@
         </div>
         <div class="ms_pro_form">
           <div class="form-group">
-            <label>Song Name *</label>
+            <label>Name *</label>
             <input id="name" type="text" placeholder="Name" class="form-control" formControlName="name">
           </div>
           <div class="form-group">
@@ -66,14 +66,14 @@
             <input id="author" type="text" placeholder="Author" class="form-control" formControlName="author">
           </div>
           <div class="form-group">
-            <label>Artist’s Name * </label>
+            <label>Artist</label>
             <select class="form-control" id="artist" formControlName="artist">
               <option disabled [ngValue]="null">select</option>
               <option *ngFor="let artist of artists" value="{{artist.id}}">{{artist.name}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Song’s category *</label>
+            <label>category</label>
             <select class="form-control"  id="category" formControlName="category">
               <option disabled [ngValue]="null">select</option>
               <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
@@ -87,7 +87,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Select Album</label>
+            <label>Album</label>
             <select class="form-control" formControlName="album">
               <option disabled [ngValue]="null">select</option>
               <option *ngFor="let album of albums" value="{{album.id}}">{{album.name}}</option>
@@ -96,7 +96,7 @@
 
           <div class="form-group">
             <label>Description</label>
-            <textarea  class="form-control" formControlName="description"></textarea>
+            <textarea style="width: 100%;height: 100px" class="form-control" formControlName="description"></textarea>
           </div>
 
           <div class="pro-form-btn text-center marger_top15">

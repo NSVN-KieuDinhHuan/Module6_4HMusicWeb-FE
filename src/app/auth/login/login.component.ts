@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {NotificationService} from '../../service/notification/notification.service';
+import {JsService} from '../../service/js.service';
 
 
 @Component({
@@ -19,10 +20,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private notificationService: NotificationService,
-              private router: Router) {
+              private router: Router,
+              private jsService:JsService) {
   }
 
   ngOnInit() {
+    this.jsService.jsfile()
   }
 
   login() {

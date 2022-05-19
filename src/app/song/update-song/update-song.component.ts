@@ -14,6 +14,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NotificationService} from '../../service/notification/notification.service';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {JsService} from '../../service/js.service';
 declare var $: any;
 @Component({
   selector: 'app-update-song',
@@ -38,7 +39,8 @@ export class UpdateSongComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private notificationSevice: NotificationService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private jsService:JsService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -97,6 +99,12 @@ export class UpdateSongComponent implements OnInit {
     });
   }
 
+  getAllAlbum() {
+    this.albumService.getAllAlbum().subscribe((albumFromBE) => {
+      this.albums = albumFromBE;
+    });
+  }
+
   getAllTag() {
     this.tagService.getAllTag().subscribe((tagFromBE) => {
       this.tags = tagFromBE;
@@ -105,7 +113,9 @@ export class UpdateSongComponent implements OnInit {
   ngOnInit() {
     this.getAllCategory();
     this.getAllArtist();
+    this.getAllAlbum();
     this.getAllTag();
+    this.jsService.jsfile();
   }
   submit(songForm) {
     const formData = new FormData();
@@ -122,11 +132,11 @@ export class UpdateSongComponent implements OnInit {
     }
     const mp3Files = (document.getElementById('mp3File') as HTMLInputElement).files;
     if (mp3Files.length > 0) {
-      formData.append('mp3File', files[0]);
+      formData.append('mp3File', mp3Files[0]);
     }
     this.songService.editSong(this.currentUser.id, this.song.id, formData).subscribe(() => {
+      this.router.navigateByUrl("song/list");
       alert('Thành công!');
-      this.router.navigateByUrl('/song/list');
     }, error => console.log(error));
 
   }

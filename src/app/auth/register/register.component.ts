@@ -5,6 +5,7 @@ import {NotificationService} from '../../service/notification/notification.servi
 import {Router} from '@angular/router';
 import {AuthService} from '../../service/auth.service';
 import {User} from '../../model/user';
+import {JsService} from '../../service/js.service';
 
 @Component({
   selector: 'app-register',
@@ -22,11 +23,13 @@ export class RegisterComponent implements OnInit {
               private notificationService: NotificationService,
               private router: Router,
               private fb: FormBuilder,
-              private authService: AuthService
+              private authService: AuthService,
+              private  jsService:JsService
   ) {
   }
 
   ngOnInit() {
+    this.jsService.jsfile()
     this.getAllUser();
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
