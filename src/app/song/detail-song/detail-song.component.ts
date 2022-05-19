@@ -10,6 +10,10 @@ import {CommentPlaylist} from '../../model/comment-playlist';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CommentSong} from '../../model/comment-song';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
+import {LikePlaylistService} from '../../service/likePlaylist/like-playlist.service';
+import {LikeSongService} from '../../service/likeSong/like-song.service';
+import {LikePlaylist} from '../../model/like-playlist';
+import {LikeSong} from '../../model/like-song';
 declare var $: any;
 @Component({
   selector: 'app-detail-song',
@@ -20,7 +24,8 @@ export class DetailSongComponent implements OnInit {
   currentUser: UserToken = {};
   songDetail: Song = {};
   commentSong: CommentSong[] = [];
-   date = Date.now()
+  like: LikeSong= {};
+  likeList: LikeSong[] = [];
   commentForm: FormGroup = new FormGroup(
     {
       content: new FormControl('')
@@ -31,7 +36,8 @@ export class DetailSongComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private activatedRoute: ActivatedRoute,
               private jsService: JsService,
-              private commentSongService: CommentSongService) {
+              private commentSongService: CommentSongService,
+              private likeSongService: LikeSongService ) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -78,6 +84,44 @@ export class DetailSongComponent implements OnInit {
     this.commentSongService.createNewComment(this.songDetail.id, this.currentUser.id, commentForm.value).subscribe(() => {
       this.commentForm.get('content').setValue('');
       alert('comment successfully!');
+    });
+  }
+
+  getLike(songId) {
+    this.likeSongService.getLike(songId, this.currentUser.id).subscribe((likePlaylist) => {
+      this.like = likePlaylist;
+    });
+  }
+
+  getAllLike(songId) {
+    this.likeSongService.getAllLike(songId).subscribe((likeSongList) => {
+      this.likeList = likeSongList;
+    });
+  }
+
+  changeLikeIcon() {
+    $('#likeIcon').style({'background-position': '-592px 6px'});
+  }
+
+  addLike() {
+    this.likeSongService.addLike(this.songDetail.id, this.currentUser.id).subscribe(() => {
+      this.getAllLike(this.songDetail.id);
+      this.getLike(this.songDetail.id);
+      $('#likeIcon').hide();
+      $('#unlikeIcon').show();
+    });
+  }
+  removeLike() {
+    this.likeSongService.deleteLike(this.songDetail.id, this.currentUser.id).subscribe(() => {
+      this.getAllLike(this.songDetail.id);
+      this.getLike(this.songDetail.id);
+      $('#likeIcon').show();
+      $('#unlikeIcon').hide();
+    });
+  }
+  changeLikeStatus() {
+    this.likeSongService.changeLikeStatus(this.songDetail.id, this.currentUser.id).subscribe(() => {
+      console.log('successfully!');
     });
   }
 }
