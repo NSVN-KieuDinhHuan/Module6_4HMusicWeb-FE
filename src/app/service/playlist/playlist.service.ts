@@ -21,9 +21,11 @@ export class PlaylistService {
   getAllPlaylistByUser(userId): Observable<PlayList[]> {
     return this.http.get<PlayList[]>(`${API_URL}/playlists/user/${userId}`);
   }
+
   getPlaylistById(playlistId): Observable<PlayList> {
     return this.http.get<PlayList>(`${API_URL}/playlists/${playlistId}`);
   }
+
   createPlaylist(playlist, userId): Observable<PlayList> {
     return this.http.post<PlayList>(`${API_URL}/playlists/user/${userId}`, playlist);
   }
@@ -42,5 +44,17 @@ export class PlaylistService {
 
   removeSongFromPlaylist(songId, playlistId): Observable<PlayList> {
     return this.http.post<PlayList>(`${API_URL}/playlists/removeSong?songId=${songId}&playlistId=${playlistId}`, true);
+  }
+
+  getNewestPlaylists(): Observable<PlayList[]> {
+    return this.http.get<PlayList[]>(`${API_URL}/playlists/getNewest`);
+  }
+
+  getTopLikePlaylists(): Observable<PlayList[]> {
+    return this.http.get<PlayList[]>(`${API_URL}/playlists/getTopLikePlaylist`);
+  }
+
+  getTopLikePlaylistNumer(): Observable<number[]> {
+    return this.http.get<number[]>(`${API_URL}/getTopLikeNumber`);
   }
 }
