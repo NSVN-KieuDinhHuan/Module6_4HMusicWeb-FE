@@ -1,3 +1,90 @@
-<p>search works!</p>
+<h1>search works!</h1>
 
-<h1>{{searchName}}</h1>
+<!--All song-->
+<div class="ms_free_download">
+  <div class="ms_heading">
+    <h1>All songs</h1>
+  </div>
+  <div class="album_inner_list" >
+    <div class="album_list_wrapper">
+      <ul class="album_list_name">
+        <li>#</li>
+        <li>Song Title</li>
+        <li class="text-center">Artist</li>
+        <li class="text-center">Category</li>
+        <li class="text-center">Album</li>
+        <li class="text-center">views</li>
+        <li class="text-center">More</li>
+      </ul>
+
+      <ul *ngFor="let song of searchItem.listSong; index as i">
+        <li class="text-center"><a><span class="play_no">{{i+1}}</span><span class="play_hover" ></span></a></li>
+<!--        <li class="text-center"><a (click)="addToQueue(song)"><span class="play_no">{{i+1}}</span><span class="play_hover" ></span></a></li>-->
+        <li class="text-center"><a routerLink="/song/detail/{{song.id}}">{{song.name}}</a></li>
+        <li class="text-center"><a href="#">{{song.artist.name}}</a></li>
+        <li class="text-center"><a href="#">{{song.category.name}}</a></li>
+        <li class="text-center"><a href="#">{{song.album.name}}</a></li>
+        <li class="text-center"><a href="#">5:26</a></li>
+        <li class="text-center ms_more_icon"><a ><span class="ms_icon1 ms_active_icon"></span></a>
+          <ul class="more_option">
+            <li><a><span class="opt_icon"><span class="icon icon_fav"></span></span>Listen</a></li>
+<!--            <li><a (click)="addToQueue(song)"><span class="opt_icon"><span class="icon icon_fav"></span></span>Listen</a></li>-->
+            <li><a routerLink="/song/delete/{{song.id}}"><span class="opt_icon"><span class="icon icon_queue"></span></span>Delete</a></li>
+            <li><a routerLink="/song/edit/{{song.id}}"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Edit</a></li>
+            <li><a routerLink="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+  <div class="ms_view_more padder_bottom20">
+    <a href="#" class="ms_btn">view more</a>
+  </div>
+</div>
+
+<!----All playlist---->
+<div class="ms_top_artist">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ms_heading">
+          <h1>Your Playlists</h1>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6" *ngFor="let playlist of searchItem.listPlaylist">
+        <div class="ms_rcnt_box marger_bottom25">
+          <div class="ms_rcnt_box_img">
+<!--            <img src="/assets/images/radio/img1.jpg" alt="" class="img-fluid">-->
+            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" width="240px" class="img-fluid">
+            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" width="240px" alt="">
+            <div class="ms_main_overlay">
+              <div class="ms_box_overlay"></div>
+              <div class="ms_play_icon">
+                <img src="/assets/images/svg/play.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="ms_rcnt_box_text">
+            <h3><a routerLink="/playlist/detail/{{playlist.id}}">{{playlist.name}}</a></h3>
+            <p>{{playlist.songs.length}} songs</p>
+          </div>
+        </div>
+      </div>
+<!--      <div class="col-lg-2">-->
+<!--        <div class="ms_rcnt_box marger_bottom25">-->
+<!--          <div class="create_playlist">-->
+<!--            <i class="ms_icon icon_playlist"></i>-->
+<!--          </div>-->
+<!--          <div class="ms_rcnt_box_text">-->
+<!--            <h3><a href="#">Create New Playlist</a></h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+
+

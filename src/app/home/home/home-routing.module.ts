@@ -58,7 +58,7 @@ const routes: Routes = [
           {path: 'update/:id', component: UpdateProfileComponent}
         ]
       },
-      {path: 'search', component: SearchComponent}
+      {path: 'search/:q', component: SearchComponent}
 
 
     ]
