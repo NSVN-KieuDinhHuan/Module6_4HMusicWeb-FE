@@ -1,3 +1,4 @@
+<!---Banner--->
 <div class="ms-banner">
   <div class="container-fluid">
     <div class="row">
@@ -21,3 +22,825 @@
     </div>
   </div>
 </div>
+<!---Top newest playlist--->
+<div class="ms_radio_wrapper">
+  <div class="ms_heading">
+    <h1>New Released Playlists</h1>
+    <span class="veiw_all"><a href="#">view more</a></span>
+  </div>
+  <div class="ms_radio_slider swiper-container swiper-container-horizontal">
+    <div class="swiper-wrapper" style="transform: translate3d(-1881.83px, 0px, 0px); transition-duration: 0ms;">
+      <!--      #1 top trending-->
+      <div class="swiper-slide swiper-slide-prev">
+        <div class="ms_rcnt_box">
+          <div class="ms_rcnt_box_img">
+            <img src="/assets/images/radio/sontung.jpg" alt="">
+            <!--            <img *ngIf="topNewestPlaylistList[0].songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">-->
+            <!--            <img *ngIf="topNewestPlaylistList[0].songs.length != 0" src="http://localhost:8080/image/{{topNewestPlaylistList[0].songs[0].image}}" alt="">-->
+            <div class="ms_main_overlay">
+              <div class="ms_box_overlay"></div>
+              <div class="ms_more_icon">
+                <img src="/assets/images/svg/more.svg" alt="">
+              </div>
+              <ul class="more_option">
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+              </ul>
+              <div class="ms_play_icon">
+                <img src="/assets/images/svg/play.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="ms_rcnt_box_text">
+
+            <!--            <h3><a routerLink="/playlist/detail/{{topNewestPlaylistList[0].id">{{topNewestPlaylistList[0].name}}</a></h3>-->
+            <!--            <p>{{topNewestPlaylistList[0].songs.length}} songs</p>-->
+
+            <h3><a routerLink="/playlist/detail/{{topNewestPlaylistList[0].id}}">Playlist 1</a></h3>
+            <p>3 songs</p>
+            <p>Created: 20-05-2022</p>
+          </div>
+        </div>
+      </div>
+      <!--      loop for each playlist-->
+      <div class="swiper-slide" *ngFor="let playlist of topNewestPlaylistList;">
+        <div class="ms_rcnt_box">
+          <div class="ms_rcnt_box_img">
+            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
+            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="">
+            <div class="ms_main_overlay">
+              <div class="ms_box_overlay"></div>
+              <div class="ms_more_icon">
+                <img src="/assets/images/svg/more.svg" alt="">
+              </div>
+              <ul class="more_option">
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+              </ul>
+              <div class="ms_play_icon">
+                <img src="/assets/images/svg/play.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="ms_rcnt_box_text">
+            <h3><a routerLink="/playlist/detail/{{playlist.id}}">{{playlist.name}}</a></h3>
+            <p>{{playlist.songs.length}} songs</p>
+            <p>Created: {{playlist.createDate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next4 slider_nav_next"></div>
+  <div class="swiper-button-prev4 slider_nav_prev"></div>
+</div>
+<!---Top Liked playlist--->
+<div class="ms_radio_wrapper">
+  <div class="ms_heading">
+    <h1>Top 5 Most Liked Playlists</h1>
+    <span class="veiw_all"><a href="#">view more</a></span>
+  </div>
+  <div class="ms_radio_slider swiper-container swiper-container-horizontal">
+    <div class="swiper-wrapper" style="transform: translate3d(-1881.83px, 0px, 0px); transition-duration: 0ms;">
+      <!--      #1 top trending-->
+      <div class="swiper-slide swiper-slide-prev">
+        <div class="ms_rcnt_box">
+          <div class="ms_rcnt_box_img">
+            <img src="/assets/images/radio/sontung.jpg" alt="">
+            <!--            <img *ngIf="topNewestPlaylistList[0].songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">-->
+            <!--            <img *ngIf="topNewestPlaylistList[0].songs.length != 0" src="http://localhost:8080/image/{{topNewestPlaylistList[0].songs[0].image}}" alt="">-->
+            <div class="ms_main_overlay">
+              <div class="ms_box_overlay"></div>
+              <div class="ms_more_icon">
+                <img src="/assets/images/svg/more.svg" alt="">
+              </div>
+              <ul class="more_option">
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+              </ul>
+              <div class="ms_play_icon">
+                <img src="/assets/images/svg/play.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="ms_rcnt_box_text">
+
+            <h3><a routerLink="/playlist/detail/{{topNewestPlaylistList[0].id}}">Playlist 1</a></h3>
+            <p>3 songs</p>
+            <p>100 likes</p>
+          </div>
+        </div>
+      </div>
+      <!--      loop for each playlist-->
+      <div class="swiper-slide" *ngFor="let playlist of topLikePlaylistList">
+        <div class="ms_rcnt_box">
+          <div class="ms_rcnt_box_img">
+            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
+            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="">
+            <div class="ms_main_overlay">
+              <div class="ms_box_overlay"></div>
+              <div class="ms_more_icon">
+                <img src="/assets/images/svg/more.svg" alt="">
+              </div>
+              <ul class="more_option">
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+              </ul>
+              <div class="ms_play_icon">
+                <img src="/assets/images/svg/play.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="ms_rcnt_box_text">
+            <h3><a routerLink="/playlist/detail/{{playlist.id}}">{{playlist.name}}</a></h3>
+            <p>{{playlist.songs.length}} songs</p>
+            <p>{{playlist.likes}} likes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next4 slider_nav_next"></div>
+  <div class="swiper-button-prev4 slider_nav_prev"></div>
+</div>
+<!---Top 9 Viewed Songs--->
+<div class="ms_weekly_wrapper">
+  <div class="ms_weekly_inner">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ms_heading">
+          <h1>Top 09 Songs Most Viewd</h1>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										01
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[0].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[0].id}}">{{topViewSongList[0].name}}</a></h3>
+                <p>{{topViewSongList[0].artist.name}} | Views: {{topViewSongList[0].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										02
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[1].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[1].id}}">{{topViewSongList[1].name}}</a></h3>
+                <p>{{topViewSongList[1].artist.name}} | Views: {{topViewSongList[1].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										03
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[2].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[2].id}}">{{topViewSongList[2].name}}</a></h3>
+                <p>{{topViewSongList[2].artist.name}} | Views: {{topViewSongList[2].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+      </div>
+      <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										04
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[3].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[3].id}}">{{topViewSongList[3].name}}</a></h3>
+                <p>{{topViewSongList[3].artist.name}} | Views: {{topViewSongList[3].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										05
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[4].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[4].id}}">{{topViewSongList[4].name}}</a></h3>
+                <p>{{topViewSongList[4].artist.name}} | Views: {{topViewSongList[4].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										06
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[5].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[5].id}}">{{topViewSongList[5].name}}</a></h3>
+                <p>{{topViewSongList[5].artist.name}} | Views: {{topViewSongList[5].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+      </div>
+      <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										07
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[6].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[6].id}}">{{topViewSongList[6].name}}</a></h3>
+                <p>{{topViewSongList[6].artist.name}} | Views: {{topViewSongList[6].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										08
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[7].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[7].id}}">{{topViewSongList[7].name}}</a></h3>
+                <p>{{topViewSongList[7].artist.name}} | Views: {{topViewSongList[7].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										09
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topViewSongList[8].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topViewSongList[8].id}}">{{topViewSongList[8].name}}</a></h3>
+                <p>{{topViewSongList[8].artist.name}} | Views: {{topViewSongList[8].views}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---Top 9 Liked Songs--->
+<div class="ms_weekly_wrapper">
+  <div class="ms_weekly_inner">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ms_heading">
+          <h1>Top 09 Most Liked Songs</h1>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										01
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[0].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[0].id}}">{{topLikeSongList[0].name}}</a></h3>
+                <p>{{topLikeSongList[0].artist.name}} | {{topLikeSongNumber[0]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										02
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[1].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[1].id}}">{{topLikeSongList[1].name}}</a></h3>
+                <p>{{topLikeSongList[1].artist.name}} | {{topLikeSongNumber[1]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										03
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[2].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[2].id}}">{{topLikeSongList[2].name}}</a></h3>
+                <p>{{topLikeSongList[2].artist.name}} | {{topLikeSongNumber[2]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+      </div>
+      <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										04
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[3].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[3].id}}">{{topLikeSongList[3].name}}</a></h3>
+                <p>{{topLikeSongList[3].artist.name}} | {{topLikeSongNumber[3]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										05
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[4].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[4].id}}">{{topLikeSongList[4].name}}</a></h3>
+                <p>{{topLikeSongList[4].artist.name}} | {{topLikeSongNumber[4]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										06
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[5].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[5].id}}">{{topLikeSongList[5].name}}</a></h3>
+                <p>{{topLikeSongList[5].artist.name}} | {{topLikeSongNumber[5]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+      </div>
+      <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										07
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[6].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[6].id}}">{{topLikeSongList[6].name}}</a></h3>
+                <p>{{topLikeSongList[6].artist.name}} | {{topLikeSongNumber[6]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										08
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[7].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[7].id}}">{{topLikeSongList[7].name}}</a></h3>
+                <p>{{topLikeSongList[7].artist.name}} | {{topLikeSongNumber[7]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+        <div class="ms_weekly_box">
+          <div class="weekly_left">
+                                    <span class="w_top_no">
+										09
+									</span>
+            <div class="w_top_song">
+              <div class="w_tp_song_img">
+                <img src="http://localhost:8080/image/{{topLikeSongList[8].image}}" alt="" class="img-fluid">
+                <div class="ms_song_overlay">
+                </div>
+                <div class="ms_play_icon">
+                  <img src="/assets/images/svg/play.svg" alt="">
+                </div>
+              </div>
+              <div class="w_tp_song_name">
+                <h3><a routerLink="/song/detail/{{topLikeSongList[8].id}}">{{topLikeSongList[8].name}}</a></h3>
+                <p>{{topLikeSongList[8].artist.name}} | {{topLikeSongNumber[8]}} likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="weekly_right">
+            <span class="w_song_time">5:10</span>
+            <span class="ms_more_icon" data-other="1">
+										<img src="/assets/images/svg/more.svg" alt="">
+									</span>
+          </div>
+          <ul class="more_option">
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+          </ul>
+        </div>
+        <div class="ms_divider"></div>
+      </div>
+    </div>
+  </div>
+</div>
+

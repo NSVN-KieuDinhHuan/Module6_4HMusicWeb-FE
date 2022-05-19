@@ -31,10 +31,10 @@ export class CreatedSongListComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.getAllSong();
+    this.jsService.jsfile();
     this.getAllCreatedSongbyUser();
-    this.playService.configVolume();
-    this.getAllSong()
-    this.jsService.jsfile()
 
   }
   playSongById(id) {
