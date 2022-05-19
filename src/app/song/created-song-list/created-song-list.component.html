@@ -1,5 +1,5 @@
 
-  <!----Free Download Css Start---->
+  <!----Your song---->
   <div class="ms_free_download" *ngIf="currentUser">
     <div class="ms_heading">
       <h1>My Song</h1>
@@ -44,6 +44,57 @@
       <a href="#" class="ms_btn">view more</a>
     </div>
   </div>
+  <div class="ms_free_download" *ngIf="!currentUser">
+    <div class="ms_heading">
+      <h1>Please login <span><a routerLink="/auth/login" style="color: whitesmoke">here</a></span> to custom your songs</h1>
+    </div>
+  </div>
+
+<!--  All song-->
+  <div class="ms_free_download">
+    <div class="ms_heading">
+      <h1>All songs</h1>
+    </div>
+    <div class="album_inner_list" >
+      <div class="album_list_wrapper">
+        <ul class="album_list_name">
+          <li>#</li>
+          <li>Song Title</li>
+          <li class="text-center">Artist</li>
+          <li class="text-center">Category</li>
+          <li class="text-center">Album</li>
+          <li class="text-center">views</li>
+          <li class="text-center">More</li>
+        </ul>
+
+        <ul *ngFor="let song of allSongsForAllUsers; index as i">
+
+          <li class="text-center"><a (click)="addToQueue(song)"><span class="play_no">{{i+1}}</span><span class="play_hover" ></span></a></li>
+          <li class="text-center"><a routerLink="/song/detail/{{song.id}}">{{song.name}}</a></li>
+          <li class="text-center"><a href="#">{{song.artist.name}}</a></li>
+          <li class="text-center"><a href="#">{{song.category.name}}</a></li>
+          <li class="text-center"><a href="#">{{song.album.name}}</a></li>
+          <li class="text-center"><a href="#">5:26</a></li>
+          <li class="text-center ms_more_icon"><a ><span class="ms_icon1 ms_active_icon"></span></a>
+            <ul class="more_option">
+              <li><a (click)="addToQueue(song)"><span class="opt_icon"><span class="icon icon_fav"></span></span>Listen</a></li>
+              <li><a routerLink="/song/delete/{{song.id}}"><span class="opt_icon"><span class="icon icon_queue"></span></span>Delete</a></li>
+              <li><a routerLink="/song/edit/{{song.id}}"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Edit</a></li>
+              <li><a routerLink="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+    <div class="ms_view_more padder_bottom20">
+      <a href="#" class="ms_btn">view more</a>
+    </div>
+  </div>
+
+
 
   <!---Recently Played Music--->
   <div class="ms_rcnt_slider">
