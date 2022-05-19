@@ -18,6 +18,8 @@ export class HomepageComponent implements OnInit {
   topLikeSongList: Song[] = [];
   topLikePlaylistList: PlayList[] = [];
   topNewestPlaylistList: PlayList[] = [];
+  topLikeSongNumber: number[] = [];
+  topLikePlaylistNumber: number[] = [];
 
   constructor(private songService: SongService,
               private playlistService: PlaylistService,
@@ -33,6 +35,8 @@ export class HomepageComponent implements OnInit {
     this.getTopLikeSongList();
     this.getTopLikePlaylist();
     this.getNewestPlaylistList();
+    this. gettopLikeSongNumber();
+    this.getTopLikePlaylistNumber();
   }
 
   getAllSongs() {
@@ -74,6 +78,17 @@ export class HomepageComponent implements OnInit {
   getNewestPlaylistList() {
     this.playlistService.getNewestPlaylistList().subscribe((playlists) => {
       this.topNewestPlaylistList = playlists;
+    });
+  }
+
+  gettopLikeSongNumber() {
+    this.songService.getTopLikeSongNumer().subscribe((likeNumbers) => {
+      this.topLikeSongNumber = likeNumbers;
+    });
+  }
+  getTopLikePlaylistNumber() {
+    this.playlistService.getTopLikePlaylistNumer().subscribe((likeNumbers) => {
+      this.topLikePlaylistNumber = likeNumbers;
     });
   }
 }
