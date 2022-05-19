@@ -51,7 +51,7 @@ const routes: Routes = [
         path: 'artist',
         children: [
           { path: 'list', component: ArtistsListComponent},
-          { path: 'detail/:id', component: ArtistsListComponent},
+          { path: 'detail/:id', component: ArtistDetailComponent},
           {path: 'create', component: ArtistCreateComponent}
         ]
       },

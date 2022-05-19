@@ -10,7 +10,7 @@
         </div>
       </div>
 <!--      <ng-container *ngFor="let playlist of allPlaylistsByUser">-->
-      <div *ngIf="currentUser">
+      <ng-container *ngIf="currentUser">
       <div class="col-lg-2 col-md-6" *ngFor="let playlist of allPlaylistsByUser">
         <div class="ms_rcnt_box marger_bottom25">
           <div class="ms_rcnt_box_img">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      </div>
+      </ng-container>
 <!--      </ng-container>-->
       <div class="col-lg-2" *ngIf="currentUser">
         <div class="ms_rcnt_box marger_bottom25">

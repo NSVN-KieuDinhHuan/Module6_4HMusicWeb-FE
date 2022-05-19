@@ -65,8 +65,8 @@ export class UpdateSongComponent implements OnInit {
   getSongById(id) {
     this.songService.getSongById(id).subscribe(songBE => {
       this.song = songBE;
-      this.SongFormControl.id.setValue(this.song.id);
       this.SongFormControl.name.setValue(this.song.name);
+      this.SongFormControl.author.setValue(this.song.author);
       this.SongFormControl.description.setValue(this.song.description);
       this.SongFormControl.category.setValue(this.song.category.id);
       this.SongFormControl.artist.setValue(this.song.artist.id);

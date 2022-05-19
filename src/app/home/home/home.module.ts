@@ -16,6 +16,9 @@ import {PlaylistListComponent} from '../../playlist/playlist-list/playlist-list.
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UpdateProfileComponent} from '../../auth/update-profile/update-profile.component';
+import {ArtistsListComponent} from '../../artists/artists-list/artists-list.component';
+import {ArtistDetailComponent} from '../../artists/artist-detail/artist-detail.component';
+import {ArtistCreateComponent} from '../../artists/artist-create/artist-create.component';
 
 
 
@@ -31,7 +34,10 @@ import {UpdateProfileComponent} from '../../auth/update-profile/update-profile.c
   PlaylistDetailComponent,
   PlaylistDeleteComponent,
   PlaylistListComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    ArtistsListComponent,
+    ArtistDetailComponent,
+    ArtistCreateComponent,
 ],
   imports: [
     CommonModule,

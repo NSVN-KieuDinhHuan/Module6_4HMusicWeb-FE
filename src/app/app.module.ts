@@ -38,14 +38,8 @@ import { SearchComponent } from './home/search/search.component';
     RegisterComponent,
     LoginComponent,
     ErrorPermissionComponent,
-    ArtistsListComponent,
-    ArtistDetailComponent,
     PlaylistSearchComponent,
     SearchComponent,
-    ArtistCreateComponent,
-    ArtistsListComponent,
-    ArtistDetailComponent,
-    ArtistCreateComponent
   ],
   imports: [
     BrowserModule,
