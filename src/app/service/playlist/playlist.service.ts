@@ -46,11 +46,11 @@ export class PlaylistService {
     return this.http.post<PlayList>(`${API_URL}/playlists/removeSong?songId=${songId}&playlistId=${playlistId}`, true);
   }
 
-  getNewestPlaylists(): Observable<PlayList[]> {
+  getNewestPlaylistList(): Observable<PlayList[]> {
     return this.http.get<PlayList[]>(`${API_URL}/playlists/getNewest`);
   }
 
-  getTopLikePlaylists(): Observable<PlayList[]> {
+  getTopLikePlaylistList(): Observable<PlayList[]> {
     return this.http.get<PlayList[]>(`${API_URL}/playlists/getTopLikePlaylist`);
   }
 

@@ -38,14 +38,17 @@ export class SongService {
     return this.http.get<Song[]>(`${API_URL}/songs`);
   }
 
-  getTopViewSong(): Observable<Song[]> {
-    return this.http.get<Song[]>(`${API_URL}/songs/getTopViewSong`);
+  getTopViewSongList(): Observable<Song[]> {
+    return this.http.get<Song[]>(`${API_URL}/songs/getMostViewSongs`);
   }
 
-  getTopLikeSong(): Observable<Song[]> {
+  getTopViewSong(): Observable<Song> {
+    return this.http.get<Song>(`${API_URL}/songs/getTopViewSong`);
+  }
+
+  getTopLikeSongList(): Observable<Song[]> {
     return this.http.get<Song[]>(`${API_URL}/songs/getTopLikeSong`);
   }
-
   getTopLikeSongNumer(): Observable<number[]> {
     return this.http.get<number[]>(`${API_URL}/songs/getTopLikeNumber`);
   }

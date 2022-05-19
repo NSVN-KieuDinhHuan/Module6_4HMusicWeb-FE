@@ -28,6 +28,11 @@ export class HomepageComponent implements OnInit {
     this.getAllPlaylists();
     this.getAllSongs();
     this.jsservice.jsfile();
+    this.getTopViewSong();
+    this.getTopViewSongList();
+    this.getTopLikeSongList();
+    this.getTopLikePlaylist();
+    this.getNewestPlaylistList();
   }
 
   getAllSongs() {
@@ -42,5 +47,33 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+  getTopViewSong() {
+    this.songService.getTopViewSong().subscribe((song) => {
+      this.topViewsSong = song;
+    });
+  }
 
+  getTopViewSongList() {
+    this.songService.getTopViewSongList().subscribe((songs) => {
+      this.topViewSongList = songs;
+    });
+  }
+
+  getTopLikeSongList() {
+    this.songService.getTopLikeSongList().subscribe((songs) => {
+      this.topLikeSongList = songs;
+    });
+  }
+
+  getTopLikePlaylist() {
+    this.playlistService.getTopLikePlaylistList().subscribe((playlists) => {
+      this.topLikePlaylistList = playlists;
+    });
+  }
+
+  getNewestPlaylistList() {
+    this.playlistService.getNewestPlaylistList().subscribe((playlists) => {
+      this.topNewestPlaylistList = playlists;
+    });
+  }
 }
