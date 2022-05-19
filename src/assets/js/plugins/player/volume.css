@@ -1,4 +1,4 @@
-html {
+html.knob ,d3{
   font-size: 1px;
 }
 
@@ -107,8 +107,10 @@ body {
 .knob-container .knob-wrapper-outer .knob-wrapper .knob.d3:after {
   border-top-color: #fff;
   border-right-color: #fff;
+  font-size: 1px;
 }
 .knob-container .knob-wrapper-outer .knob-wrapper .handle {
+  font-size: 1px;
   position: absolute;
   top: 0;
   left: 0;

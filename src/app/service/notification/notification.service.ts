@@ -1,25 +1,44 @@
 import { Injectable } from '@angular/core';
 import {JsService} from '../js.service';
 declare var $: any;
-declare var swal: any;
+declare var Swal: any;
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  showMessage(icon: string, title: string) {
-    // tslint:disable-next-line:only-arrow-functions
+  showSuccessMessage(message){
+    $('.html').css({"font-size": "200%"})
     $(function() {
-      swal(
-        {
-          position: 'top',
-          type: icon,
-          title,
-          showConfirmButton: false,
-          timer: 1500,
-        }
-      );
-    });
+      var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        width: 100,
+      });
+      Toast.fire({
+        icon: 'success',
+        title: message
+      })
+    })
+  }
+
+  fun
+  showErrorMessage(message){
+    $(function() {
+      var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      Toast.fire({
+        icon: 'Error',
+        title: message
+      })
+    })
+
   }
 
 

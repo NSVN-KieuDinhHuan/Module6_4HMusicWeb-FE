@@ -766,6 +766,7 @@ span.nav_text {
 	top: 6px;
 }
 .ms_btn {
+  border-color: white;
 	background-color: #3bc8e7;
 	color: #fff;
 	height: 30px;
@@ -783,6 +784,7 @@ span.nav_text {
 	-o-transition: all 0.4s ease-in-out;
 }
 .ms_btn:hover {
+
 	color: #ffffff;
 	box-shadow: 0px 0px 20px 0px #3bc8e7;
 }
