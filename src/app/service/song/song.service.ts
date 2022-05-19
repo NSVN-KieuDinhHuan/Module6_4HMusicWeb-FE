@@ -3,9 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Song} from '../../model/song';
 import {environment} from '../../../environments/environment';
-
 const API_URL = `${environment.apiUrl}`;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -54,5 +52,8 @@ export class SongService {
   }
   addview(id): Observable<Song> {
     return this.http.post(`${API_URL}/songs/views/${id}`,null);
+  }
+  getAllSongForAllArtist(artistId): Observable<Song[]> {
+    return this.http.get<Song[]>(`${API_URL}/songs/artist/${artistId}`);
   }
 }

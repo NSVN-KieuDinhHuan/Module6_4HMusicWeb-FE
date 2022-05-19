@@ -19,6 +19,7 @@ import { ArtistsListComponent } from './artists/artists-list/artists-list.compon
 import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
 import {HomeModule} from './home/home/home.module';
 
+import { ArtistCreateComponent } from './artists/artist-create/artist-create.component';
 
 import { PlaylistSearchComponent } from './playlist/playlist-search/playlist-search.component';
 import { SearchComponent } from './home/search/search.component';
@@ -40,7 +41,11 @@ import { SearchComponent } from './home/search/search.component';
     ArtistsListComponent,
     ArtistDetailComponent,
     PlaylistSearchComponent,
-    SearchComponent
+    SearchComponent,
+    ArtistCreateComponent,
+    ArtistsListComponent,
+    ArtistDetailComponent,
+    ArtistCreateComponent
   ],
   imports: [
     BrowserModule,
