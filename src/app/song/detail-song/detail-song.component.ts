@@ -45,6 +45,8 @@ export class DetailSongComponent implements OnInit {
       const id = +paramMap.get('id');
       this.getAllCommentSong(id)
       this.detailSongByid(id);
+      this.getLike(id);
+      this.getAllLike(id);
     });
   }
 
@@ -100,23 +102,23 @@ export class DetailSongComponent implements OnInit {
   }
 
   changeLikeIcon() {
-    $('#likeIcon').style({'background-position': '-592px 6px'});
+    $('#likeIconSong').style({'background-position': '-592px 6px'});
   }
 
   addLike() {
     this.likeSongService.addLike(this.songDetail.id, this.currentUser.id).subscribe(() => {
       this.getAllLike(this.songDetail.id);
       this.getLike(this.songDetail.id);
-      $('#likeIcon').hide();
-      $('#unlikeIcon').show();
+      $('#likeIconSong').hide();
+      $('#unlikeIconSong').show();
     });
   }
   removeLike() {
     this.likeSongService.deleteLike(this.songDetail.id, this.currentUser.id).subscribe(() => {
       this.getAllLike(this.songDetail.id);
       this.getLike(this.songDetail.id);
-      $('#likeIcon').show();
-      $('#unlikeIcon').hide();
+      $('#likeIconSong').show();
+      $('#unlikeIconSong').hide();
     });
   }
   changeLikeStatus() {

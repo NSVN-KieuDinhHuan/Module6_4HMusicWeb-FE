@@ -13,20 +13,26 @@ import {JsService} from '../../service/js.service';
 export class HomepageComponent implements OnInit {
   allSongs: Song[] = [];
   allPlaylists: PlayList[] = [];
-  mostViewsSong: Song = {};
-  mostViewsPlaylist: PlayList = {};
+  topViewsSong: Song = {};
+  topViewSongList: Song[] = [];
+  topLikeSongList: Song[] = [];
+  topLikePlaylistList: PlayList[] = [];
+  topNewestPlaylistList: PlayList[] = [];
 
   constructor(private songService: SongService,
               private playlistService: PlaylistService,
               private jsservice: JsService) {
-    this.getMostViewPlaylist();
   }
 
   ngOnInit() {
     this.getAllPlaylists();
     this.getAllSongs();
-    this.jsservice.jsfile()
-    // this.getMostViewPlaylist();
+    this.jsservice.jsfile();
+    this.getTopViewSong();
+    this.getTopViewSongList();
+    this.getTopLikeSongList();
+    this.getTopLikePlaylist();
+    this.getNewestPlaylistList();
   }
 
   getAllSongs() {
@@ -38,30 +44,36 @@ export class HomepageComponent implements OnInit {
   getAllPlaylists() {
     this.playlistService.getAllPlaylist().subscribe((playlists) => {
       this.allPlaylists = playlists;
-      // let mostViewPlaylist = playlists[0];
-      // // tslint:disable-next-line:prefer-for-of
-      // for (let i = 0; i < playlists.length; i++) {
-      //   if (mostViewPlaylist.views < playlists[i].views) {
-      //     mostViewPlaylist = playlists[i];
-      //   }
-      // }
-      // this.mostViewsPlaylist = mostViewPlaylist;
     });
   }
 
-  getMostViewPlaylist() {
-    let allPlaylists;
-    this.playlistService.getAllPlaylist().subscribe((playlists) => {
-      allPlaylists = playlists;
-      let mostViewPlaylist = allPlaylists[0];
-      // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < allPlaylists.length; i++) {
-        if (mostViewPlaylist.views < allPlaylists[i].views) {
-          mostViewPlaylist = allPlaylists[i];
-        }
-      }
-      this.mostViewsPlaylist = mostViewPlaylist;
+  getTopViewSong() {
+    this.songService.getTopViewSong().subscribe((song) => {
+      this.topViewsSong = song;
     });
   }
 
+  getTopViewSongList() {
+    this.songService.getTopViewSongList().subscribe((songs) => {
+      this.topViewSongList = songs;
+    });
+  }
+
+  getTopLikeSongList() {
+    this.songService.getTopLikeSongList().subscribe((songs) => {
+      this.topLikeSongList = songs;
+    });
+  }
+
+  getTopLikePlaylist() {
+    this.playlistService.getTopLikePlaylistList().subscribe((playlists) => {
+      this.topLikePlaylistList = playlists;
+    });
+  }
+
+  getNewestPlaylistList() {
+    this.playlistService.getNewestPlaylistList().subscribe((playlists) => {
+      this.topNewestPlaylistList = playlists;
+    });
+  }
 }

@@ -4,6 +4,7 @@ import {PlaylistService} from '../../service/playlist/playlist.service';
 import {UserToken} from '../../model/user-token';
 import {AuthenticationService} from '../../service/Authentication/authentication.service';
 import {JsService} from '../../service/js.service';
+import {PlayService} from '../../service/playmusic/play.service';
 
 @Component({
   selector: 'app-playlist-list',
@@ -17,7 +18,8 @@ export class PlaylistListComponent implements OnInit {
 
   constructor(private playlistService: PlaylistService,
               private authenticationService: AuthenticationService,
-              private jsService:JsService) {
+              private jsService: JsService,
+              private playService: PlayService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -40,4 +42,6 @@ export class PlaylistListComponent implements OnInit {
       this.allPlaylistsByUser = playlists;
     });
   }
+
+
 }

@@ -44,8 +44,10 @@
             <h3 class="ms_blog_title">Review</h3>
             <div class=" ">
               <ul>
-                <a id="likeIcon" (click)="addLike()" *ngIf="!like"><span class="ms_icon1 ms_fav_icon"></span></a>
-                <a id="unlikeIcon" (click)="removeLike()" *ngIf="like"><i class="bi bi-heart-fill"></i></a>
+                <div *ngIf="currentUser">
+                  <a id="likeIconSong" (click)="addLike()" *ngIf="!like"><span class="bi bi-heart"></span> Like {{likeList.length}}</a>
+                  <a id="unlikeIconSong" (click)="removeLike()" *ngIf="like"><span class="bi bi-heart-fill"></span> Like {{likeList.length}}</a>
+                </div>
                 <a style="float: right" href="#"> Views: {{songDetail.views}}</a>
               </ul>
             </div>

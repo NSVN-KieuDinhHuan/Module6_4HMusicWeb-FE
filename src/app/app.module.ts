@@ -20,6 +20,8 @@ import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.com
 import {HomeModule} from './home/home/home.module';
 
 
+import { PlaylistSearchComponent } from './playlist/playlist-search/playlist-search.component';
+import { SearchComponent } from './home/search/search.component';
 
 
 
@@ -37,7 +39,8 @@ import {HomeModule} from './home/home/home.module';
     ErrorPermissionComponent,
     ArtistsListComponent,
     ArtistDetailComponent,
-
+    PlaylistSearchComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,6 @@ import {HomeModule} from './home/home/home.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     HomeModule
   ],
   providers: [

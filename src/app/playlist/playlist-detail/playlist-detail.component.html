@@ -3,7 +3,8 @@
   <div class="album_single_data">
     <div class="album_single_img">
       <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
-      <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="" class="img-fluid">
+      <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt=""
+           class="img-fluid">
     </div>
     <div class="album_single_text">
       <h2>{{playlist.name}}</h2>
@@ -13,40 +14,45 @@
         <a href="#" class="album_date">Released: {{playlist.createDate}}</a>
         <a href="#" class="album_date">Description: {{playlist.description}}</a>
         <a href="#" class="album_date">{{likePlaylistList.length}} Likes | {{playlist.views}} Views | </a>
-
-        <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist"><span class="ms_icon1 ms_fav_icon"></span></a>
-        <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist"><i class="bi bi-heart-fill"></i></a>
-<!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
+        <div *ngIf="currentUser">
+          <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist"><span class="ms_icon1 ms_fav_icon"></span></a>
+          <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist"><i class="bi bi-heart-fill"></i></a>
+        </div>
+        <!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
       </div>
       <div class="album_btn">
         <a  class="ms_btn play_btn">
-          <span class="play_all">
+          <span id="play"  (click)="pausePlaylistDetail()" class="play_all">
             <img src="/assets/images/svg/play_all.svg" alt="">
-            Play All</span>
-          <span class="pause_all">
-            <img src="images/svg/pause_all.svg" alt="">
+            Play </span>
+          <span id="pause" (click)="playPlaylistDetail()" class="pause_all">
+            <img src="/assets/images/svg/pause_all.svg" alt="">
             Pause</span>
         </a>
-        <a href="#" class="ms_btn"><span class="play_all"><img src="/assets/images/svg/add_q.svg" alt="">Add To Queue</span></a>
       </div>
     </div>
     <div class="album_more_optn ms_more_icon">
       <span><img src="/assets/images/svg/more.svg" alt=""></span>
     </div>
     <ul class="more_option">
-      <li *ngIf="playlist.user.id === currentUser.id"><a routerLink="/playlist/edit/{{playlist.id}}"><span class="opt_icon"><span class="icon icon_fav"></span></span>Edit Playlist</a></li>
-      <li *ngIf="playlist.user.id === currentUser.id"><a routerLink="/playlist/delete/{{playlist.id}}"><span class="opt_icon"><span class="icon icon_queue"></span></span>Remove Playlist</a></li>
-      <li *ngIf="playlist.user.id !== currentUser.id"><a routerLink="/playlist/error"><span class="opt_icon"><span class="icon icon_queue"></span></span>Remove Playlist</a></li>
-      <li *ngIf="playlist.user.id !== currentUser.id"><a routerLink="/playlist/error"><span class="opt_icon"><span class="icon icon_queue"></span></span>Remove Playlist</a></li>
+      <li *ngIf="currentUser && playlist.user.id === currentUser.id"><a routerLink="/playlist/edit/{{playlist.id}}"><span
+        class="opt_icon"><span class="icon icon_fav"></span></span>Edit Playlist</a></li>
+      <li *ngIf="currentUser && playlist.user.id === currentUser.id"><a
+        routerLink="/playlist/delete/{{playlist.id}}"><span class="opt_icon"><span
+        class="icon icon_queue"></span></span>Remove Playlist</a></li>
+      <li *ngIf="currentUser && playlist.user.id !== currentUser.id"><a routerLink="/playlist/error"><span
+        class="opt_icon"><span class="icon icon_queue"></span></span>Edit Playlist</a></li>
+      <li *ngIf="currentUser && playlist.user.id !== currentUser.id"><a routerLink="/playlist/error"><span
+        class="opt_icon"><span class="icon icon_queue"></span></span>Remove Playlist</a></li>
       <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
       <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Favourites</a></li>
       <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
     </ul>
   </div>
   <!----Song List---->
-<!--  <div class="ms_content_wrapper padder_top80">-->
+  <!--  <div class="ms_content_wrapper padder_top80">-->
   <div class="ms_free_download">
-<!--  <div class="album_inner_list">-->
+    <!--  <div class="album_inner_list">-->
     <div class="album_list_wrapper">
       <ul class="album_list_name">
         <li>#</li>
@@ -56,29 +62,31 @@
         <li class="text-center">Add To Favourites</li>
         <li class="text-center">More</li>
       </ul>
-<!--      loop songs-->
+      <!--      loop songs-->
       <ul *ngFor="let song of playlist.songs; index as i">
-        <li><a href="#"><span class="play_no">0{{i+1}}</span><span class="play_hover"></span></a></li>
+        <li><a href="#"><span class="play_no">0{{i + 1}}</span><span class="play_hover"></span></a></li>
         <li><a href="#">{{song.name}}</a></li>
         <li><a href="#">{{song.artist.name}}</a></li>
         <li class="text-center"><a href="#">5:26</a></li>
         <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
-        <li class="text-center" (click)="removeSong(song.id, playlist.id)"><button><i class="bi bi-folder-minus"></i></button></li>
-<!--        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>-->
-<!--          <ul class="more_option">-->
-<!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
-<!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
-<!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
-<!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
-<!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
-<!--          </ul>-->
-<!--        </li>-->
+        <li class="text-center" (click)="removeSong(song.id, playlist.id)">
+          <button><i class="bi bi-folder-minus"></i></button>
+        </li>
+        <!--        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>-->
+        <!--          <ul class="more_option">-->
+        <!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
+        <!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
+        <!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
+        <!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
+        <!--            <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
+        <!--          </ul>-->
+        <!--        </li>-->
       </ul>
       <!--      end loop songs-->
     </div>
-<!--  </div>-->
+    <!--  </div>-->
   </div>
-<!--  </div>-->
+  <!--  </div>-->
 </div>
 <!---Main Content Start--->
 <div class="ms_content_wrapper ms_album_content">
@@ -91,31 +99,36 @@
       <p *ngIf="playlist.comments == 0" style="color: whitesmoke">There is no comment!</p>
       <div *ngIf="playlist.comments != 0">
         <div *ngFor="let comment of commentPlaylists">
-      <div class="ms_test_box">
-        <div class="ms_test_top">
-          <div class="ms_test_img">
-            <img src="/assets/images/user2.jpg" alt="">
+          <div class="ms_test_box">
+            <div class="ms_test_top">
+              <div class="ms_test_img">
+                <img src="http://localhost:8080/image/{{comment.user.image}}" width="50px" alt="user image">
+              </div>
+              <div class="ms_test_name">
+                <h3>{{comment.user.username}}</h3>
+                <span class="cmnt_time">{{comment.content}}</span>
+              </div>
+            </div>
+            <!--        <div class="ms_test_para">-->
+            <!--          <p class="cmnt_time">{{comment.content}}</p>-->
+            <!--        </div>-->
           </div>
-          <div class="ms_test_name">
-            <h3>{{comment.user.username}}</h3>
-            <span class="cmnt_time">{{comment.content}}</span>
-          </div>
-        </div>
-<!--        <div class="ms_test_para">-->
-<!--          <p class="cmnt_time">{{comment.content}}</p>-->
-<!--        </div>-->
-      </div>
-      <br>
+          <br>
         </div>
       </div>
 
     </div>
-<!--     Add Arrows-->
-<!--    <div class="swiper-button-next1 slider_nav_next"></div>-->
-<!--    <div class="swiper-button-prev1 slider_nav_prev"></div>-->
+    <!--     Add Arrows-->
+    <!--    <div class="swiper-button-next1 slider_nav_next"></div>-->
+    <!--    <div class="swiper-button-prev1 slider_nav_prev"></div>-->
+  </div>
+  <br>
+  <div class="ms_test_wrapper" *ngIf="!currentUser">
+    <div class="ms_heading">
+      <h1 *ngIf="!currentUser">Please login <span><a routerLink="/auth/login" style="color: whitesmoke">here</a></span> to leave a comment</h1>
+    </div>
   </div>
   <!----Comment Form section Start---->
-  <h3 *ngIf="!currentUser">Please login <span><a routerLink="/auth/login">here</a></span> to leave a comment</h3>
   <div class="ms_cmnt_wrapper" *ngIf="currentUser">
     <div class="ms_heading">
       <h1>Leave A Comment</h1>
@@ -124,7 +137,8 @@
       <form (ngSubmit)="createNewComment(commentForm)" [formGroup]="commentForm">
         <div class="ms_input_group1">
           <div class="ms_input">
-            <textarea name="message" class="form-control" placeholder="Enter Your Comment Here.." style="resize: none; width: 900px;" formControlName="content"></textarea>
+            <textarea name="message" class="form-control" placeholder="Enter Your Comment Here.."
+                      style="resize: none; width: 900px;" formControlName="content"></textarea>
           </div>
         </div>
         <div class="ms_input_group2">
@@ -151,32 +165,34 @@
           <li class="text-center">Duration</li>
           <li class="text-center">Add To Favourites</li>
           <li class="text-center">Action</li>
-<!--          <li class="text-center">More</li>-->
+          <!--          <li class="text-center">More</li>-->
         </ul>
         <!--      loop songs-->
         <ul *ngFor="let song of allSong; index as i">
-          <li><a href="#"><span class="play_no">0{{i+1}}</span><span class="play_hover"></span></a></li>
+          <li><a href="#"><span class="play_no">0{{i + 1}}</span><span class="play_hover"></span></a></li>
           <li><a href="#">{{song.name}}</a></li>
           <li><a href="#">{{song.artist.name}}</a></li>
           <li class="text-center"><a href="#">5:26</a></li>
           <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
-          <li class="text-center" (click)="addSong(song.id, playlist.id)"><button><i class="bi bi-folder-plus"></i></button></li>
-<!--          <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>-->
-<!--            <ul class="more_option">-->
-<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
-<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
-<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
-<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
-<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
-<!--            </ul>-->
-<!--          </li>-->
+          <li class="text-center" (click)="addSong(song.id, playlist.id)">
+            <button><i class="bi bi-folder-plus"></i></button>
+          </li>
+          <!--          <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>-->
+          <!--            <ul class="more_option">-->
+          <!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
+          <!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
+          <!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
+          <!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
+          <!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
+          <!--            </ul>-->
+          <!--          </li>-->
         </ul>
         <!--      end loop songs-->
       </div>
     </div>
     <!-- Add Arrows -->
-<!--    <div class="swiper-button-next3 slider_nav_next"></div>-->
-<!--    <div class="swiper-button-prev3 slider_nav_prev"></div>-->
+    <!--    <div class="swiper-button-next3 slider_nav_next"></div>-->
+    <!--    <div class="swiper-button-prev3 slider_nav_prev"></div>-->
   </div>
   <!----Main div close---->
 </div>

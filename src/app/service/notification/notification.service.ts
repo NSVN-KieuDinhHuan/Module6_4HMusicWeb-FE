@@ -15,7 +15,7 @@ export class NotificationService {
         position: 'top-end',
         showConfirmButton: false,
         timer: 3000,
-        width: 100,
+        width: 300,
       });
       Toast.fire({
         icon: 'success',
@@ -31,7 +31,8 @@ export class NotificationService {
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000
+        timer: 3000,
+        width:300
       });
       Toast.fire({
         icon: 'Error',

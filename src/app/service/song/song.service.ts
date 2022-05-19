@@ -37,6 +37,21 @@ export class SongService {
   getAllSongForAllUser(): Observable<Song[]> {
     return this.http.get<Song[]>(`${API_URL}/songs`);
   }
+
+  getTopViewSongList(): Observable<Song[]> {
+    return this.http.get<Song[]>(`${API_URL}/songs/getMostViewSongs`);
+  }
+
+  getTopViewSong(): Observable<Song> {
+    return this.http.get<Song>(`${API_URL}/songs/getTopViewSong`);
+  }
+
+  getTopLikeSongList(): Observable<Song[]> {
+    return this.http.get<Song[]>(`${API_URL}/songs/getTopLikeSong`);
+  }
+  getTopLikeSongNumer(): Observable<number[]> {
+    return this.http.get<number[]>(`${API_URL}/songs/getTopLikeNumber`);
+  }
   addview(id): Observable<Song> {
     return this.http.post(`${API_URL}/songs/views/${id}`,null);
   }

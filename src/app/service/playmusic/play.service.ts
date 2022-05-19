@@ -27,7 +27,9 @@ export class PlayService {
   });
 
 
-  constructor(private songService:SongService) { }
+  constructor(private songService:SongService) {
+
+  }
 
   convertSongBEToSongPlayer(songs: Song[], myPlayListOtion){
     for (let i = 0; i < songs.length; i++) {
@@ -63,6 +65,31 @@ export class PlayService {
     this.songService.addview(songID).subscribe(() => {
     });
   }
+
+  playPlaylist(songs){
+    for (let i = 0; i <songs.length; i++) {
+      this.addToQueue(songs[i])
+
+    }
+
+  }
+  RemoveSongQueue(Song){
+    this.myPlaylist.remove
+  }
+  playindex(index){
+    this.myPlaylist.play(index)
+  }
+  previous(){
+    var current = this.myPlaylist.current;
+    var playlist = this.myPlaylist.playlist;
+      $.each(playlist, function(index, obj) {
+        if (index == current-1) {
+          $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img style='width: 50px' src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");
+
+        }
+      });
+
+  }
   addToQueue(song){
     this.configVolume()
     var myPlayListOtion = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
@@ -70,15 +97,17 @@ export class PlayService {
     if (this.checkSongExsit(songPlayer)==-1){
       this.songlist.push(songPlayer)
       this.myPlaylist.setPlaylist(this.songlist);
-      this.myPlaylist.play(-1);
+      this.myPlaylist.play(0);
     }else {
       this.myPlaylist.play(this.checkSongExsit(songPlayer));
     }
     var current = this.myPlaylist.current;
     var playlist = this.myPlaylist.playlist;
+
     $.each(playlist, function(index, obj) {
       if (index == current) {
         $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img style='width: 50px' src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");
+
       }
     });
 
@@ -160,6 +189,7 @@ export class PlayService {
       $('.audio-play-btn').removeClass('is_playing');
       $(this).addClass('is_playing');
       var playlistId = $(this).data('playlist-id');
+      alert( playlistId)
       this.myPlaylist.play(playlistId);
     });
 

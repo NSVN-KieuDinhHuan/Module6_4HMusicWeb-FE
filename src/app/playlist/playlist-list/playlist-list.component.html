@@ -5,15 +5,17 @@
 <!--      heading-->
       <div class="col-lg-12">
         <div class="ms_heading">
-          <h1>Your Playlists</h1>
+          <h1 *ngIf="!currentUser">Sign in <span><a routerLink="/auth/login" style="color: whitesmoke">here</a></span> to create your playlists</h1>
+          <h1 *ngIf="currentUser">Your playlists</h1>
         </div>
       </div>
 <!--      <ng-container *ngFor="let playlist of allPlaylistsByUser">-->
+      <div *ngIf="currentUser">
       <div class="col-lg-2 col-md-6" *ngFor="let playlist of allPlaylistsByUser">
         <div class="ms_rcnt_box marger_bottom25">
           <div class="ms_rcnt_box_img">
-            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" class="img-fluid">
-            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" alt="">
+            <img *ngIf="playlist.songs.length == 0" src="/assets/images/radio/playlist_default.jpg" alt="" width="240px" class="img-fluid">
+            <img *ngIf="playlist.songs.length != 0" src="http://localhost:8080/image/{{playlist.songs[0].image}}" width="240px" alt="">
             <div class="ms_main_overlay">
               <div class="ms_box_overlay"></div>
               <div class="ms_more_icon">
@@ -37,8 +39,9 @@
           </div>
         </div>
       </div>
+      </div>
 <!--      </ng-container>-->
-      <div class="col-lg-2">
+      <div class="col-lg-2" *ngIf="currentUser">
         <div class="ms_rcnt_box marger_bottom25">
           <div class="create_playlist">
 

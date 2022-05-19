@@ -2299,7 +2299,11 @@ i.ms_icon.icon_share {
 .jp-playlist li:hover {
 	background-color: #2ec8e6;
 }
-.jp-playlist li a {
+.jp-playlist li a img{
+  float: left;
+  width: 100%;
+}
+.jp-playlist li a{
 	color: #fff;
 	display: block;
 	padding: 10px 20px;
