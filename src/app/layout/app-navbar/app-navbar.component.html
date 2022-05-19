@@ -3,11 +3,11 @@
   <div class="ms_top_left">
     <form>
     <div class="ms_top_search">
-      <input id="search" type="text" class="form-control" placeholder="Search Music Here..">
-<!--      <button></button>-->
-      <span class="search_icon">
+      <input id="search" type="text" class="form-control" placeholder="Search Music Here.." type="text" name="search"
+             [(ngModel)]="q">
+      <a href="/search/{{q}}"><span class="search_icon">
 							<img src="assets/images/svg/search.svg" alt="">
-						</span>
+						</span></a>
     </div>
     </form>
     <div class="ms_top_trend">
