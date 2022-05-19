@@ -34,7 +34,6 @@ export class HomepageComponent implements OnInit {
       this.allSongs = songs;
     });
   }
-
   getAllPlaylists() {
     this.playlistService.getAllPlaylist().subscribe((playlists) => {
       this.allPlaylists = playlists;

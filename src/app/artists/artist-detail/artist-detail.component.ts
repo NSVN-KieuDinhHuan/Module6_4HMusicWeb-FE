@@ -26,6 +26,7 @@ export class ArtistDetailComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
       this.getArtistById(id);
+      this.getAllSongForByIdArtist(id);
     });
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
@@ -33,7 +34,6 @@ export class ArtistDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllSong();
     this.jsService.jsfile();
   }
   getArtistById(id) {
@@ -41,8 +41,8 @@ export class ArtistDetailComponent implements OnInit {
       this.artist = artist;
     });
   }
-  getAllSong() {
-    this.songService.getAllSongForAllArtist(this.artist.id).subscribe((songs) => {
+  getAllSongForByIdArtist(id) {
+    this.songService.getAllSongForAllArtist(id).subscribe((songs) => {
       this.allSong = songs;
     });
   }

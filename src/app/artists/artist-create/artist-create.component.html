@@ -1,1 +1,59 @@
-<p>artist-create works!</p>
+<div class="ms_upload_wrapper marger_top60">
+  <form (ngSubmit)="createArtist(artistForm)" [formGroup]="artistForm">
+    <div class=" marger_top60">
+      <div class="ms_upload_box">
+        <div class="ms_heading">
+          <h1>Artist Information</h1>
+        </div>
+        <div class="ms_pro_form">
+          <div class="form-group">
+            <label for="name">Artist name:</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name"
+                   placeholder="Import Artist">
+          </div>
+          <div class="form-group">
+            <label for="band">Band name:</label>
+            <input type="text" class="form-control" id="band" name="band"
+                  formControlName="band" placeholder="Import Band">
+          </div>
+          <div class="form-group">
+            <label for="story">Story</label>
+            <input type="text" class="form-control" id="story" name="story"
+                   formControlName="story" placeholder="Import Story">
+          </div>
+          <div class="form-group">
+            <label for="moreInfo">More Info</label>
+            <input type="text" class="form-control" id="moreInfo" name="moreInfo"
+                  formControlName="moreInfo" placeholder="Import More Info">
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender"
+                   formControlName="gender" placeholder="Import Gender">
+          </div>
+          <div class="form-group">
+            <label class="text-center" for="dateOfBirth">Birthday</label>
+            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth"
+                   formControlName="dateOfBirth" placeholder="Import Birthday">
+          </div>
+          <div class="form-group">
+            <label for="Category">Category</label>
+            <select class="form-control" name="Category" id="Category" formControlName="Category">
+              <option disabled [ngValue]="null">Choose a category</option>
+              <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+            </select>
+          </div>
+
+
+          <div class="pro-form-btn text-center marger_top15">
+            <div class="ms_upload_btn">
+              <button routerLink="*" class="ms_btn">Create</button>
+              <button routerLink="/artist/list" class="ms_btn">Cancel</button>
+              <!--              <a href="#" class="ms_btn">Cancel</a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

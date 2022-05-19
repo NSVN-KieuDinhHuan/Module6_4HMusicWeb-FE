@@ -39,7 +39,7 @@ export class CreateSongComponent implements OnInit {
               private fb: FormBuilder,
               private notificationSevice: NotificationService,
               private router: Router,
-              private jsService:JsService,
+              private jsService: JsService,
               private authenticationService: AuthenticationService) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;

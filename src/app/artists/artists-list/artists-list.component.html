@@ -1,13 +1,39 @@
 <!---Featured Artists Music--->
 <div class="ms_featured_slider padder_top20">
   <div class="ms_heading">
+    <div class="col-lg-2">
+      <div class="ms_rcnt_box marger_bottom25">
+        <div class="create_playlist">
+
+          <i class="ms_icon icon_playlist"><a routerLink="/artist/create"></a></i>
+        </div>
+        <div class="ms_rcnt_box_text">
+          <h3><a routerLink="/artist/create">Create New Artist</a></h3>
+        </div>
+      </div>
+    </div>
     <h1>Artists</h1>
     <span class="veiw_all"><a routerLink="#">view more</a></span>
   </div>
   <div class="ms_relative_inner">
-    <div class="ms_feature_slider swiper-container" *ngFor="let artist of allArtists; index as i">
-      <li class="text-center"><a><span class="play_no">{{i+1}}</span><span class="play_hover" ></span></a></li>
+    <div class="album_list_wrapper">
+      <ul class="album_list_name">
+        <li class="text-center">#</li>
+        <li class="text-center">Artist</li>
+        <li class="text-center">Band</li>
+        <li class="text-center">Gende</li>
+        <li>Birthday</li>
+      </ul>
+      <ul *ngFor="let artist of allArtists; index as i">
+
+      <li class="text-center"><a><span >{{i+1}}</span><span  ></span></a></li>
       <li class="text-center"><a routerLink="/artist/detail/{{artist.id}}">{{artist.name}}</a></li>
+        <li class="text-center"><a>{{artist.band}}</a></li>
+        <li *ngIf="artist.gender == true" class="text-center"><a>Men</a></li>
+        <li *ngIf="artist.gender == false" class="text-center"><a>Women</a></li>
+        <li class="text-center"><a>{{artist.dateOfBirth}}</a></li>
+      </ul>
+
       <div class="swiper-wrapper">
         <div class="swiper-slide" >
           <div class="ms_rcnt_box">

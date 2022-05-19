@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
+import {HomeRoutingModule} from './home-routing.module';
 import {HomepageComponent} from '../homepage/homepage.component';
 import {DetailSongComponent} from '../../song/detail-song/detail-song.component';
 import {CreatedSongListComponent} from '../../song/created-song-list/created-song-list.component';
@@ -21,16 +21,16 @@ import {ArtistDetailComponent} from '../../artists/artist-detail/artist-detail.c
 
 @NgModule({
   declarations: [HomepageComponent,
-  DetailSongComponent,
-  CreatedSongListComponent,
-  DeleteSongComponent,
-  UpdateSongComponent,
-  CreateSongComponent,
-  PlaylistCreateComponent,
-  PlaylistUpdateComponent,
-  PlaylistDetailComponent,
-  PlaylistDeleteComponent,
-  PlaylistListComponent,
+    DetailSongComponent,
+    CreatedSongListComponent,
+    DeleteSongComponent,
+    UpdateSongComponent,
+    CreateSongComponent,
+    PlaylistCreateComponent,
+    PlaylistUpdateComponent,
+    PlaylistDetailComponent,
+    PlaylistDeleteComponent,
+    PlaylistListComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,7 @@ import {ArtistDetailComponent} from '../../artists/artist-detail/artist-detail.c
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
-
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

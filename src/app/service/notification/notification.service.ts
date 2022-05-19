@@ -7,14 +7,14 @@ declare var swal: any;
 })
 export class NotificationService {
 
-  showMessage(icon: string, title: string) {
+  showMessage(icon, title) {
     // tslint:disable-next-line:only-arrow-functions
     $(function() {
       swal(
         {
           position: 'top',
           type: icon,
-          title,
+          title: title,
           showConfirmButton: false,
           timer: 1500,
         }
