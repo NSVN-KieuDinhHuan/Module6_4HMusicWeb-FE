@@ -5,6 +5,7 @@ import {AuthenticationService} from '../../service/Authentication/authentication
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {JsService} from '../../service/js.service';
+import {NotificationService} from '../../service/notification/notification.service';
 
 @Component({
   selector: 'app-playlist-create',
@@ -23,7 +24,8 @@ export class PlaylistCreateComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private authenticationService: AuthenticationService,
               private router: Router,
-              private jsService:JsService) {
+              private jsService:JsService,
+              private notificationSevice: NotificationService,) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     });
@@ -47,9 +49,9 @@ export class PlaylistCreateComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     this.playlistService.createPlaylist(playlist, this.currentUser.id).subscribe((playlist) => {
       this.router.navigateByUrl('/playlist/list');
-      alert('Created successfully!');
+      this.notificationSevice.showSuccessMessage('successfully!');
     }, error => {
-      alert('Created failed!');
+      this.notificationSevice.showErrorMessage(' failed!');
     });
   }
 

@@ -98,4 +98,10 @@ export class HomepageComponent implements OnInit {
       this.topLikePlaylistNumber = likeNumbers;
     });
   }
+
+  addToQueue(song: Song) {
+    this.playService.addToQueue(song);
+    this.playService.addviews(song.id);
+
+  }
 }

@@ -45,7 +45,7 @@
         <div class="ms_rcnt_box marger_bottom25">
           <div class="create_playlist">
 
-            <i class="ms_icon icon_playlist"><a routerLink="/playlist/create"></a></i>
+            <a routerLink="/playlist/create"> <i class="ms_icon icon_playlist"></i></a>
           </div>
           <div class="ms_rcnt_box_text">
             <h3><a routerLink="/playlist/create">Create New Playlist</a></h3>
@@ -110,7 +110,7 @@
                 <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
               </ul>
               <div class="ms_play_icon">
-                <img src="/assets/images/svg/play.svg" alt="">
+                <a routerLink="/playlist/detail/{{playlist.id}}"> <img src="/assets/images/svg/play.svg" alt=""></a>
               </div>
             </div>
           </div>

@@ -13,7 +13,14 @@
         <!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
       </div>
       <div class="album_btn">
-        <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="/assets/images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
+        <a  class="ms_btn play_btn">
+          <span id="play"  (click)="pausePlaylistDetail()" class="play_all">
+            <img src="/assets/images/svg/play_all.svg" alt="">
+            Play </span>
+          <span id="pause" (click)="playPlaylistDetail()" class="pause_all">
+            <img src="/assets/images/svg/pause_all.svg" alt="">
+            Pause</span>
+        </a>
       </div>
     </div>
     <div class="album_more_optn ms_more_icon">

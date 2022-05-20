@@ -58,6 +58,7 @@ export class ArtistCreateComponent implements OnInit {
 
       this.artistService.createArtist(artist).subscribe(() => {
           this.notificationService.showSuccessMessage( 'Tạo mới thành công!');
+          this.router.navigateByUrl("artist/list")
         }, error => {
           this.notificationService.showErrorMessage('Tạo mới lỗi!');
         }

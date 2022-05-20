@@ -36,7 +36,6 @@ export class CreatedSongListComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.getAllSong();
     this.getAllCreatedSongbyUser();
 
@@ -44,7 +43,6 @@ export class CreatedSongListComponent implements OnInit {
   playSongById(id) {
     this.songService.getSongById(id).subscribe((songsFromBE) => {
       this.songPlayList.push(songsFromBE);
-
     });
   }
  getAllCreatedSongbyUser() {
@@ -89,6 +87,7 @@ export class CreatedSongListComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.getAllSong()
+    this.jsService.jsfile()
   }
   getAllSong() {
     this.songService.getAllSongForAllUser().subscribe((songs) => {
@@ -102,5 +101,7 @@ export class CreatedSongListComponent implements OnInit {
     this.playService.addToQueue(song);
     this.playService.addviews(song.id);
     this.getAllCreatedSongbyUser();
+    this.getAllSong();
+    this.jsService.jsfile()
   }
 }

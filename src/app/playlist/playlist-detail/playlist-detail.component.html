@@ -58,16 +58,16 @@
         <li>#</li>
         <li>Song Title</li>
         <li>Artist</li>
-        <li class="text-center">Duration</li>
+        <li class="text-center">views</li>
         <li class="text-center">Add To Favourites</li>
         <li class="text-center">More</li>
       </ul>
       <!--      loop songs-->
       <ul *ngFor="let song of playlist.songs; index as i">
-        <li><a href="#"><span class="play_no">0{{i + 1}}</span><span class="play_hover"></span></a></li>
+        <li><a (click)="addToQueue(song)"><span class="play_no">0{{i + 1}}</span><span class="play_hover"></span></a></li>
         <li><a href="#">{{song.name}}</a></li>
         <li><a href="#">{{song.artist.name}}</a></li>
-        <li class="text-center"><a href="#">5:26</a></li>
+        <li class="text-center"><a href="#">{{song.views}}</a></li>
         <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
         <li class="text-center" (click)="removeSong(song.id, playlist.id)">
           <a><i class="bi bi-dash-lg"></i></a>

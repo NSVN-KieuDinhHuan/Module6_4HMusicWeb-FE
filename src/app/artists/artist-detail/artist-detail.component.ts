@@ -7,6 +7,7 @@ import {AuthenticationService} from '../../service/Authentication/authentication
 import {JsService} from '../../service/js.service';
 import {SongService} from '../../service/song/song.service';
 import {ArtistService} from '../../service/artist/artist.service';
+import {PlayService} from '../../service/playmusic/play.service';
 
 @Component({
   selector: 'app-artist-detail',
@@ -22,6 +23,7 @@ export class ArtistDetailComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private jsService: JsService,
               private songService: SongService,
+              private  playService: PlayService,
               private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
@@ -45,6 +47,14 @@ export class ArtistDetailComponent implements OnInit {
     this.songService.getAllSongForAllArtist(id).subscribe((songs) => {
       this.allSong = songs;
     });
+  }
+
+  playPlaylistDetail(){
+    this.playService.playPlaylist(this.allSong)
+    this.playService.playtop(this.allSong.length-1)
+  }
+  pausePlaylistDetail(){
+    this.playService.pausePlaylist()
   }
 
 }

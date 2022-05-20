@@ -8,7 +8,7 @@
         <div class="ms_pro_form">
           <div class="form-group">
             <label class="text-center">Playlist Name *</label>
-            <input type="text" placeholder="Dream Your Moments" class="form-control" formControlName="name">
+            <input type="text" placeholder="name" class="form-control" formControlName="name">
             <p [hidden]="nameControl.valid || nameControl.pristine" *ngIf="nameControl.errors?.required" style="color: red">Name is required</p>
           </div>
           <div class="form-group">
@@ -16,9 +16,9 @@
             <select class="form-control" formControlName="category">
 <!--              <option value="" disabled>Choose Category</option>-->
               <option disabled [ngValue]="null">Choose Category</option>
-              <option value="1">Category 1</option>
-              <option value="2">Category 2 </option>
-              <option value="3">Category 3</option>
+              <option value="1">nhạc trẻ</option>
+              <option value="2">nhạc rock </option>
+              <option value="3">Nhạc thiêu nhi</option>
             </select>
           </div>
 <!--          <div class="form-group">-->

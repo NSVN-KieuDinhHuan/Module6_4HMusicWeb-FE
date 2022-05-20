@@ -67,7 +67,6 @@ export class PlaylistDetailComponent implements OnInit {
     this.getAllSong();
     this.jsService.jsfile();
   }
-
   getPlaylistById(id) {
     this.playlistService.getPlaylistById(id).subscribe((playlist) => {
       this.playlist = playlist;
@@ -152,5 +151,9 @@ export class PlaylistDetailComponent implements OnInit {
       console.log('successfully!');
     });
   }
-
+  addToQueue(song: Song) {
+    this.playService.addToQueue(song);
+    this.playService.addviews(song.id);
+    this.jsService.jsfile()
+  }
 }
