@@ -10,10 +10,10 @@ import {PlayService} from '../../service/playmusic/play.service';
 })
 export class AppPlaySongComponent implements OnInit {
 
-  constructor(private  jsService:JsService) { }
+  constructor(private jsService: JsService) { }
 
   ngOnInit() {
-    this.jsService.jsfile()
+    this.jsService.jsfile();
   }
 
 

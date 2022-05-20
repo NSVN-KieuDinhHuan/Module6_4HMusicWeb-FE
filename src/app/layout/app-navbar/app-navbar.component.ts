@@ -12,6 +12,7 @@ import {JsService} from '../../service/js.service';
 export class AppNavbarComponent implements OnInit {
 
   currentUser: UserToken = {};
+  q = '';
 
   constructor(private authenticationService: AuthenticationService, private router: Router,
               private  jsService: JsService) {
