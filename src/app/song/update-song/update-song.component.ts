@@ -136,7 +136,7 @@ export class UpdateSongComponent implements OnInit {
     }
     this.songService.editSong(this.currentUser.id, this.song.id, formData).subscribe(() => {
       this.router.navigateByUrl("song/list")
-      alert('Thành công!');
+      this.notificationSevice.showSuccessMessage('Update Succesfull');
     }, error => console.log(error));
 
   }

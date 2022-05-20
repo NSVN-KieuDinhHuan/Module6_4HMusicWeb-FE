@@ -15,8 +15,8 @@
         <a href="#" class="album_date">Description: {{playlist.description}}</a>
         <a href="#" class="album_date">{{likePlaylistList.length}} Likes | {{playlist.views}} Views | </a>
         <div *ngIf="currentUser">
-          <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist"><span class="bi bi-heart"></span></a>
-          <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist"><span class="bi bi-heart-fill"></span></a>
+          <a id="likeIcon" (click)="addLike()" *ngIf="!likePlaylist" style="color: whitesmoke;"><span class="bi bi-heart"></span></a>
+          <a id="unlikeIcon" (click)="removeLike()" *ngIf="likePlaylist" style="color: whitesmoke;"><span><i class="bi bi-heart-fill"></i></span></a>
         </div>
         <!--        <a href="#" class="album_date">{{playlist.views}} Views</a>-->
       </div>
@@ -70,7 +70,7 @@
         <li class="text-center"><a href="#">5:26</a></li>
         <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
         <li class="text-center" (click)="removeSong(song.id, playlist.id)">
-          <button><i class="bi bi-folder-minus"></i></button>
+          <a><i class="bi bi-dash-lg"></i></a>
         </li>
         <!--        <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>-->
         <!--          <ul class="more_option">-->
@@ -162,8 +162,7 @@
           <li>#</li>
           <li>Song Title</li>
           <li>Artist</li>
-          <li class="text-center">Duration</li>
-          <li class="text-center">Add To Favourites</li>
+          <li class="text-center">Views</li>
           <li class="text-center">Action</li>
           <!--          <li class="text-center">More</li>-->
         </ul>
@@ -172,10 +171,10 @@
           <li><a href="#"><span class="play_no">0{{i + 1}}</span><span class="play_hover"></span></a></li>
           <li><a href="#">{{song.name}}</a></li>
           <li><a href="#">{{song.artist.name}}</a></li>
-          <li class="text-center"><a href="#">5:26</a></li>
-          <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
+          <li class="text-center"><a href="#">{{song.views}}</a></li>
+
           <li class="text-center" (click)="addSong(song.id, playlist.id)">
-            <button><i class="bi bi-folder-plus"></i></button>
+            <a><i class="bi bi-plus"></i></a>
           </li>
           <!--          <li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>-->
           <!--            <ul class="more_option">-->

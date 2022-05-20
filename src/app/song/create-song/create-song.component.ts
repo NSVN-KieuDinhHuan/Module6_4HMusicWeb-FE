@@ -108,7 +108,7 @@ export class CreateSongComponent implements OnInit {
       this.songService.createSong(formData, this.currentUser.id).subscribe(() => {
         this.notificationSevice.showSuccessMessage('Success');
         this.router.navigateByUrl("/song/list")
-      }, error => this.notificationSevice.showErrorMessage('Lỗi'));
+      }, error => this.notificationSevice.showErrorMessage('Error'));
       songForm.resetForm();
     }
   }

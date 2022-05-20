@@ -14,7 +14,6 @@
       </div>
       <div class="album_btn">
         <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="/assets/images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
-        <a href="#" class="ms_btn"><span class="play_all"><img src="/assets/images/svg/add_q.svg" alt="">Add To Queue</span></a>
       </div>
     </div>
     <div class="album_more_optn ms_more_icon">
@@ -28,11 +27,11 @@
     <!--  <div class="album_inner_list">-->
     <div class="album_list_wrapper">
       <ul class="album_list_name">
-        <li>#</li>
-        <li class="text-center">Song Title</li>
+        <li style="width: 15%">#</li>
+        <li style="width: 15%" class="text-center">Song Title</li>
         <li class="text-center">Artist</li>
         <li class="text-center">Album</li>
-        <li class="text-center">Description</li>
+        <li style="width: 50%"class="text-center">Description</li>
       </ul>
       <!--      loop songs-->
       <ul *ngFor="let song of allSong; index as i">

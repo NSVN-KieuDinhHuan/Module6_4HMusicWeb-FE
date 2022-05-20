@@ -34,12 +34,14 @@ export class PlaylistListComponent implements OnInit {
   getAllPlaylists() {
     this.playlistService.getAllPlaylist().subscribe((playlists) => {
       this.allPlaylists = playlists;
+      this.jsService.jsfile();
     });
   }
 
   getAllPlaylistsByUser() {
     this.playlistService.getAllPlaylistByUser(this.currentUser.id).subscribe((playlists) => {
       this.allPlaylistsByUser = playlists;
+      this.jsService.jsfile();
     });
   }
 

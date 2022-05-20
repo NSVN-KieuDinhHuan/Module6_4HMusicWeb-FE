@@ -22,7 +22,7 @@
         <li class="text-center">Artist</li>
         <li class="text-center">Band</li>
         <li class="text-center">Gende</li>
-        <li>Birthday</li>
+        <li class="text-center">Story</li>
       </ul>
       <ul *ngFor="let artist of allArtists; index as i">
 
@@ -31,7 +31,7 @@
         <li class="text-center"><a>{{artist.band}}</a></li>
         <li *ngIf="artist.gender == true" class="text-center"><a>Men</a></li>
         <li *ngIf="artist.gender == false" class="text-center"><a>Women</a></li>
-        <li class="text-center"><a>{{artist.dateOfBirth}}</a></li>
+        <li ><a>{{artist.story}}</a></li>
       </ul>
 
       <div class="swiper-wrapper">

@@ -4,6 +4,7 @@ import {PlayList} from '../../model/play-list';
 import {SongService} from '../../service/song/song.service';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {JsService} from '../../service/js.service';
+import {PlayService} from '../../service/playmusic/play.service';
 
 @Component({
   selector: 'app-homepage',
@@ -23,7 +24,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(private songService: SongService,
               private playlistService: PlaylistService,
-              private jsservice: JsService) {
+              private jsservice: JsService,
+              private playService:PlayService) {
   }
 
   ngOnInit() {
@@ -42,30 +44,35 @@ export class HomepageComponent implements OnInit {
   getAllSongs() {
     this.songService.getAllSongForAllUser().subscribe((songs) => {
       this.allSongs = songs;
+      this.jsservice.jsfile();
     });
   }
 
   getAllPlaylists() {
     this.playlistService.getAllPlaylist().subscribe((playlists) => {
       this.allPlaylists = playlists;
+      this.jsservice.jsfile();
     });
   }
 
   getTopViewSong() {
     this.songService.getTopViewSong().subscribe((song) => {
       this.topViewsSong = song;
+      this.jsservice.jsfile();
     });
   }
 
   getTopViewSongList() {
     this.songService.getTopViewSongList().subscribe((songs) => {
       this.topViewSongList = songs;
+      this.jsservice.jsfile();
     });
   }
 
   getTopLikeSongList() {
     this.songService.getTopLikeSongList().subscribe((songs) => {
       this.topLikeSongList = songs;
+      this.jsservice.jsfile();
     });
   }
 

@@ -25,7 +25,7 @@ export class ArtistCreateComponent implements OnInit {
       gender: new FormControl(''),
       dateOfBirth: new FormControl(''),
       story: new FormControl(''),
-      categories: new FormControl(null),
+      category: new FormControl(null),
       band: new FormControl(''),
       moreInfo: new FormControl('')
     }
@@ -57,14 +57,14 @@ export class ArtistCreateComponent implements OnInit {
       const artist = artistForm.value;
 
       this.artistService.createArtist(artist).subscribe(() => {
-          this.notificationService.showMessage('success', 'Tạo mới thành công!');
+          this.notificationService.showSuccessMessage( 'Tạo mới thành công!');
         }, error => {
-          this.notificationService.showMessage('error', 'Tạo mới lỗi!');
+          this.notificationService.showErrorMessage('Tạo mới lỗi!');
         }
       );
       artistForm.resetForm();
     } else {
-      this.notificationService.showMessage('error', 'Tạo mới lỗi!');
+      this.notificationService.showErrorMessage( 'Tạo mới lỗi!');
     }
   }
 

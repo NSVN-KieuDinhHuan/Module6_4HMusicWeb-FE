@@ -13,6 +13,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LikePlaylistService} from '../../service/likePlaylist/like-playlist.service';
 import {LikePlaylist} from '../../model/like-playlist';
 import {PlayService} from '../../service/playmusic/play.service';
+import {NotificationService} from '../../service/notification/notification.service';
 
 declare var $: any;
 
@@ -42,6 +43,7 @@ export class PlaylistDetailComponent implements OnInit {
               private router: Router,
               private commentPlaylistService: CommentPlaylistService,
               private likePlaylistService: LikePlaylistService,
+              private notificationService:NotificationService,
               private playService: PlayService) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = +paramMap.get('id');
@@ -81,16 +83,16 @@ export class PlaylistDetailComponent implements OnInit {
   addSong(songId: number, playlistId: number) {
     this.playlistService.addSongToPlaylist(songId, playlistId).subscribe((playlist) => {
       this.getPlaylistById(playlistId);
-      alert('Add song successfully!');
+      this.notificationService.showSuccessMessage('Add song successfully!')
     }, error => {
-      alert('Failed');
+      this.notificationService.showSuccessMessage('Failed')
     });
   }
 
   removeSong(songId: number, playlistId: number) {
     this.playlistService.removeSongFromPlaylist(songId, playlistId).subscribe(() => {
       this.getPlaylistById(playlistId);
-      alert('Remove song successfully!');
+      this.notificationService.showSuccessMessage('Remove song successfully!')
     }, error => {
       alert('Failed');
     });
@@ -106,7 +108,6 @@ export class PlaylistDetailComponent implements OnInit {
     this.commentPlaylistService.createNewComment(this.playlist.id, this.currentUser.id, commentForm.value).subscribe(() => {
       this.commentForm.get('content').setValue('');
       this.getAllCommentPlaylist(this.playlist.id);
-      alert('comment successfully!');
     });
   }
 

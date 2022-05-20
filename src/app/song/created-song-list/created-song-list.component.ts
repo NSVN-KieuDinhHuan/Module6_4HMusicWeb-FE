@@ -18,7 +18,11 @@ export class CreatedSongListComponent implements OnInit {
   songs: Song[] = [];
   songPlayList: Song[] = [];
   allSongAllUser:Song[] = [];
+  songMoreAll: Song[] = [];
+  songMore: Song[] = [];
   views:number;
+  step: number=3;
+  step0:number=3;
   constructor(private songService: SongService,
               private authenticationService: AuthenticationService,
               private playService: PlayService,
@@ -26,6 +30,7 @@ export class CreatedSongListComponent implements OnInit {
               private router: Router) {
     this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
+
     });
   }
 
@@ -33,7 +38,6 @@ export class CreatedSongListComponent implements OnInit {
   ngOnInit() {
 
     this.getAllSong();
-    this.jsService.jsfile();
     this.getAllCreatedSongbyUser();
 
   }
@@ -46,8 +50,41 @@ export class CreatedSongListComponent implements OnInit {
  getAllCreatedSongbyUser() {
    this.songService.getAll(this.currentUser.id).subscribe((songsFromBE) => {
      this.songs = songsFromBE;
-     this.jsService.jsfile()
+     this.viewMoreSong();
+
    });
+ }
+
+  viewMoreSong(){
+    this.songMore=[]
+    for (let i = 0; i < this.step0; i++) {
+      if (this.step0<=this.songs.length){
+        this.songMore.push(this.songs[i])
+      }else {
+        break;
+      }
+    }
+    this.step0 = this.step0 + 3;
+    if(this.step0>=this.songs.length){
+      this.step0=this.songs.length;
+    }
+    this.jsService.jsfile();
+  }
+
+ viewMoreAllSong(){
+  this.songMoreAll=[]
+   for (let i = 0; i < this.step; i++) {
+     if (this.step<=this.allSongAllUser.length){
+     this.songMoreAll.push(this.allSongAllUser[i])
+     }else {
+       break;
+     }
+   }
+   this.step = this.step + 3;
+   if(this.step>=this.allSongAllUser.length){
+     this.step=this.allSongAllUser.length;
+   }
+   this.jsService.jsfile();
  }
   logout() {
     this.authenticationService.logout();
@@ -56,6 +93,7 @@ export class CreatedSongListComponent implements OnInit {
   getAllSong() {
     this.songService.getAllSongForAllUser().subscribe((songs) => {
       this.allSongAllUser = songs;
+      this.viewMoreAllSong()
       this.jsService.jsfile()
     });
   }
