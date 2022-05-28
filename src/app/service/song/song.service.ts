@@ -12,8 +12,8 @@ export class SongService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(userId): Observable<Song[]> {
-    return this.http.get<Song[]>(`${API_URL}/songs/user/${userId}`);
+  getAll(): Observable<Song[]> {
+    return this.http.get<Song[]>(`${API_URL}/songs/user`);
   }
 
   getSongById( id): Observable<Song> {
@@ -21,11 +21,11 @@ export class SongService {
   }
 
   createSong(song: FormData, userId): Observable<Song> {
-    return this.http.post(`${API_URL}/songs/user/${userId}`, song);
+    return this.http.post(`${API_URL}/songs/user`, song);
   }
 
   editSong(userId, id, song: FormData): Observable<Song> {
-    return this.http.post(`${API_URL}/songs/user/${userId}/${id}`, song);
+    return this.http.post(`${API_URL}/songs/user/${id}`, song);
   }
 
   deleteSong(id): Observable<Song> {
